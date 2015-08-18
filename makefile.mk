@@ -47,7 +47,8 @@ CFLAGS ?= \
     -ffunction-sections \
     -fdata-sections \
     -ggdb3 \
-    -Og \
+    -Os \
+    -flto \
     -std=c99 \
     -DCORE_M0 \
 
@@ -56,6 +57,7 @@ LDFLAGS ?= \
     -mthumb \
     -T$(TOOLKIT_PATH)/src/CMSIS/Device/ARM/ARMCM0/LPC11U24_301/Source/GCC/gcc_arm.ld \
     -Wl,-gc-sections \
+    -flto \
 
 ######################################################################
 #                                                                    #
