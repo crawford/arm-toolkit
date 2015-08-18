@@ -84,6 +84,7 @@ _SOURCES := \
     arch/cortex-m0/lpc11uxx/src/gpiogroup_11xx.c \
     arch/cortex-m0/lpc11uxx/src/i2cm_11xx.c \
     arch/cortex-m0/lpc11uxx/src/i2c_11xx.c \
+    arch/cortex-m0/lpc11uxx/src/iap_11xx.c \
     arch/cortex-m0/lpc11uxx/src/iocon_11xx.c \
     arch/cortex-m0/lpc11uxx/src/pinint_11xx.c \
     arch/cortex-m0/lpc11uxx/src/pmu_11xx.c \
