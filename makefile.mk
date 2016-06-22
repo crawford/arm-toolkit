@@ -134,5 +134,10 @@ $(BUILD_DIR)/%.o: %.c
 
 $(BUILD_DIR)/%.o: %.S
 	$(Q)mkdir -p "`dirname $@`"
+	$(Q)echo " CC      " $<
+	$(Q)$(CC) $(CFLAGS) -c $< --output $@
+
+$(BUILD_DIR)/%.o: %.s
+	$(Q)mkdir -p "`dirname $@`"
 	$(Q)echo " AS      " $<
 	$(Q)$(AS) $(SFLAGS) $< -o $@
