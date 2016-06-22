@@ -300,6 +300,8 @@ __STATIC_INLINE void __set_FPSCR(uint32_t fpscr)
 #if (__FPU_PRESENT == 1) && (__FPU_USED == 1)
   register uint32_t __regfpscr         __ASM("fpscr");
   __regfpscr = (fpscr);
+#else
+  (void)fpscr;
 #endif
 }
 
@@ -613,6 +615,8 @@ __attribute__( ( always_inline ) ) __STATIC_INLINE void __set_FPSCR(uint32_t fps
   __ASM volatile ("");
   __ASM volatile ("VMSR fpscr, %0" : : "r" (fpscr) : "vfpcc");
   __ASM volatile ("");
+#else
+  (void)fpscr;
 #endif
 }
 
