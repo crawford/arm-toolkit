@@ -12,13 +12,16 @@ The toolkit is meant to sit adjacent to your code (perhaps as a submodule of
 your larger repo) and be included into the Makefile. Your Makefile will need to
 define a few variables **before** including the toolkit makefile.mk. You can
 optionally define other variables to affect the output and logging. Please
-refer to [makefile.mk](makefile.mk) for a full list of variables.
+refer to [makefile.mk](makefile.mk) for a full list of variables. The full list
+of supported MCUs can be found in [mcus.mk](mcus.mk).
 
 ### Example ###
 
 #### Makefile ####
 
 ```make
+MCU := LPC11U24_301
+
 OUTPUT       := example
 TOOLKIT_PATH := arm-toolkit
 

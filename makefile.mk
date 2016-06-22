@@ -2,10 +2,14 @@
 #                                                                    #
 # User Defined Variables                                             #
 #                                                                    #
+#   MCU          -                                                   #
+#                  (required)                                        #
 #   TOOLKIT_PATH - path to the arm-toolkit directory                 #
 #                  (required)                                        #
 #   SOURCES      - list of user source files                         #
 #                  (required)                                        #
+#   INCLUDES     - list of user include directories                  #
+#                  (default: )                                       #
 #   OUTPUT       - name of the build artifacts (excluding suffix)    #
 #                  (default: out)                                    #
 #   BUILD_DIR    - path to the build directory                       #
@@ -23,9 +27,15 @@ ifndef TOOLKIT_PATH
     $(error TOOLKIT_PATH must be defined. See arm-toolkit README)
 endif
 
+ifndef MCU
+    $(error MCU must be defined. See arm-toolkit README)
+endif
+
 ifndef SOURCES
     $(error SOURCES must be defined. See arm-toolkit README)
 endif
+
+include $(TOOLKIT_PATH)/mcus.mk
 
 ifneq ($(VERBOSE),1)
     Q := @
@@ -36,12 +46,12 @@ BUILD_DIR    ?= build
 CROSS_PREFIX ?= arm-none-eabi-
 
 SFLAGS ?= \
-    -mcpu=cortex-m0 \
+    -mcpu=$(_$(MCU)_CPU) \
     -mthumb \
     --gstabs+ \
 
 CFLAGS ?= \
-    -mcpu=cortex-m0 \
+    -mcpu=$(_$(MCU)_CPU) \
     -mthumb \
     -Wall \
     -ffunction-sections \
@@ -50,12 +60,13 @@ CFLAGS ?= \
     -Os \
     -flto \
     -std=c99 \
-    -DCORE_M0 \
+    -D$(_$(MCU)_CORE) \
+    -D$(MCU) \
 
 LDFLAGS ?= \
-    -mcpu=cortex-m0 \
+    -mcpu=$(_$(MCU)_CPU) \
     -mthumb \
-    -T$(TOOLKIT_PATH)/src/CMSIS/Device/ARM/ARMCM0/LPC11U24_301/Source/GCC/gcc_arm.ld \
+    -T$(TOOLKIT_PATH)/src/$(_$(MCU)_LINKER) \
     -Wl,-gc-sections \
     -flto \
 
@@ -75,42 +86,16 @@ ELF = $(BUILD_DIR)/$(OUTPUT).elf
 BIN := $(BUILD_DIR)/$(OUTPUT).bin
 
 _SOURCES := \
-    fault.c \
-    drivers/adc/11uxx.c \
-    drivers/lamp/lamp.c \
-    drivers/timer/timer.c \
-    arch/cortex-m0/lpc11uxx/src/gpio_11xx.c \
-    arch/cortex-m0/lpc11uxx/src/adc_11xx.c \
-    arch/cortex-m0/lpc11uxx/src/chip_11xx.c \
-    arch/cortex-m0/lpc11uxx/src/clock_11xx.c \
-    arch/cortex-m0/lpc11uxx/src/gpiogroup_11xx.c \
-    arch/cortex-m0/lpc11uxx/src/i2cm_11xx.c \
-    arch/cortex-m0/lpc11uxx/src/i2c_11xx.c \
-    arch/cortex-m0/lpc11uxx/src/iap_11xx.c \
-    arch/cortex-m0/lpc11uxx/src/iocon_11xx.c \
-    arch/cortex-m0/lpc11uxx/src/pinint_11xx.c \
-    arch/cortex-m0/lpc11uxx/src/pmu_11xx.c \
-    arch/cortex-m0/lpc11uxx/src/ring_buffer.c \
-    arch/cortex-m0/lpc11uxx/src/ssp_11xx.c \
-    arch/cortex-m0/lpc11uxx/src/sysctl_11xx.c \
-    arch/cortex-m0/lpc11uxx/src/sysinit_11xx.c \
-    arch/cortex-m0/lpc11uxx/src/timer_11xx.c \
-    arch/cortex-m0/lpc11uxx/src/uart_11xx.c \
-    arch/cortex-m0/lpc11uxx/src/wwdt_11xx.c \
-    arch/cortex-m0/lpc11uxx/src/gpio_11xx.c \
     hardfault.S \
-    CMSIS/Device/ARM/ARMCM0/LPC11U24_301/Source/GCC/startup_ARMCM0.S \
+    $(_$(MCU)_SOURCES) \
 
 _INCLUDES := \
     . \
-    drivers/adc \
-    drivers/lamp \
-    drivers/timer \
-    CMSIS/Device/ARM/ARMCM0/LPC11U24_301/Include \
     CMSIS/CMSIS/Include \
-    arch/cortex-m0/lpc11uxx/inc \
+    $(_$(MCU)_INCLUDES) \
 
-CFLAGS += $(_INCLUDES:%=-I$(TOOLKIT_PATH)/src/%)
+
+CFLAGS += $(INCLUDES:%=-I%) $(_INCLUDES:%=-I$(TOOLKIT_PATH)/src/%)
 
 _OBJS := $(SOURCES) $(_SOURCES:%=$(TOOLKIT_PATH)/src/%)
 _OBJS := $(_OBJS:%.c=$(BUILD_DIR)/%.o)
