@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+#include "cmsis.h"
+
 typedef struct {
 	__I uint32_t  R0;
 	__I uint32_t  R1;

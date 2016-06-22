@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-#include "cmsis.h"
 #include "fault.h"
 
 void __attribute__ ((weak)) HardFault_Handler_c(stack_regs_t *stack,
