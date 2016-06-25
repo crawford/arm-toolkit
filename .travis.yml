@@ -6,6 +6,7 @@ env:
    - SOURCES=test/main.c
   matrix:
    - MCU=LPC11U24_301
+   - MCU=EFM32LG990F256
 
 addons:
   apt:

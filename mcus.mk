@@ -9,7 +9,7 @@ _LPC11U24_301_CORE     := CORE_M0
 _LPC11U24_301_LINKER   := \
     CMSIS/Device/ARM/ARMCM0/LPC11U24_301/Source/GCC/gcc_arm.ld
 
-_LPC11U24_301_SOURCES  := \
+_LPC11U24_301_SOURCES := \
     arch/cortex-m0/fault.c \
     arch/cortex-m0/lpc11uxx/src/gpio_11xx.c \
     arch/cortex-m0/lpc11uxx/src/adc_11xx.c \
@@ -41,6 +41,25 @@ _LPC11U24_301_INCLUDES := \
     drivers/adc \
     drivers/lamp \
     drivers/timer \
+
+
+######################################################################
+#                                                                    #
+# EFM32LG990F256                                                     #
+#                                                                    #
+######################################################################
+
+_EFM32LG990F256_CPU    := cortex-m3
+_EFM32LG990F256_CORE   := CORE_M3
+_EFM32LG990F256_LINKER := \
+    CMSIS/Device/ARM/ARMCM3/EFM32LG/Source/GCC/efm32lg.ld
+
+_EFM32LG990F256_SOURCES := \
+    CMSIS/Device/ARM/ARMCM3/EFM32LG/Source/GCC/startup_efm32lg.S \
+    CMSIS/Device/ARM/ARMCM3/EFM32LG/Source/system_efm32lg.c \
+
+_EFM32LG990F256_INCLUDES := \
+    CMSIS/Device/ARM/ARMCM3/EFM32LG/Include \
 
 
 ifndef _$(MCU)_CPU
