@@ -11,6 +11,9 @@ MEMORY
   RAM (rwx)  : ORIGIN = 0x20000000, LENGTH = 32768
 }
 
+/* Library configurations */
+GROUP(libc.a libm.a libnosys.a)
+
 /* Linker script to place sections and symbol values. Should be used together
  * with other linker script that defines memory regions FLASH and RAM.
  * It references following symbols, which must be defined in code:
