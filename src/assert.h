@@ -17,12 +17,10 @@
 #ifndef _ASSERT_H_
 #define _ASSERT_H_
 
-#include "cmsis.h"
-
 #define ASSERT(cond) \
 { \
 	if (!(cond)) \
-		__BKPT(1); \
+		__asm volatile ("bkpt 1"); \
 }
 
 #endif // _ASSERT_H_
