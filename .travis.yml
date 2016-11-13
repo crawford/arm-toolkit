@@ -1,5 +1,10 @@
 language: c
 
+# XXX: Travis doesn't allow libnewlib-arm-none-eabi to be installed yet
+sudo: required
+
+dist: trusty
+
 env:
   global:
    - TOOLKIT_PATH=.
@@ -10,14 +15,9 @@ env:
 
 addons:
   apt:
-    sources:
-      - debian-sid
     packages:
       - gcc-arm-none-eabi
       - libnewlib-arm-none-eabi
-
-      # XXX: Travis doesn't allow libnewlib-arm-none-eabi to be installed yet
-      - libstdc++-arm-none-eabi-newlib
 
 script:
   - make --file=makefile.mk
