@@ -51,6 +51,7 @@ SFLAGS ?= \
     --gstabs+ \
 
 CFLAGS ?= \
+    -MD \
     -mcpu=$(_$(MCU)_CPU) \
     -mthumb \
     -Wall \
@@ -100,6 +101,7 @@ CFLAGS += $(INCLUDES:%=-I%) $(_INCLUDES:%=-I$(TOOLKIT_PATH)/src/%)
 _OBJS := $(SOURCES) $(_SOURCES:%=$(TOOLKIT_PATH)/src/%)
 _OBJS := $(_OBJS:%.c=$(BUILD_DIR)/%.o)
 _OBJS := $(_OBJS:%.S=$(BUILD_DIR)/%.o)
+_DEPS := $(_OBJS:%.o=%.d)
 
 .PHONY: all clean size
 
@@ -110,6 +112,7 @@ size: $(ELF)
 
 clean:
 	$(Q)rm -f $(_OBJS)
+	$(Q)rm -f $(_DEPS)
 	$(Q)rm -f $(ELF)
 	$(Q)rm -f $(BIN)
 	$(Q)[ -d $(BUILD_DIR) ] && \
@@ -141,3 +144,5 @@ $(BUILD_DIR)/%.o: %.s
 	$(Q)mkdir -p "`dirname $@`"
 	$(Q)echo " AS      " $<
 	$(Q)$(AS) $(SFLAGS) $< -o $@
+
+-include $(_DEPS)
