@@ -62,7 +62,6 @@ CFLAGS ?= \
     -std=c99 \
     -D$(_$(MCU)_CORE) \
     -D$(MCU) \
-    -fdiagnostics-color=always \
 
 LDFLAGS ?= \
     -mcpu=$(_$(MCU)_CPU) \
