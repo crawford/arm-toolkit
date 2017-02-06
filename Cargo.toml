@@ -1,0 +1,15 @@
+[package]
+name = "arm-toolkit"
+version = "0.0.0"
+authors = ["Alex Crawford <alex@acrawford.com>"]
+
+[dependencies]
+volatile-register = "0.1.2"
+
+[profile.dev]
+lto = true
+panic = "abort"
+
+[profile.release]
+lto = true
+panic = "abort"
