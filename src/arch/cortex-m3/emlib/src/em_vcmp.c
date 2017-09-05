@@ -1,11 +1,10 @@
 /***************************************************************************//**
- * @file
+ * @file em_vcmp.c
  * @brief Voltage Comparator (VCMP) peripheral API
- * @author Energy Micro AS
- * @version 3.20.0
+ * @version 5.1.2
  *******************************************************************************
  * @section License
- * <b>(C) Copyright 2012 Energy Micro AS, http://www.energymicro.com</b>
+ * <b>Copyright 2016 Silicon Laboratories, Inc. http://www.silabs.com</b>
  *******************************************************************************
  *
  * Permission is granted to anyone to use this software for any purpose,
@@ -18,29 +17,36 @@
  *    misrepresented as being the original software.
  * 3. This notice may not be removed or altered from any source distribution.
  *
- * DISCLAIMER OF WARRANTY/LIMITATION OF REMEDIES: Energy Micro AS has no
- * obligation to support this Software. Energy Micro AS is providing the
+ * DISCLAIMER OF WARRANTY/LIMITATION OF REMEDIES: Silicon Labs has no
+ * obligation to support this Software. Silicon Labs is providing the
  * Software "AS IS", with no express or implied warranties of any kind,
  * including, but not limited to, any implied warranties of merchantability
  * or fitness for any particular purpose or warranties against infringement
  * of any proprietary rights of a third party.
  *
- * Energy Micro AS will not be liable for any consequential, incidental, or
+ * Silicon Labs will not be liable for any consequential, incidental, or
  * special damages, or any other relief, or for any claim by any third party,
  * arising from your use of this Software.
  *
  ******************************************************************************/
-#include "em_assert.h"
+
 #include "em_vcmp.h"
+#if defined(VCMP_COUNT) && (VCMP_COUNT > 0)
+
+#include "em_assert.h"
 
 /***************************************************************************//**
- * @addtogroup EM_Library
+ * @addtogroup emlib
  * @{
  ******************************************************************************/
 
 /***************************************************************************//**
  * @addtogroup VCMP
  * @brief Voltage Comparator (VCMP) Peripheral API
+ * @details
+ *  This module contains functions to control the VCMP peripheral of Silicon
+ *  Labs 32-bit MCUs and SoCs. The VCMP monitors the input voltage supply and
+ *  generates interrupts on events using as little as 100 nA.
  * @{
  ******************************************************************************/
 
@@ -98,14 +104,14 @@ void VCMP_Init(const VCMP_Init_TypeDef *vcmpInit)
   /* Configure hysteresis */
   switch (vcmpInit->hyst)
   {
-  case vcmpHyst20mV:
-    VCMP->CTRL |= VCMP_CTRL_HYSTEN;
-    break;
-  case vcmpHystNone:
-    VCMP->CTRL &= ~(VCMP_CTRL_HYSTEN);
-    break;
-  default:
-    break;
+    case vcmpHyst20mV:
+      VCMP->CTRL |= VCMP_CTRL_HYSTEN;
+      break;
+    case vcmpHystNone:
+      VCMP->CTRL &= ~(VCMP_CTRL_HYSTEN);
+      break;
+    default:
+      break;
   }
 
   /* Configure inactive output value */
@@ -133,7 +139,7 @@ void VCMP_Init(const VCMP_Init_TypeDef *vcmpInit)
     while(!VCMP_Ready());
     VCMP_LowPowerRefSet(vcmpInit->lowPowerRef);
   }
-  
+
   /* Clear edge interrupt */
   VCMP_IntClear(VCMP_IF_EDGE);
 }
@@ -154,7 +160,7 @@ void VCMP_LowPowerRefSet(bool enable)
   }
   else
   {
-    VCMP->INPUTSEL &= ~(VCMP_INPUTSEL_LPREF);
+    VCMP->INPUTSEL &= ~VCMP_INPUTSEL_LPREF;
   }
 }
 
@@ -172,10 +178,11 @@ void VCMP_TriggerSet(int level)
   EFM_ASSERT((level > 0) && (level < 64));
 
   /* Set trigger level */
-  VCMP->INPUTSEL = (VCMP->INPUTSEL & ~(_VCMP_INPUTSEL_TRIGLEVEL_MASK)) |
-                   (level << _VCMP_INPUTSEL_TRIGLEVEL_SHIFT);
+  VCMP->INPUTSEL = (VCMP->INPUTSEL & ~(_VCMP_INPUTSEL_TRIGLEVEL_MASK))
+                   | (level << _VCMP_INPUTSEL_TRIGLEVEL_SHIFT);
 }
 
 
 /** @} (end addtogroup VCMP) */
-/** @} (end addtogroup EM_Library) */
+/** @} (end addtogroup emlib) */
+#endif /* defined(VCMP_COUNT) && (VCMP_COUNT > 0) */

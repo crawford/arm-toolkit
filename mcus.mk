@@ -61,15 +61,21 @@ _EFM32LG990F256_SOURCES := \
     arch/cortex-m3/emlib/src/em_assert.c \
     arch/cortex-m3/emlib/src/em_burtc.c \
     arch/cortex-m3/emlib/src/em_cmu.c \
+    arch/cortex-m3/emlib/src/em_core.c \
+    arch/cortex-m3/emlib/src/em_cryotimer.c \
+    arch/cortex-m3/emlib/src/em_crypto.c \
+    arch/cortex-m3/emlib/src/em_csen.c \
     arch/cortex-m3/emlib/src/em_dac.c \
     arch/cortex-m3/emlib/src/em_dbg.c \
     arch/cortex-m3/emlib/src/em_dma.c \
     arch/cortex-m3/emlib/src/em_ebi.c \
     arch/cortex-m3/emlib/src/em_emu.c \
+    arch/cortex-m3/emlib/src/em_gpcrc.c \
     arch/cortex-m3/emlib/src/em_gpio.c \
     arch/cortex-m3/emlib/src/em_i2c.c \
-    arch/cortex-m3/emlib/src/em_int.c \
+    arch/cortex-m3/emlib/src/em_idac.c \
     arch/cortex-m3/emlib/src/em_lcd.c \
+    arch/cortex-m3/emlib/src/em_ldma.c \
     arch/cortex-m3/emlib/src/em_lesense.c \
     arch/cortex-m3/emlib/src/em_letimer.c \
     arch/cortex-m3/emlib/src/em_leuart.c \
@@ -80,10 +86,12 @@ _EFM32LG990F256_SOURCES := \
     arch/cortex-m3/emlib/src/em_prs.c \
     arch/cortex-m3/emlib/src/em_rmu.c \
     arch/cortex-m3/emlib/src/em_rtc.c \
+    arch/cortex-m3/emlib/src/em_rtcc.c \
     arch/cortex-m3/emlib/src/em_system.c \
     arch/cortex-m3/emlib/src/em_timer.c \
     arch/cortex-m3/emlib/src/em_usart.c \
     arch/cortex-m3/emlib/src/em_vcmp.c \
+    arch/cortex-m3/emlib/src/em_vdac.c \
     arch/cortex-m3/emlib/src/em_wdog.c \
     CMSIS/Device/ARM/ARMCM3/EFM32LG/Source/GCC/startup_efm32lg.S \
     CMSIS/Device/ARM/ARMCM3/EFM32LG/Source/system_efm32lg.c \

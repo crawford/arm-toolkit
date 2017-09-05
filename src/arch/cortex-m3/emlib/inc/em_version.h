@@ -1,11 +1,10 @@
 /***************************************************************************//**
- * @file
+ * @file em_version.h
  * @brief Assign correct part number for include file
- * @author Energy Micro AS
- * @version 3.20.0
+ * @version 5.1.2
  *******************************************************************************
  * @section License
- * <b>(C) Copyright 2012 Energy Micro AS, http://www.energymicro.com</b>
+ * <b>Copyright 2016 Silicon Laboratories, Inc. http://www.silabs.com</b>
  *******************************************************************************
  *
  * Permission is granted to anyone to use this software for any purpose,
@@ -18,20 +17,21 @@
  *    misrepresented as being the original software.
  * 3. This notice may not be removed or altered from any source distribution.
  *
- * DISCLAIMER OF WARRANTY/LIMITATION OF REMEDIES: Energy Micro AS has no
- * obligation to support this Software. Energy Micro AS is providing the
+ * DISCLAIMER OF WARRANTY/LIMITATION OF REMEDIES: Silicon Labs has no
+ * obligation to support this Software. Silicon Labs is providing the
  * Software "AS IS", with no express or implied warranties of any kind,
  * including, but not limited to, any implied warranties of merchantability
  * or fitness for any particular purpose or warranties against infringement
  * of any proprietary rights of a third party.
  *
- * Energy Micro AS will not be liable for any consequential, incidental, or
+ * Silicon Labs will not be liable for any consequential, incidental, or
  * special damages, or any other relief, or for any claim by any third party,
  * arising from your use of this Software.
  *
  ******************************************************************************/
-#ifndef __EM_VERSION_H
-#define __EM_VERSION_H
+
+#ifndef EM_VERSION_H
+#define EM_VERSION_H
 
 #include "em_device.h"
 
@@ -40,29 +40,50 @@ extern "C" {
 #endif
 
 /***************************************************************************//**
- * @addtogroup EM_Library
+ * @addtogroup emlib
  * @{
  ******************************************************************************/
 
 /***************************************************************************//**
- * @addtogroup Version
+ * @addtogroup VERSION
+ * @brief Version API.
+ * @details
+ *  Macros specifying the emlib and CMSIS version.
  * @{
  ******************************************************************************/
 
-/** Version number of emlib peripheral API */
-#define _EMLIB_VERSION 3.20.0
-/** Major version of emlib */
-#define _EMLIB_VERSION_MAJOR 3
-/** Minor version of emlib */
-#define _EMLIB_VERSION_MINOR 20
-/** Patch revision of emlib */
-#define _EMLIB_VERSION_PATCH 0
+/** Version number of emlib peripheral API. */
+#define _EMLIB_VERSION 5.1.2
+
+/** Major version of emlib. Bumped when incompatible API changes introduced. */
+#define _EMLIB_VERSION_MAJOR 5
+
+/** Minor version of emlib. Bumped when functionality is added in a backwards-
+    compatible manner. */
+#define _EMLIB_VERSION_MINOR 1
+
+/** Patch revision of emlib. Bumped when adding backwards-compatible bug
+    fixes.*/
+#define _EMLIB_VERSION_PATCH 2
+
+
+/** Version number of targeted CMSIS package. */
+#define _CMSIS_VERSION 4.5.0
+
+/** Major version of CMSIS. */
+#define _CMSIS_VERSION_MAJOR 4
+
+/** Minor version of CMSIS. */
+#define _CMSIS_VERSION_MINOR 5
+
+/** Patch revision of CMSIS. */
+#define _CMSIS_VERSION_PATCH 0
 
 /** @} (end addtogroup Version) */
-/** @} (end addtogroup EM_Library) */
+/** @} (end addtogroup emlib) */
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* __EM_VERSION_H */
+#endif /* EM_VERSION_H */

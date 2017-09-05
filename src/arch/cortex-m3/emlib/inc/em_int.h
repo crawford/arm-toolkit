@@ -1,11 +1,10 @@
 /***************************************************************************//**
- * @file
+ * @file em_int.h
  * @brief Interrupt enable/disable unit API
- * @author Energy Micro AS
- * @version 3.20.0
+ * @version 5.1.2
  *******************************************************************************
  * @section License
- * <b>(C) Copyright 2012 Energy Micro AS, http://www.energymicro.com</b>
+ * <b>Copyright 2016 Silicon Laboratories, Inc. http://www.silabs.com</b>
  *******************************************************************************
  *
  * Permission is granted to anyone to use this software for any purpose,
@@ -18,20 +17,21 @@
  *    misrepresented as being the original software.
  * 3. This notice may not be removed or altered from any source distribution.
  *
- * DISCLAIMER OF WARRANTY/LIMITATION OF REMEDIES: Energy Micro AS has no
- * obligation to support this Software. Energy Micro AS is providing the
+ * DISCLAIMER OF WARRANTY/LIMITATION OF REMEDIES: Silicon Labs has no
+ * obligation to support this Software. Silicon Labs is providing the
  * Software "AS IS", with no express or implied warranties of any kind,
  * including, but not limited to, any implied warranties of merchantability
  * or fitness for any particular purpose or warranties against infringement
  * of any proprietary rights of a third party.
  *
- * Energy Micro AS will not be liable for any consequential, incidental, or
+ * Silicon Labs will not be liable for any consequential, incidental, or
  * special damages, or any other relief, or for any claim by any third party,
  * arising from your use of this Software.
  *
  ******************************************************************************/
-#ifndef __EM_INT_H
-#define __EM_INT_H
+
+#ifndef EM_INT_H
+#define EM_INT_H
 
 #include "em_device.h"
 
@@ -41,8 +41,17 @@ extern uint32_t INT_LockCnt;
 extern "C" {
 #endif
 
+/** @cond DO_NOT_INCLUDE_WITH_DOXYGEN */
+#ifndef UINT32_MAX
+#define UINT32_MAX ((uint32_t)(0xFFFFFFFF))
+#endif
+
+#warning "The INT module is deprecated and marked for removal in a later release. Please use the new CORE module instead. See \"Porting from em_int\" in the CORE documentation for instructions."
+
+/** @endcond */
+
 /***************************************************************************//**
- * @addtogroup EM_Library
+ * @addtogroup emlib
  * @{
  ******************************************************************************/
 
@@ -55,11 +64,15 @@ extern "C" {
  * @brief
  *   Disable interrupts.
  *
- * @return
- *   The resulting interrupt nesting level.
+ * @deprecated
+ *   This function is deprecated and marked for removal in a later release.
+ *   Please use the new CORE module instead.
  *
  * @details
  *   Disable interrupts and increment lock level counter.
+ *
+ * @return
+ *   The resulting interrupt disable nesting level.
  *
  ******************************************************************************/
 __STATIC_INLINE uint32_t INT_Disable(void)
@@ -77,8 +90,12 @@ __STATIC_INLINE uint32_t INT_Disable(void)
  * @brief
  *   Enable interrupts.
  *
+ * @deprecated
+ *   This function is deprecated and marked for removal in a later release.
+ *   Please use the new CORE module instead.
+ *
  * @return
- *   The resulting interrupt nesting level.
+ *   The resulting interrupt disable nesting level.
  *
  * @details
  *   Decrement interrupt lock level counter and enable interrupts if counter
@@ -106,10 +123,10 @@ __STATIC_INLINE uint32_t INT_Enable(void)
 }
 
 /** @} (end addtogroup INT) */
-/** @} (end addtogroup EM_Library) */
+/** @} (end addtogroup emlib) */
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* __EM_INT_H */
+#endif /* EM_INT_H */

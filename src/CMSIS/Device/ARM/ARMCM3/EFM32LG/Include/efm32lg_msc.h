@@ -1,11 +1,10 @@
 /**************************************************************************//**
- * @file
- * @brief efm32lg_msc Register and Bit Field definitions
- * @author Energy Micro AS
- * @version 3.20.0
+ * @file efm32lg_msc.h
+ * @brief EFM32LG_MSC register and bit field definitions
+ * @version 5.1.2
  ******************************************************************************
  * @section License
- * <b>(C) Copyright 2012 Energy Micro AS, http://www.energymicro.com</b>
+ * <b>Copyright 2017 Silicon Laboratories, Inc. http://www.silabs.com</b>
  ******************************************************************************
  *
  * Permission is granted to anyone to use this software for any purpose,
@@ -13,23 +12,27 @@
  * freely, subject to the following restrictions:
  *
  * 1. The origin of this software must not be misrepresented; you must not
- *    claim that you wrote the original software.
+ *    claim that you wrote the original software.@n
  * 2. Altered source versions must be plainly marked as such, and must not be
- *    misrepresented as being the original software.
+ *    misrepresented as being the original software.@n
  * 3. This notice may not be removed or altered from any source distribution.
  *
- * DISCLAIMER OF WARRANTY/LIMITATION OF REMEDIES: Energy Micro AS has no
- * obligation to support this Software. Energy Micro AS is providing the
- * Software "AS IS", with no express or implied warranties of any kind,
- * including, but not limited to, any implied warranties of merchantability
- * or fitness for any particular purpose or warranties against infringement
- * of any proprietary rights of a third party.
+ * DISCLAIMER OF WARRANTY/LIMITATION OF REMEDIES: Silicon Laboratories, Inc.
+ * has no obligation to support this Software. Silicon Laboratories, Inc. is
+ * providing the Software "AS IS", with no express or implied warranties of any
+ * kind, including, but not limited to, any implied warranties of
+ * merchantability or fitness for any particular purpose or warranties against
+ * infringement of any proprietary rights of a third party.
  *
- * Energy Micro AS will not be liable for any consequential, incidental, or
- * special damages, or any other relief, or for any claim by any third party,
- * arising from your use of this Software.
+ * Silicon Laboratories, Inc. will not be liable for any consequential,
+ * incidental, or special damages, or any other relief, or for any claim by
+ * any third party, arising from your use of this Software.
  *
  *****************************************************************************/
+/**************************************************************************//**
+* @addtogroup Parts
+* @{
+******************************************************************************/
 /**************************************************************************//**
  * @defgroup EFM32LG_MSC
  * @{
@@ -37,29 +40,29 @@
  *****************************************************************************/
 typedef struct
 {
-  __IO uint32_t CTRL;         /**< Memory System Control Register  */
-  __IO uint32_t READCTRL;     /**< Read Control Register  */
-  __IO uint32_t WRITECTRL;    /**< Write Control Register  */
-  __IO uint32_t WRITECMD;     /**< Write Command Register  */
-  __IO uint32_t ADDRB;        /**< Page Erase/Write Address Buffer  */
+  __IOM uint32_t CTRL;         /**< Memory System Control Register  */
+  __IOM uint32_t READCTRL;     /**< Read Control Register  */
+  __IOM uint32_t WRITECTRL;    /**< Write Control Register  */
+  __IOM uint32_t WRITECMD;     /**< Write Command Register  */
+  __IOM uint32_t ADDRB;        /**< Page Erase/Write Address Buffer  */
 
-  uint32_t      RESERVED0[1]; /**< Reserved for future use **/
-  __IO uint32_t WDATA;        /**< Write Data Register  */
-  __I uint32_t  STATUS;       /**< Status Register  */
+  uint32_t       RESERVED0[1]; /**< Reserved for future use **/
+  __IOM uint32_t WDATA;        /**< Write Data Register  */
+  __IM uint32_t  STATUS;       /**< Status Register  */
 
-  uint32_t      RESERVED1[3]; /**< Reserved for future use **/
-  __I uint32_t  IF;           /**< Interrupt Flag Register  */
-  __IO uint32_t IFS;          /**< Interrupt Flag Set Register  */
-  __IO uint32_t IFC;          /**< Interrupt Flag Clear Register  */
-  __IO uint32_t IEN;          /**< Interrupt Enable Register  */
-  __IO uint32_t LOCK;         /**< Configuration Lock Register  */
-  __IO uint32_t CMD;          /**< Command Register  */
-  __I uint32_t  CACHEHITS;    /**< Cache Hits Performance Counter  */
-  __I uint32_t  CACHEMISSES;  /**< Cache Misses Performance Counter  */
-  uint32_t      RESERVED2[1]; /**< Reserved for future use **/
-  __IO uint32_t TIMEBASE;     /**< Flash Write and Erase Timebase  */
-  __IO uint32_t MASSLOCK;     /**< Mass Erase Lock Register  */
-} MSC_TypeDef;                /** @} */
+  uint32_t       RESERVED1[3]; /**< Reserved for future use **/
+  __IM uint32_t  IF;           /**< Interrupt Flag Register  */
+  __IOM uint32_t IFS;          /**< Interrupt Flag Set Register  */
+  __IOM uint32_t IFC;          /**< Interrupt Flag Clear Register  */
+  __IOM uint32_t IEN;          /**< Interrupt Enable Register  */
+  __IOM uint32_t LOCK;         /**< Configuration Lock Register  */
+  __IOM uint32_t CMD;          /**< Command Register  */
+  __IM uint32_t  CACHEHITS;    /**< Cache Hits Performance Counter  */
+  __IM uint32_t  CACHEMISSES;  /**< Cache Misses Performance Counter  */
+  uint32_t       RESERVED2[1]; /**< Reserved for future use **/
+  __IOM uint32_t TIMEBASE;     /**< Flash Write and Erase Timebase  */
+  __IOM uint32_t MASSLOCK;     /**< Mass Erase Lock Register  */
+} MSC_TypeDef;                 /** @} */
 
 /**************************************************************************//**
  * @defgroup EFM32LG_MSC_BitFields
@@ -81,7 +84,7 @@ typedef struct
 
 /* Bit fields for MSC READCTRL */
 #define _MSC_READCTRL_RESETVALUE                0x00000001UL                              /**< Default value for MSC_READCTRL */
-#define _MSC_READCTRL_MASK                      0x000301FFUL                              /**< Mask for MSC_READCTRL */
+#define _MSC_READCTRL_MASK                      0x000300FFUL                              /**< Mask for MSC_READCTRL */
 #define _MSC_READCTRL_MODE_SHIFT                0                                         /**< Shift value for MSC_MODE */
 #define _MSC_READCTRL_MODE_MASK                 0x7UL                                     /**< Bit mask for MSC_MODE */
 #define _MSC_READCTRL_MODE_WS0                  0x00000000UL                              /**< Mode WS0 for MSC_READCTRL */
@@ -123,11 +126,6 @@ typedef struct
 #define _MSC_READCTRL_RAMCEN_MASK               0x80UL                                    /**< Bit mask for MSC_RAMCEN */
 #define _MSC_READCTRL_RAMCEN_DEFAULT            0x00000000UL                              /**< Mode DEFAULT for MSC_READCTRL */
 #define MSC_READCTRL_RAMCEN_DEFAULT             (_MSC_READCTRL_RAMCEN_DEFAULT << 7)       /**< Shifted mode DEFAULT for MSC_READCTRL */
-#define MSC_READCTRL_PREFETCH                   (0x1UL << 8)                              /**< Prefetch Mode */
-#define _MSC_READCTRL_PREFETCH_SHIFT            8                                         /**< Shift value for MSC_PREFETCH */
-#define _MSC_READCTRL_PREFETCH_MASK             0x100UL                                   /**< Bit mask for MSC_PREFETCH */
-#define _MSC_READCTRL_PREFETCH_DEFAULT          0x00000000UL                              /**< Mode DEFAULT for MSC_READCTRL */
-#define MSC_READCTRL_PREFETCH_DEFAULT           (_MSC_READCTRL_PREFETCH_DEFAULT << 8)     /**< Shifted mode DEFAULT for MSC_READCTRL */
 #define _MSC_READCTRL_BUSSTRATEGY_SHIFT         16                                        /**< Shift value for MSC_BUSSTRATEGY */
 #define _MSC_READCTRL_BUSSTRATEGY_MASK          0x30000UL                                 /**< Bit mask for MSC_BUSSTRATEGY */
 #define _MSC_READCTRL_BUSSTRATEGY_DEFAULT       0x00000000UL                              /**< Mode DEFAULT for MSC_READCTRL */
@@ -143,7 +141,7 @@ typedef struct
 
 /* Bit fields for MSC WRITECTRL */
 #define _MSC_WRITECTRL_RESETVALUE               0x00000000UL                                /**< Default value for MSC_WRITECTRL */
-#define _MSC_WRITECTRL_MASK                     0x0000003FUL                                /**< Mask for MSC_WRITECTRL */
+#define _MSC_WRITECTRL_MASK                     0x00000003UL                                /**< Mask for MSC_WRITECTRL */
 #define MSC_WRITECTRL_WREN                      (0x1UL << 0)                                /**< Enable Write/Erase Controller  */
 #define _MSC_WRITECTRL_WREN_SHIFT               0                                           /**< Shift value for MSC_WREN */
 #define _MSC_WRITECTRL_WREN_MASK                0x1UL                                       /**< Bit mask for MSC_WREN */
@@ -154,30 +152,10 @@ typedef struct
 #define _MSC_WRITECTRL_IRQERASEABORT_MASK       0x2UL                                       /**< Bit mask for MSC_IRQERASEABORT */
 #define _MSC_WRITECTRL_IRQERASEABORT_DEFAULT    0x00000000UL                                /**< Mode DEFAULT for MSC_WRITECTRL */
 #define MSC_WRITECTRL_IRQERASEABORT_DEFAULT     (_MSC_WRITECTRL_IRQERASEABORT_DEFAULT << 1) /**< Shifted mode DEFAULT for MSC_WRITECTRL */
-#define MSC_WRITECTRL_WDOUBLE                   (0x1UL << 2)                                /**< Write two words at a time */
-#define _MSC_WRITECTRL_WDOUBLE_SHIFT            2                                           /**< Shift value for MSC_WDOUBLE */
-#define _MSC_WRITECTRL_WDOUBLE_MASK             0x4UL                                       /**< Bit mask for MSC_WDOUBLE */
-#define _MSC_WRITECTRL_WDOUBLE_DEFAULT          0x00000000UL                                /**< Mode DEFAULT for MSC_WRITECTRL */
-#define MSC_WRITECTRL_WDOUBLE_DEFAULT           (_MSC_WRITECTRL_WDOUBLE_DEFAULT << 2)       /**< Shifted mode DEFAULT for MSC_WRITECTRL */
-#define MSC_WRITECTRL_LPWRITE                   (0x1UL << 3)                                /**< Low-Power Erase */
-#define _MSC_WRITECTRL_LPWRITE_SHIFT            3                                           /**< Shift value for MSC_LPWRITE */
-#define _MSC_WRITECTRL_LPWRITE_MASK             0x8UL                                       /**< Bit mask for MSC_LPWRITE */
-#define _MSC_WRITECTRL_LPWRITE_DEFAULT          0x00000000UL                                /**< Mode DEFAULT for MSC_WRITECTRL */
-#define MSC_WRITECTRL_LPWRITE_DEFAULT           (_MSC_WRITECTRL_LPWRITE_DEFAULT << 3)       /**< Shifted mode DEFAULT for MSC_WRITECTRL */
-#define MSC_WRITECTRL_LPERASE                   (0x1UL << 4)                                /**< Low-Power Erase */
-#define _MSC_WRITECTRL_LPERASE_SHIFT            4                                           /**< Shift value for MSC_LPERASE */
-#define _MSC_WRITECTRL_LPERASE_MASK             0x10UL                                      /**< Bit mask for MSC_LPERASE */
-#define _MSC_WRITECTRL_LPERASE_DEFAULT          0x00000000UL                                /**< Mode DEFAULT for MSC_WRITECTRL */
-#define MSC_WRITECTRL_LPERASE_DEFAULT           (_MSC_WRITECTRL_LPERASE_DEFAULT << 4)       /**< Shifted mode DEFAULT for MSC_WRITECTRL */
-#define MSC_WRITECTRL_RWWEN                     (0x1UL << 5)                                /**< Read-While-Write Enable */
-#define _MSC_WRITECTRL_RWWEN_SHIFT              5                                           /**< Shift value for MSC_RWWEN */
-#define _MSC_WRITECTRL_RWWEN_MASK               0x20UL                                      /**< Bit mask for MSC_RWWEN */
-#define _MSC_WRITECTRL_RWWEN_DEFAULT            0x00000000UL                                /**< Mode DEFAULT for MSC_WRITECTRL */
-#define MSC_WRITECTRL_RWWEN_DEFAULT             (_MSC_WRITECTRL_RWWEN_DEFAULT << 5)         /**< Shifted mode DEFAULT for MSC_WRITECTRL */
 
 /* Bit fields for MSC WRITECMD */
 #define _MSC_WRITECMD_RESETVALUE                0x00000000UL                             /**< Default value for MSC_WRITECMD */
-#define _MSC_WRITECMD_MASK                      0x0000133FUL                             /**< Mask for MSC_WRITECMD */
+#define _MSC_WRITECMD_MASK                      0x0000113FUL                             /**< Mask for MSC_WRITECMD */
 #define MSC_WRITECMD_LADDRIM                    (0x1UL << 0)                             /**< Load MSC_ADDRB into ADDR */
 #define _MSC_WRITECMD_LADDRIM_SHIFT             0                                        /**< Shift value for MSC_LADDRIM */
 #define _MSC_WRITECMD_LADDRIM_MASK              0x1UL                                    /**< Bit mask for MSC_LADDRIM */
@@ -213,11 +191,6 @@ typedef struct
 #define _MSC_WRITECMD_ERASEMAIN0_MASK           0x100UL                                  /**< Bit mask for MSC_ERASEMAIN0 */
 #define _MSC_WRITECMD_ERASEMAIN0_DEFAULT        0x00000000UL                             /**< Mode DEFAULT for MSC_WRITECMD */
 #define MSC_WRITECMD_ERASEMAIN0_DEFAULT         (_MSC_WRITECMD_ERASEMAIN0_DEFAULT << 8)  /**< Shifted mode DEFAULT for MSC_WRITECMD */
-#define MSC_WRITECMD_ERASEMAIN1                 (0x1UL << 9)                             /**< Mass erase region 1 */
-#define _MSC_WRITECMD_ERASEMAIN1_SHIFT          9                                        /**< Shift value for MSC_ERASEMAIN1 */
-#define _MSC_WRITECMD_ERASEMAIN1_MASK           0x200UL                                  /**< Bit mask for MSC_ERASEMAIN1 */
-#define _MSC_WRITECMD_ERASEMAIN1_DEFAULT        0x00000000UL                             /**< Mode DEFAULT for MSC_WRITECMD */
-#define MSC_WRITECMD_ERASEMAIN1_DEFAULT         (_MSC_WRITECMD_ERASEMAIN1_DEFAULT << 9)  /**< Shifted mode DEFAULT for MSC_WRITECMD */
 #define MSC_WRITECMD_CLEARWDATA                 (0x1UL << 12)                            /**< Clear WDATA state */
 #define _MSC_WRITECMD_CLEARWDATA_SHIFT          12                                       /**< Shift value for MSC_CLEARWDATA */
 #define _MSC_WRITECMD_CLEARWDATA_MASK           0x1000UL                                 /**< Bit mask for MSC_CLEARWDATA */
@@ -460,5 +433,5 @@ typedef struct
 #define MSC_MASSLOCK_LOCKKEY_UNLOCK             (_MSC_MASSLOCK_LOCKKEY_UNLOCK << 0)   /**< Shifted mode UNLOCK for MSC_MASSLOCK */
 
 /** @} End of group EFM32LG_MSC */
-
+/** @} End of group Parts */
 
