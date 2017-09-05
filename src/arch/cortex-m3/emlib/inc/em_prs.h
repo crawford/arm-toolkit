@@ -1,11 +1,10 @@
 /***************************************************************************//**
- * @file
+ * @file em_prs.h
  * @brief Peripheral Reflex System (PRS) peripheral API
- * @author Energy Micro AS
- * @version 3.20.0
+ * @version 5.1.2
  *******************************************************************************
  * @section License
- * <b>(C) Copyright 2012 Energy Micro AS, http://www.energymicro.com</b>
+ * <b>Copyright 2016 Silicon Laboratories, Inc. http://www.silabs.com</b>
  *******************************************************************************
  *
  * Permission is granted to anyone to use this software for any purpose,
@@ -18,29 +17,31 @@
  *    misrepresented as being the original software.
  * 3. This notice may not be removed or altered from any source distribution.
  *
- * DISCLAIMER OF WARRANTY/LIMITATION OF REMEDIES: Energy Micro AS has no
- * obligation to support this Software. Energy Micro AS is providing the
+ * DISCLAIMER OF WARRANTY/LIMITATION OF REMEDIES: Silicon Labs has no
+ * obligation to support this Software. Silicon Labs is providing the
  * Software "AS IS", with no express or implied warranties of any kind,
  * including, but not limited to, any implied warranties of merchantability
  * or fitness for any particular purpose or warranties against infringement
  * of any proprietary rights of a third party.
  *
- * Energy Micro AS will not be liable for any consequential, incidental, or
+ * Silicon Labs will not be liable for any consequential, incidental, or
  * special damages, or any other relief, or for any claim by any third party,
  * arising from your use of this Software.
  *
  ******************************************************************************/
-#ifndef __EM_PRS_H
-#define __EM_PRS_H
+
+#ifndef EM_PRS_H
+#define EM_PRS_H
 
 #include "em_device.h"
+#if defined(PRS_COUNT) && (PRS_COUNT > 0)
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 /***************************************************************************//**
- * @addtogroup EM_Library
+ * @addtogroup emlib
  * @{
  ******************************************************************************/
 
@@ -112,17 +113,18 @@ void PRS_SourceSignalSet(unsigned int ch,
                          uint32_t signal,
                          PRS_Edge_TypeDef edge);
 
-#if ((defined _EFM32_TINY_FAMILY) || (defined _EFM32_GIANT_FAMILY) || (defined _EFM32_WONDER_FAMILY))
+#if defined( PRS_CH_CTRL_ASYNC )
 void PRS_SourceAsyncSignalSet(unsigned int ch,
                               uint32_t source,
                               uint32_t signal);
 #endif
 
 /** @} (end addtogroup PRS) */
-/** @} (end addtogroup EM_Library) */
+/** @} (end addtogroup emlib) */
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* __EM_PRS_H */
+#endif /* defined(PRS_COUNT) && (PRS_COUNT > 0) */
+#endif /* EM_PRS_H */

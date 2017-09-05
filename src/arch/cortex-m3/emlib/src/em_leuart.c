@@ -1,12 +1,11 @@
 /***************************************************************************//**
- * @file
+ * @file em_leuart.c
  * @brief Low Energy Universal Asynchronous Receiver/Transmitter (LEUART)
  *   Peripheral API
- * @author Energy Micro AS
- * @version 3.20.0
+ * @version 5.1.2
  *******************************************************************************
  * @section License
- * <b>(C) Copyright 2012 Energy Micro AS, http://www.energymicro.com</b>
+ * <b>Copyright 2016 Silicon Laboratories, Inc. http://www.silabs.com</b>
  *******************************************************************************
  *
  * Permission is granted to anyone to use this software for any purpose,
@@ -19,24 +18,27 @@
  *    misrepresented as being the original software.
  * 3. This notice may not be removed or altered from any source distribution.
  *
- * DISCLAIMER OF WARRANTY/LIMITATION OF REMEDIES: Energy Micro AS has no
- * obligation to support this Software. Energy Micro AS is providing the
+ * DISCLAIMER OF WARRANTY/LIMITATION OF REMEDIES: Silicon Labs has no
+ * obligation to support this Software. Silicon Labs is providing the
  * Software "AS IS", with no express or implied warranties of any kind,
  * including, but not limited to, any implied warranties of merchantability
  * or fitness for any particular purpose or warranties against infringement
  * of any proprietary rights of a third party.
  *
- * Energy Micro AS will not be liable for any consequential, incidental, or
+ * Silicon Labs will not be liable for any consequential, incidental, or
  * special damages, or any other relief, or for any claim by any third party,
  * arising from your use of this Software.
  *
  ******************************************************************************/
+
 #include "em_leuart.h"
+#if defined(LEUART_COUNT) && (LEUART_COUNT > 0)
+
 #include "em_cmu.h"
 #include "em_assert.h"
 
 /***************************************************************************//**
- * @addtogroup EM_Library
+ * @addtogroup emlib
  * @{
  ******************************************************************************/
 
@@ -44,6 +46,11 @@
  * @addtogroup LEUART
  * @brief Low Energy Universal Asynchronous Receiver/Transmitter (LEUART)
  *        Peripheral API
+ * @details
+ *  This module contains functions to control the LEUART peripheral of Silicon
+ *  Labs 32-bit MCUs and SoCs. The LEUART provides full UART communication using
+ *  a low frequency 32.768 kHz clock, and has special features for communication
+ *  without CPU intervention.
  * @{
  ******************************************************************************/
 
@@ -61,7 +68,7 @@
 #elif (LEUART_COUNT == 2)
 #define LEUART_REF_VALID(ref)    (((ref) == LEUART0) || ((ref) == LEUART1))
 #else
-#error Undefined number of low energy UARTs (LEUART).
+#error "Undefined number of low energy UARTs (LEUART)."
 #endif
 
 /** @endcond */
@@ -171,8 +178,7 @@ uint32_t LEUART_BaudrateCalc(uint32_t refFreq, uint32_t clkdiv)
    * where a is 'refFreq' and b is 'divisor', referring to variable names.
    */
 
-  divisor = 256 + clkdiv;
-
+  divisor   = 256 + clkdiv;
   quotient  = refFreq / divisor;
   remainder = refFreq % divisor;
 
@@ -467,17 +473,17 @@ void LEUART_Init(LEUART_TypeDef *leuart, LEUART_Init_TypeDef const *init)
   LEUART_FreezeEnable(leuart, true);
 
   /* Configure databits and stopbits */
-  leuart->CTRL = (leuart->CTRL & ~(_LEUART_CTRL_PARITY_MASK |
-                                   _LEUART_CTRL_STOPBITS_MASK)) |
-                 (uint32_t)(init->databits) |
-                 (uint32_t)(init->parity) |
-                 (uint32_t)(init->stopbits);
+  leuart->CTRL = (leuart->CTRL & ~(_LEUART_CTRL_PARITY_MASK
+                                   | _LEUART_CTRL_STOPBITS_MASK))
+                 | (uint32_t)(init->databits)
+                 | (uint32_t)(init->parity)
+                 | (uint32_t)(init->stopbits);
 
   /* Configure baudrate */
   LEUART_BaudrateSet(leuart, init->refFreq, init->baudrate);
 
   /* Finally enable (as specified) */
-  leuart->CMD = (uint32_t)(init->enable);
+  leuart->CMD = (uint32_t)init->enable;
 
   /* Unfreeze registers, pass new settings on to LEUART */
   LEUART_FreezeEnable(leuart, false);
@@ -500,8 +506,8 @@ void LEUART_Reset(LEUART_TypeDef *leuart)
   LEUART_FreezeEnable(leuart, true);
 
   /* Make sure disabled first, before resetting other registers */
-  leuart->CMD = LEUART_CMD_RXDIS | LEUART_CMD_TXDIS | LEUART_CMD_RXBLOCKDIS |
-                LEUART_CMD_CLEARTX | LEUART_CMD_CLEARRX;
+  leuart->CMD = LEUART_CMD_RXDIS | LEUART_CMD_TXDIS | LEUART_CMD_RXBLOCKDIS
+                | LEUART_CMD_CLEARTX | LEUART_CMD_CLEARRX;
   leuart->CTRL       = _LEUART_CTRL_RESETVALUE;
   leuart->CLKDIV     = _LEUART_CLKDIV_RESETVALUE;
   leuart->STARTFRAME = _LEUART_STARTFRAME_RESETVALUE;
@@ -509,7 +515,12 @@ void LEUART_Reset(LEUART_TypeDef *leuart)
   leuart->IEN        = _LEUART_IEN_RESETVALUE;
   leuart->IFC        = _LEUART_IFC_MASK;
   leuart->PULSECTRL  = _LEUART_PULSECTRL_RESETVALUE;
+#if defined(_LEUART_ROUTEPEN_MASK)
+  leuart->ROUTEPEN   = _LEUART_ROUTEPEN_RESETVALUE;
+  leuart->ROUTELOC0  = _LEUART_ROUTELOC0_RESETVALUE;
+#else
   leuart->ROUTE      = _LEUART_ROUTE_RESETVALUE;
+#endif
 
   /* Unfreeze registers, pass new settings on to LEUART */
   LEUART_FreezeEnable(leuart, false);
@@ -542,7 +553,7 @@ uint8_t LEUART_Rx(LEUART_TypeDef *leuart)
   while (!(leuart->STATUS & LEUART_STATUS_RXDATAV))
     ;
 
-  return (uint8_t)(leuart->RXDATA);
+  return (uint8_t)leuart->RXDATA;
 }
 
 
@@ -568,7 +579,7 @@ uint16_t LEUART_RxExt(LEUART_TypeDef *leuart)
   while (!(leuart->STATUS & LEUART_STATUS_RXDATAV))
     ;
 
-  return (uint16_t)(leuart->RXDATAX);
+  return (uint16_t)leuart->RXDATAX;
 }
 
 
@@ -625,7 +636,7 @@ void LEUART_Tx(LEUART_TypeDef *leuart, uint8_t data)
  * @param[in] data
  *   Data to transmit with extended control. Least significant bits contains
  *   frame bits, and additional control bits are available as documented in
- *   the EFM32 reference manual (set to 0 if not used).
+ *   the reference manual (set to 0 if not used).
  ******************************************************************************/
 void LEUART_TxExt(LEUART_TypeDef *leuart, uint16_t data)
 {
@@ -695,4 +706,5 @@ void LEUART_RxDmaInEM2Enable(LEUART_TypeDef *leuart, bool enable)
 
 
 /** @} (end addtogroup LEUART) */
-/** @} (end addtogroup EM_Library) */
+/** @} (end addtogroup emlib) */
+#endif /* defined(LEUART_COUNT) && (LEUART_COUNT > 0) */
