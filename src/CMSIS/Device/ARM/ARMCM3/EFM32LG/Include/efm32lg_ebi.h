@@ -1,11 +1,10 @@
 /**************************************************************************//**
- * @file
- * @brief efm32lg_ebi Register and Bit Field definitions
- * @author Energy Micro AS
- * @version 3.20.0
+ * @file efm32lg_ebi.h
+ * @brief EFM32LG_EBI register and bit field definitions
+ * @version 5.1.2
  ******************************************************************************
  * @section License
- * <b>(C) Copyright 2012 Energy Micro AS, http://www.energymicro.com</b>
+ * <b>Copyright 2017 Silicon Laboratories, Inc. http://www.silabs.com</b>
  ******************************************************************************
  *
  * Permission is granted to anyone to use this software for any purpose,
@@ -13,23 +12,27 @@
  * freely, subject to the following restrictions:
  *
  * 1. The origin of this software must not be misrepresented; you must not
- *    claim that you wrote the original software.
+ *    claim that you wrote the original software.@n
  * 2. Altered source versions must be plainly marked as such, and must not be
- *    misrepresented as being the original software.
+ *    misrepresented as being the original software.@n
  * 3. This notice may not be removed or altered from any source distribution.
  *
- * DISCLAIMER OF WARRANTY/LIMITATION OF REMEDIES: Energy Micro AS has no
- * obligation to support this Software. Energy Micro AS is providing the
- * Software "AS IS", with no express or implied warranties of any kind,
- * including, but not limited to, any implied warranties of merchantability
- * or fitness for any particular purpose or warranties against infringement
- * of any proprietary rights of a third party.
+ * DISCLAIMER OF WARRANTY/LIMITATION OF REMEDIES: Silicon Laboratories, Inc.
+ * has no obligation to support this Software. Silicon Laboratories, Inc. is
+ * providing the Software "AS IS", with no express or implied warranties of any
+ * kind, including, but not limited to, any implied warranties of
+ * merchantability or fitness for any particular purpose or warranties against
+ * infringement of any proprietary rights of a third party.
  *
- * Energy Micro AS will not be liable for any consequential, incidental, or
- * special damages, or any other relief, or for any claim by any third party,
- * arising from your use of this Software.
+ * Silicon Laboratories, Inc. will not be liable for any consequential,
+ * incidental, or special damages, or any other relief, or for any claim by
+ * any third party, arising from your use of this Software.
  *
  *****************************************************************************/
+/**************************************************************************//**
+* @addtogroup Parts
+* @{
+******************************************************************************/
 /**************************************************************************//**
  * @defgroup EFM32LG_EBI
  * @{
@@ -37,49 +40,49 @@
  *****************************************************************************/
 typedef struct
 {
-  __IO uint32_t CTRL;         /**< Control Register  */
-  __IO uint32_t ADDRTIMING;   /**< Address Timing Register  */
-  __IO uint32_t RDTIMING;     /**< Read Timing Register  */
-  __IO uint32_t WRTIMING;     /**< Write Timing Register  */
-  __IO uint32_t POLARITY;     /**< Polarity Register  */
-  __IO uint32_t ROUTE;        /**< I/O Routing Register  */
-  __IO uint32_t ADDRTIMING1;  /**< Address Timing Register 1  */
-  __IO uint32_t RDTIMING1;    /**< Read Timing Register 1  */
-  __IO uint32_t WRTIMING1;    /**< Write Timing Register 1  */
-  __IO uint32_t POLARITY1;    /**< Polarity Register 1  */
-  __IO uint32_t ADDRTIMING2;  /**< Address Timing Register 2  */
-  __IO uint32_t RDTIMING2;    /**< Read Timing Register 2  */
-  __IO uint32_t WRTIMING2;    /**< Write Timing Register 2  */
-  __IO uint32_t POLARITY2;    /**< Polarity Register 2  */
-  __IO uint32_t ADDRTIMING3;  /**< Address Timing Register 3  */
-  __IO uint32_t RDTIMING3;    /**< Read Timing Register 3  */
-  __IO uint32_t WRTIMING3;    /**< Write Timing Register 3  */
-  __IO uint32_t POLARITY3;    /**< Polarity Register 3  */
-  __IO uint32_t PAGECTRL;     /**< Page Control Register  */
-  __IO uint32_t NANDCTRL;     /**< NAND Control Register  */
-  __IO uint32_t CMD;          /**< Command Register  */
-  __I uint32_t  STATUS;       /**< Status Register  */
-  __I uint32_t  ECCPARITY;    /**< ECC Parity register  */
-  __IO uint32_t TFTCTRL;      /**< TFT Control Register  */
-  __I uint32_t  TFTSTATUS;    /**< TFT Status Register  */
-  __IO uint32_t TFTFRAMEBASE; /**< TFT Frame Base Register  */
-  __IO uint32_t TFTSTRIDE;    /**< TFT Stride Register  */
-  __IO uint32_t TFTSIZE;      /**< TFT Size Register  */
-  __IO uint32_t TFTHPORCH;    /**< TFT Horizontal Porch Register  */
-  __IO uint32_t TFTVPORCH;    /**< TFT Vertical Porch Register  */
-  __IO uint32_t TFTTIMING;    /**< TFT Timing Register  */
-  __IO uint32_t TFTPOLARITY;  /**< TFT Polarity Register  */
-  __IO uint32_t TFTDD;        /**< TFT Direct Drive Data Register  */
-  __IO uint32_t TFTALPHA;     /**< TFT Alpha Blending Register  */
-  __IO uint32_t TFTPIXEL0;    /**< TFT Pixel 0 Register  */
-  __IO uint32_t TFTPIXEL1;    /**< TFT Pixel 1 Register  */
-  __I uint32_t  TFTPIXEL;     /**< TFT Alpha Blending Result Pixel Register  */
-  __IO uint32_t TFTMASK;      /**< TFT Masking Register  */
-  __I uint32_t  IF;           /**< Interrupt Flag Register  */
-  __IO uint32_t IFS;          /**< Interrupt Flag Set Register  */
-  __IO uint32_t IFC;          /**< Interrupt Flag Clear Register  */
-  __IO uint32_t IEN;          /**< Interrupt Enable Register  */
-} EBI_TypeDef;                /** @} */
+  __IOM uint32_t CTRL;         /**< Control Register  */
+  __IOM uint32_t ADDRTIMING;   /**< Address Timing Register  */
+  __IOM uint32_t RDTIMING;     /**< Read Timing Register  */
+  __IOM uint32_t WRTIMING;     /**< Write Timing Register  */
+  __IOM uint32_t POLARITY;     /**< Polarity Register  */
+  __IOM uint32_t ROUTE;        /**< I/O Routing Register  */
+  __IOM uint32_t ADDRTIMING1;  /**< Address Timing Register 1  */
+  __IOM uint32_t RDTIMING1;    /**< Read Timing Register 1  */
+  __IOM uint32_t WRTIMING1;    /**< Write Timing Register 1  */
+  __IOM uint32_t POLARITY1;    /**< Polarity Register 1  */
+  __IOM uint32_t ADDRTIMING2;  /**< Address Timing Register 2  */
+  __IOM uint32_t RDTIMING2;    /**< Read Timing Register 2  */
+  __IOM uint32_t WRTIMING2;    /**< Write Timing Register 2  */
+  __IOM uint32_t POLARITY2;    /**< Polarity Register 2  */
+  __IOM uint32_t ADDRTIMING3;  /**< Address Timing Register 3  */
+  __IOM uint32_t RDTIMING3;    /**< Read Timing Register 3  */
+  __IOM uint32_t WRTIMING3;    /**< Write Timing Register 3  */
+  __IOM uint32_t POLARITY3;    /**< Polarity Register 3  */
+  __IOM uint32_t PAGECTRL;     /**< Page Control Register  */
+  __IOM uint32_t NANDCTRL;     /**< NAND Control Register  */
+  __IOM uint32_t CMD;          /**< Command Register  */
+  __IM uint32_t  STATUS;       /**< Status Register  */
+  __IM uint32_t  ECCPARITY;    /**< ECC Parity register  */
+  __IOM uint32_t TFTCTRL;      /**< TFT Control Register  */
+  __IM uint32_t  TFTSTATUS;    /**< TFT Status Register  */
+  __IOM uint32_t TFTFRAMEBASE; /**< TFT Frame Base Register  */
+  __IOM uint32_t TFTSTRIDE;    /**< TFT Stride Register  */
+  __IOM uint32_t TFTSIZE;      /**< TFT Size Register  */
+  __IOM uint32_t TFTHPORCH;    /**< TFT Horizontal Porch Register  */
+  __IOM uint32_t TFTVPORCH;    /**< TFT Vertical Porch Register  */
+  __IOM uint32_t TFTTIMING;    /**< TFT Timing Register  */
+  __IOM uint32_t TFTPOLARITY;  /**< TFT Polarity Register  */
+  __IOM uint32_t TFTDD;        /**< TFT Direct Drive Data Register  */
+  __IOM uint32_t TFTALPHA;     /**< TFT Alpha Blending Register  */
+  __IOM uint32_t TFTPIXEL0;    /**< TFT Pixel 0 Register  */
+  __IOM uint32_t TFTPIXEL1;    /**< TFT Pixel 1 Register  */
+  __IM uint32_t  TFTPIXEL;     /**< TFT Alpha Blending Result Pixel Register  */
+  __IOM uint32_t TFTMASK;      /**< TFT Masking Register  */
+  __IM uint32_t  IF;           /**< Interrupt Flag Register  */
+  __IOM uint32_t IFS;          /**< Interrupt Flag Set Register  */
+  __IOM uint32_t IFC;          /**< Interrupt Flag Clear Register  */
+  __IOM uint32_t IEN;          /**< Interrupt Enable Register  */
+} EBI_TypeDef;                 /** @} */
 
 /**************************************************************************//**
  * @defgroup EFM32LG_EBI_BitFields
@@ -512,9 +515,11 @@ typedef struct
 #define _EBI_ROUTE_LOCATION_SHIFT                 28                                   /**< Shift value for EBI_LOCATION */
 #define _EBI_ROUTE_LOCATION_MASK                  0x70000000UL                         /**< Bit mask for EBI_LOCATION */
 #define _EBI_ROUTE_LOCATION_LOC0                  0x00000000UL                         /**< Mode LOC0 for EBI_ROUTE */
+#define _EBI_ROUTE_LOCATION_DEFAULT               0x00000000UL                         /**< Mode DEFAULT for EBI_ROUTE */
 #define _EBI_ROUTE_LOCATION_LOC1                  0x00000001UL                         /**< Mode LOC1 for EBI_ROUTE */
 #define _EBI_ROUTE_LOCATION_LOC2                  0x00000002UL                         /**< Mode LOC2 for EBI_ROUTE */
 #define EBI_ROUTE_LOCATION_LOC0                   (_EBI_ROUTE_LOCATION_LOC0 << 28)     /**< Shifted mode LOC0 for EBI_ROUTE */
+#define EBI_ROUTE_LOCATION_DEFAULT                (_EBI_ROUTE_LOCATION_DEFAULT << 28)  /**< Shifted mode DEFAULT for EBI_ROUTE */
 #define EBI_ROUTE_LOCATION_LOC1                   (_EBI_ROUTE_LOCATION_LOC1 << 28)     /**< Shifted mode LOC1 for EBI_ROUTE */
 #define EBI_ROUTE_LOCATION_LOC2                   (_EBI_ROUTE_LOCATION_LOC2 << 28)     /**< Shifted mode LOC2 for EBI_ROUTE */
 
@@ -1455,5 +1460,5 @@ typedef struct
 #define EBI_IEN_DDJIT_DEFAULT                     (_EBI_IEN_DDJIT_DEFAULT << 5)   /**< Shifted mode DEFAULT for EBI_IEN */
 
 /** @} End of group EFM32LG_EBI */
-
+/** @} End of group Parts */
 

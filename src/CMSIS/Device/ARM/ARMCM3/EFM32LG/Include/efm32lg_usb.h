@@ -1,11 +1,10 @@
 /**************************************************************************//**
- * @file
- * @brief efm32lg_usb Register and Bit Field definitions
- * @author Energy Micro AS
- * @version 3.20.0
+ * @file efm32lg_usb.h
+ * @brief EFM32LG_USB register and bit field definitions
+ * @version 5.1.2
  ******************************************************************************
  * @section License
- * <b>(C) Copyright 2012 Energy Micro AS, http://www.energymicro.com</b>
+ * <b>Copyright 2017 Silicon Laboratories, Inc. http://www.silabs.com</b>
  ******************************************************************************
  *
  * Permission is granted to anyone to use this software for any purpose,
@@ -13,23 +12,27 @@
  * freely, subject to the following restrictions:
  *
  * 1. The origin of this software must not be misrepresented; you must not
- *    claim that you wrote the original software.
+ *    claim that you wrote the original software.@n
  * 2. Altered source versions must be plainly marked as such, and must not be
- *    misrepresented as being the original software.
+ *    misrepresented as being the original software.@n
  * 3. This notice may not be removed or altered from any source distribution.
  *
- * DISCLAIMER OF WARRANTY/LIMITATION OF REMEDIES: Energy Micro AS has no
- * obligation to support this Software. Energy Micro AS is providing the
- * Software "AS IS", with no express or implied warranties of any kind,
- * including, but not limited to, any implied warranties of merchantability
- * or fitness for any particular purpose or warranties against infringement
- * of any proprietary rights of a third party.
+ * DISCLAIMER OF WARRANTY/LIMITATION OF REMEDIES: Silicon Laboratories, Inc.
+ * has no obligation to support this Software. Silicon Laboratories, Inc. is
+ * providing the Software "AS IS", with no express or implied warranties of any
+ * kind, including, but not limited to, any implied warranties of
+ * merchantability or fitness for any particular purpose or warranties against
+ * infringement of any proprietary rights of a third party.
  *
- * Energy Micro AS will not be liable for any consequential, incidental, or
- * special damages, or any other relief, or for any claim by any third party,
- * arising from your use of this Software.
+ * Silicon Laboratories, Inc. will not be liable for any consequential,
+ * incidental, or special damages, or any other relief, or for any claim by
+ * any third party, arising from your use of this Software.
  *
  *****************************************************************************/
+/**************************************************************************//**
+* @addtogroup Parts
+* @{
+******************************************************************************/
 /**************************************************************************//**
  * @defgroup EFM32LG_USB
  * @{
@@ -37,157 +40,139 @@
  *****************************************************************************/
 typedef struct
 {
-  __IO uint32_t    CTRL;              /**< System Control Register  */
-  __I uint32_t     STATUS;            /**< System Status Register  */
-  __I uint32_t     IF;                /**< Interrupt Flag Register  */
-  __IO uint32_t    IFS;               /**< Interrupt Flag Set Register  */
-  __IO uint32_t    IFC;               /**< Interrupt Flag Clear Register  */
-  __IO uint32_t    IEN;               /**< Interrupt Enable Register  */
-  __IO uint32_t    ROUTE;             /**< I/O Routing Register  */
+  __IOM uint32_t   CTRL;              /**< System Control Register  */
+  __IM uint32_t    STATUS;            /**< System Status Register  */
+  __IM uint32_t    IF;                /**< Interrupt Flag Register  */
+  __IOM uint32_t   IFS;               /**< Interrupt Flag Set Register  */
+  __IOM uint32_t   IFC;               /**< Interrupt Flag Clear Register  */
+  __IOM uint32_t   IEN;               /**< Interrupt Enable Register  */
+  __IOM uint32_t   ROUTE;             /**< I/O Routing Register  */
 
   uint32_t         RESERVED0[61433];  /**< Reserved for future use **/
-  __IO uint32_t    GOTGCTL;           /**< OTG Control and Status Register  */
-  __IO uint32_t    GOTGINT;           /**< OTG Interrupt Register  */
-  __IO uint32_t    GAHBCFG;           /**< AHB Configuration Register  */
-  __IO uint32_t    GUSBCFG;           /**< USB Configuration Register  */
-  __IO uint32_t    GRSTCTL;           /**< Reset Register  */
-  __IO uint32_t    GINTSTS;           /**< Interrupt Register  */
-  __IO uint32_t    GINTMSK;           /**< Interrupt Mask Register  */
-  __I uint32_t     GRXSTSR;           /**< Receive Status Debug Read Register  */
-  __I uint32_t     GRXSTSP;           /**< Receive Status Read and Pop Register  */
-  __IO uint32_t    GRXFSIZ;           /**< Receive FIFO Size Register  */
-  __IO uint32_t    GNPTXFSIZ;         /**< Non-periodic Transmit FIFO Size Register  */
-  __I uint32_t     GNPTXSTS;          /**< Non-periodic Transmit FIFO/Queue Status Register  */
+  __IOM uint32_t   GOTGCTL;           /**< OTG Control and Status Register  */
+  __IOM uint32_t   GOTGINT;           /**< OTG Interrupt Register  */
+  __IOM uint32_t   GAHBCFG;           /**< AHB Configuration Register  */
+  __IOM uint32_t   GUSBCFG;           /**< USB Configuration Register  */
+  __IOM uint32_t   GRSTCTL;           /**< Reset Register  */
+  __IOM uint32_t   GINTSTS;           /**< Interrupt Register  */
+  __IOM uint32_t   GINTMSK;           /**< Interrupt Mask Register  */
+  __IM uint32_t    GRXSTSR;           /**< Receive Status Debug Read Register  */
+  __IM uint32_t    GRXSTSP;           /**< Receive Status Read and Pop Register  */
+  __IOM uint32_t   GRXFSIZ;           /**< Receive FIFO Size Register  */
+  __IOM uint32_t   GNPTXFSIZ;         /**< Non-periodic Transmit FIFO Size Register  */
+  __IM uint32_t    GNPTXSTS;          /**< Non-periodic Transmit FIFO/Queue Status Register  */
   uint32_t         RESERVED1[11];     /**< Reserved for future use **/
-  __IO uint32_t    GDFIFOCFG;         /**< Global DFIFO Configuration Register  */
+  __IOM uint32_t   GDFIFOCFG;         /**< Global DFIFO Configuration Register  */
 
   uint32_t         RESERVED2[40];     /**< Reserved for future use **/
-  __IO uint32_t    HPTXFSIZ;          /**< Host Periodic Transmit FIFO Size Register  */
-  __IO uint32_t    DIEPTXF1;          /**< Device IN Endpoint Transmit FIFO 1 Size Register  */
-  __IO uint32_t    DIEPTXF2;          /**< Device IN Endpoint Transmit FIFO 2 Size Register  */
-  __IO uint32_t    DIEPTXF3;          /**< Device IN Endpoint Transmit FIFO 3 Size Register  */
-  __IO uint32_t    DIEPTXF4;          /**< Device IN Endpoint Transmit FIFO 4 Size Register  */
-  __IO uint32_t    DIEPTXF5;          /**< Device IN Endpoint Transmit FIFO 5 Size Register  */
-  __IO uint32_t    DIEPTXF6;          /**< Device IN Endpoint Transmit FIFO 6 Size Register  */
+  __IOM uint32_t   HPTXFSIZ;          /**< Host Periodic Transmit FIFO Size Register  */
+  __IOM uint32_t   DIEPTXF1;          /**< Device IN Endpoint Transmit FIFO 1 Size Register  */
+  __IOM uint32_t   DIEPTXF2;          /**< Device IN Endpoint Transmit FIFO 2 Size Register  */
+  __IOM uint32_t   DIEPTXF3;          /**< Device IN Endpoint Transmit FIFO 3 Size Register  */
+  __IOM uint32_t   DIEPTXF4;          /**< Device IN Endpoint Transmit FIFO 4 Size Register  */
+  __IOM uint32_t   DIEPTXF5;          /**< Device IN Endpoint Transmit FIFO 5 Size Register  */
+  __IOM uint32_t   DIEPTXF6;          /**< Device IN Endpoint Transmit FIFO 6 Size Register  */
 
   uint32_t         RESERVED3[185];    /**< Reserved for future use **/
-  __IO uint32_t    HCFG;              /**< Host Configuration Register  */
-  __IO uint32_t    HFIR;              /**< Host Frame Interval Register  */
-  __I uint32_t     HFNUM;             /**< Host Frame Number/Frame Time Remaining Register  */
+  __IOM uint32_t   HCFG;              /**< Host Configuration Register  */
+  __IOM uint32_t   HFIR;              /**< Host Frame Interval Register  */
+  __IM uint32_t    HFNUM;             /**< Host Frame Number/Frame Time Remaining Register  */
   uint32_t         RESERVED4[1];      /**< Reserved for future use **/
-  __I uint32_t     HPTXSTS;           /**< Host Periodic Transmit FIFO/Queue Status Register  */
-  __I uint32_t     HAINT;             /**< Host All Channels Interrupt Register  */
-  __IO uint32_t    HAINTMSK;          /**< Host All Channels Interrupt Mask Register  */
+  __IM uint32_t    HPTXSTS;           /**< Host Periodic Transmit FIFO/Queue Status Register  */
+  __IM uint32_t    HAINT;             /**< Host All Channels Interrupt Register  */
+  __IOM uint32_t   HAINTMSK;          /**< Host All Channels Interrupt Mask Register  */
   uint32_t         RESERVED5[9];      /**< Reserved for future use **/
-  __IO uint32_t    HPRT;              /**< Host Port Control and Status Register  */
+  __IOM uint32_t   HPRT;              /**< Host Port Control and Status Register  */
 
   uint32_t         RESERVED6[47];     /**< Reserved registers */
-
   USB_HC_TypeDef   HC[14];            /**< Host Channel Registers */
 
   uint32_t         RESERVED7[80];     /**< Reserved for future use **/
-  __IO uint32_t    DCFG;              /**< Device Configuration Register  */
-  __IO uint32_t    DCTL;              /**< Device Control Register  */
-  __I uint32_t     DSTS;              /**< Device Status Register  */
+  __IOM uint32_t   DCFG;              /**< Device Configuration Register  */
+  __IOM uint32_t   DCTL;              /**< Device Control Register  */
+  __IM uint32_t    DSTS;              /**< Device Status Register  */
   uint32_t         RESERVED8[1];      /**< Reserved for future use **/
-  __IO uint32_t    DIEPMSK;           /**< Device IN Endpoint Common Interrupt Mask Register  */
-  __IO uint32_t    DOEPMSK;           /**< Device OUT Endpoint Common Interrupt Mask Register  */
-  __I uint32_t     DAINT;             /**< Device All Endpoints Interrupt Register  */
-  __IO uint32_t    DAINTMSK;          /**< Device All Endpoints Interrupt Mask Register  */
+  __IOM uint32_t   DIEPMSK;           /**< Device IN Endpoint Common Interrupt Mask Register  */
+  __IOM uint32_t   DOEPMSK;           /**< Device OUT Endpoint Common Interrupt Mask Register  */
+  __IM uint32_t    DAINT;             /**< Device All Endpoints Interrupt Register  */
+  __IOM uint32_t   DAINTMSK;          /**< Device All Endpoints Interrupt Mask Register  */
   uint32_t         RESERVED9[2];      /**< Reserved for future use **/
-  __IO uint32_t    DVBUSDIS;          /**< Device VBUS Discharge Time Register  */
-  __IO uint32_t    DVBUSPULSE;        /**< Device VBUS Pulsing Time Register  */
+  __IOM uint32_t   DVBUSDIS;          /**< Device VBUS Discharge Time Register  */
+  __IOM uint32_t   DVBUSPULSE;        /**< Device VBUS Pulsing Time Register  */
 
   uint32_t         RESERVED10[1];     /**< Reserved for future use **/
-  __IO uint32_t    DIEPEMPMSK;        /**< Device IN Endpoint FIFO Empty Interrupt Mask Register  */
+  __IOM uint32_t   DIEPEMPMSK;        /**< Device IN Endpoint FIFO Empty Interrupt Mask Register  */
 
   uint32_t         RESERVED11[50];    /**< Reserved for future use **/
-  __IO uint32_t    DIEP0CTL;          /**< Device IN Endpoint 0 Control Register  */
+  __IOM uint32_t   DIEP0CTL;          /**< Device IN Endpoint 0 Control Register  */
   uint32_t         RESERVED12[1];     /**< Reserved for future use **/
-  __IO uint32_t    DIEP0INT;          /**< Device IN Endpoint 0 Interrupt Register  */
+  __IOM uint32_t   DIEP0INT;          /**< Device IN Endpoint 0 Interrupt Register  */
   uint32_t         RESERVED13[1];     /**< Reserved for future use **/
-  __IO uint32_t    DIEP0TSIZ;         /**< Device IN Endpoint 0 Transfer Size Register  */
-  __IO uint32_t    DIEP0DMAADDR;      /**< Device IN Endpoint 0 DMA Address Register  */
-  __I uint32_t     DIEP0TXFSTS;       /**< Device IN Endpoint 0 Transmit FIFO Status Register  */
+  __IOM uint32_t   DIEP0TSIZ;         /**< Device IN Endpoint 0 Transfer Size Register  */
+  __IOM uint32_t   DIEP0DMAADDR;      /**< Device IN Endpoint 0 DMA Address Register  */
+  __IM uint32_t    DIEP0TXFSTS;       /**< Device IN Endpoint 0 Transmit FIFO Status Register  */
 
   uint32_t         RESERVED14[1];     /**< Reserved registers */
-
   USB_DIEP_TypeDef DIEP[6];           /**< Device IN Endpoint x+1 Registers */
 
   uint32_t         RESERVED15[72];    /**< Reserved for future use **/
-  __IO uint32_t    DOEP0CTL;          /**< Device OUT Endpoint 0 Control Register  */
+  __IOM uint32_t   DOEP0CTL;          /**< Device OUT Endpoint 0 Control Register  */
   uint32_t         RESERVED16[1];     /**< Reserved for future use **/
-  __IO uint32_t    DOEP0INT;          /**< Device OUT Endpoint 0 Interrupt Register  */
+  __IOM uint32_t   DOEP0INT;          /**< Device OUT Endpoint 0 Interrupt Register  */
   uint32_t         RESERVED17[1];     /**< Reserved for future use **/
-  __IO uint32_t    DOEP0TSIZ;         /**< Device OUT Endpoint 0 Transfer Size Register  */
-  __IO uint32_t    DOEP0DMAADDR;      /**< Device OUT Endpoint 0 DMA Address Register  */
+  __IOM uint32_t   DOEP0TSIZ;         /**< Device OUT Endpoint 0 Transfer Size Register  */
+  __IOM uint32_t   DOEP0DMAADDR;      /**< Device OUT Endpoint 0 DMA Address Register  */
 
   uint32_t         RESERVED18[2];     /**< Reserved registers */
-
   USB_DOEP_TypeDef DOEP[6];           /**< Device OUT Endpoint x+1 Registers */
 
   uint32_t         RESERVED19[136];   /**< Reserved for future use **/
-  __IO uint32_t    PCGCCTL;           /**< Power and Clock Gating Control Register  */
+  __IOM uint32_t   PCGCCTL;           /**< Power and Clock Gating Control Register  */
 
   uint32_t         RESERVED20[127];   /**< Reserved registers */
-
-  __IO uint32_t    FIFO0D[512];       /**< Device EP 0/Host Channel 0 FIFO  */
+  __IOM uint32_t   FIFO0D[512];       /**< Device EP 0/Host Channel 0 FIFO  */
 
   uint32_t         RESERVED21[512];   /**< Reserved registers */
-
-  __IO uint32_t    FIFO1D[512];       /**< Device EP 1/Host Channel 1 FIFO  */
+  __IOM uint32_t   FIFO1D[512];       /**< Device EP 1/Host Channel 1 FIFO  */
 
   uint32_t         RESERVED22[512];   /**< Reserved registers */
-
-  __IO uint32_t    FIFO2D[512];       /**< Device EP 2/Host Channel 2 FIFO  */
+  __IOM uint32_t   FIFO2D[512];       /**< Device EP 2/Host Channel 2 FIFO  */
 
   uint32_t         RESERVED23[512];   /**< Reserved registers */
-
-  __IO uint32_t    FIFO3D[512];       /**< Device EP 3/Host Channel 3 FIFO  */
+  __IOM uint32_t   FIFO3D[512];       /**< Device EP 3/Host Channel 3 FIFO  */
 
   uint32_t         RESERVED24[512];   /**< Reserved registers */
-
-  __IO uint32_t    FIFO4D[512];       /**< Device EP 4/Host Channel 4 FIFO  */
+  __IOM uint32_t   FIFO4D[512];       /**< Device EP 4/Host Channel 4 FIFO  */
 
   uint32_t         RESERVED25[512];   /**< Reserved registers */
-
-  __IO uint32_t    FIFO5D[512];       /**< Device EP 5/Host Channel 5 FIFO  */
+  __IOM uint32_t   FIFO5D[512];       /**< Device EP 5/Host Channel 5 FIFO  */
 
   uint32_t         RESERVED26[512];   /**< Reserved registers */
-
-  __IO uint32_t    FIFO6D[512];       /**< Device EP 6/Host Channel 6 FIFO  */
+  __IOM uint32_t   FIFO6D[512];       /**< Device EP 6/Host Channel 6 FIFO  */
 
   uint32_t         RESERVED27[512];   /**< Reserved registers */
-
-  __IO uint32_t    FIFO7D[512];       /**< Host Channel 7 FIFO  */
+  __IOM uint32_t   FIFO7D[512];       /**< Host Channel 7 FIFO  */
 
   uint32_t         RESERVED28[512];   /**< Reserved registers */
-
-  __IO uint32_t    FIFO8D[512];       /**< Host Channel 8 FIFO  */
+  __IOM uint32_t   FIFO8D[512];       /**< Host Channel 8 FIFO  */
 
   uint32_t         RESERVED29[512];   /**< Reserved registers */
-
-  __IO uint32_t    FIFO9D[512];       /**< Host Channel 9 FIFO  */
+  __IOM uint32_t   FIFO9D[512];       /**< Host Channel 9 FIFO  */
 
   uint32_t         RESERVED30[512];   /**< Reserved registers */
-
-  __IO uint32_t    FIFO10D[512];      /**< Host Channel 10 FIFO  */
+  __IOM uint32_t   FIFO10D[512];      /**< Host Channel 10 FIFO  */
 
   uint32_t         RESERVED31[512];   /**< Reserved registers */
-
-  __IO uint32_t    FIFO11D[512];      /**< Host Channel 11 FIFO  */
+  __IOM uint32_t   FIFO11D[512];      /**< Host Channel 11 FIFO  */
 
   uint32_t         RESERVED32[512];   /**< Reserved registers */
-
-  __IO uint32_t    FIFO12D[512];      /**< Host Channel 12 FIFO  */
+  __IOM uint32_t   FIFO12D[512];      /**< Host Channel 12 FIFO  */
 
   uint32_t         RESERVED33[512];   /**< Reserved registers */
-
-  __IO uint32_t    FIFO13D[512];      /**< Host Channel 13 FIFO  */
+  __IOM uint32_t   FIFO13D[512];      /**< Host Channel 13 FIFO  */
 
   uint32_t         RESERVED34[17920]; /**< Reserved registers */
-
-  __IO uint32_t    FIFORAM[512];      /**< Direct Access to Data FIFO RAM for Debugging (2 KB)  */
+  __IOM uint32_t   FIFORAM[512];      /**< Direct Access to Data FIFO RAM for Debugging (2 KB)  */
 } USB_TypeDef;                        /** @} */
 
 /**************************************************************************//**
@@ -322,12 +307,12 @@ typedef struct
 /* Bit fields for USB GOTGCTL */
 #define _USB_GOTGCTL_RESETVALUE                    0x00010000UL                             /**< Default value for USB_GOTGCTL */
 #define _USB_GOTGCTL_MASK                          0x001F0FFFUL                             /**< Mask for USB_GOTGCTL */
-#define USB_GOTGCTL_SESREQSCS                      (0x1UL << 0)                             /**< Session Request Success (device only) */
+#define USB_GOTGCTL_SESREQSCS                      (0x1UL << 0)                             /**< Session Request Success device only */
 #define _USB_GOTGCTL_SESREQSCS_SHIFT               0                                        /**< Shift value for USB_SESREQSCS */
 #define _USB_GOTGCTL_SESREQSCS_MASK                0x1UL                                    /**< Bit mask for USB_SESREQSCS */
 #define _USB_GOTGCTL_SESREQSCS_DEFAULT             0x00000000UL                             /**< Mode DEFAULT for USB_GOTGCTL */
 #define USB_GOTGCTL_SESREQSCS_DEFAULT              (_USB_GOTGCTL_SESREQSCS_DEFAULT << 0)    /**< Shifted mode DEFAULT for USB_GOTGCTL */
-#define USB_GOTGCTL_SESREQ                         (0x1UL << 1)                             /**< Session Request (device only) */
+#define USB_GOTGCTL_SESREQ                         (0x1UL << 1)                             /**< Session Request device only */
 #define _USB_GOTGCTL_SESREQ_SHIFT                  1                                        /**< Shift value for USB_SESREQ */
 #define _USB_GOTGCTL_SESREQ_MASK                   0x2UL                                    /**< Bit mask for USB_SESREQ */
 #define _USB_GOTGCTL_SESREQ_DEFAULT                0x00000000UL                             /**< Mode DEFAULT for USB_GOTGCTL */
@@ -362,27 +347,27 @@ typedef struct
 #define _USB_GOTGCTL_AVALIDOVVAL_MASK              0x80UL                                   /**< Bit mask for USB_AVALIDOVVAL */
 #define _USB_GOTGCTL_AVALIDOVVAL_DEFAULT           0x00000000UL                             /**< Mode DEFAULT for USB_GOTGCTL */
 #define USB_GOTGCTL_AVALIDOVVAL_DEFAULT            (_USB_GOTGCTL_AVALIDOVVAL_DEFAULT << 7)  /**< Shifted mode DEFAULT for USB_GOTGCTL */
-#define USB_GOTGCTL_HSTNEGSCS                      (0x1UL << 8)                             /**< Host Negotiation Success (device only) */
+#define USB_GOTGCTL_HSTNEGSCS                      (0x1UL << 8)                             /**< Host Negotiation Success device only */
 #define _USB_GOTGCTL_HSTNEGSCS_SHIFT               8                                        /**< Shift value for USB_HSTNEGSCS */
 #define _USB_GOTGCTL_HSTNEGSCS_MASK                0x100UL                                  /**< Bit mask for USB_HSTNEGSCS */
 #define _USB_GOTGCTL_HSTNEGSCS_DEFAULT             0x00000000UL                             /**< Mode DEFAULT for USB_GOTGCTL */
 #define USB_GOTGCTL_HSTNEGSCS_DEFAULT              (_USB_GOTGCTL_HSTNEGSCS_DEFAULT << 8)    /**< Shifted mode DEFAULT for USB_GOTGCTL */
-#define USB_GOTGCTL_HNPREQ                         (0x1UL << 9)                             /**< HNP Request (device only) */
+#define USB_GOTGCTL_HNPREQ                         (0x1UL << 9)                             /**< HNP Request device only */
 #define _USB_GOTGCTL_HNPREQ_SHIFT                  9                                        /**< Shift value for USB_HNPREQ */
 #define _USB_GOTGCTL_HNPREQ_MASK                   0x200UL                                  /**< Bit mask for USB_HNPREQ */
 #define _USB_GOTGCTL_HNPREQ_DEFAULT                0x00000000UL                             /**< Mode DEFAULT for USB_GOTGCTL */
 #define USB_GOTGCTL_HNPREQ_DEFAULT                 (_USB_GOTGCTL_HNPREQ_DEFAULT << 9)       /**< Shifted mode DEFAULT for USB_GOTGCTL */
-#define USB_GOTGCTL_HSTSETHNPEN                    (0x1UL << 10)                            /**< Host Set HNP Enable (host only) */
+#define USB_GOTGCTL_HSTSETHNPEN                    (0x1UL << 10)                            /**< Host Set HNP Enable host only */
 #define _USB_GOTGCTL_HSTSETHNPEN_SHIFT             10                                       /**< Shift value for USB_HSTSETHNPEN */
 #define _USB_GOTGCTL_HSTSETHNPEN_MASK              0x400UL                                  /**< Bit mask for USB_HSTSETHNPEN */
 #define _USB_GOTGCTL_HSTSETHNPEN_DEFAULT           0x00000000UL                             /**< Mode DEFAULT for USB_GOTGCTL */
 #define USB_GOTGCTL_HSTSETHNPEN_DEFAULT            (_USB_GOTGCTL_HSTSETHNPEN_DEFAULT << 10) /**< Shifted mode DEFAULT for USB_GOTGCTL */
-#define USB_GOTGCTL_DEVHNPEN                       (0x1UL << 11)                            /**< Device HNP Enabled (device only) */
+#define USB_GOTGCTL_DEVHNPEN                       (0x1UL << 11)                            /**< Device HNP Enabled device only */
 #define _USB_GOTGCTL_DEVHNPEN_SHIFT                11                                       /**< Shift value for USB_DEVHNPEN */
 #define _USB_GOTGCTL_DEVHNPEN_MASK                 0x800UL                                  /**< Bit mask for USB_DEVHNPEN */
 #define _USB_GOTGCTL_DEVHNPEN_DEFAULT              0x00000000UL                             /**< Mode DEFAULT for USB_GOTGCTL */
 #define USB_GOTGCTL_DEVHNPEN_DEFAULT               (_USB_GOTGCTL_DEVHNPEN_DEFAULT << 11)    /**< Shifted mode DEFAULT for USB_GOTGCTL */
-#define USB_GOTGCTL_CONIDSTS                       (0x1UL << 16)                            /**< Connector ID Status (host and device) */
+#define USB_GOTGCTL_CONIDSTS                       (0x1UL << 16)                            /**< Connector ID Status host and device */
 #define _USB_GOTGCTL_CONIDSTS_SHIFT                16                                       /**< Shift value for USB_CONIDSTS */
 #define _USB_GOTGCTL_CONIDSTS_MASK                 0x10000UL                                /**< Bit mask for USB_CONIDSTS */
 #define _USB_GOTGCTL_CONIDSTS_A                    0x00000000UL                             /**< Mode A for USB_GOTGCTL */
@@ -391,7 +376,7 @@ typedef struct
 #define USB_GOTGCTL_CONIDSTS_A                     (_USB_GOTGCTL_CONIDSTS_A << 16)          /**< Shifted mode A for USB_GOTGCTL */
 #define USB_GOTGCTL_CONIDSTS_DEFAULT               (_USB_GOTGCTL_CONIDSTS_DEFAULT << 16)    /**< Shifted mode DEFAULT for USB_GOTGCTL */
 #define USB_GOTGCTL_CONIDSTS_B                     (_USB_GOTGCTL_CONIDSTS_B << 16)          /**< Shifted mode B for USB_GOTGCTL */
-#define USB_GOTGCTL_DBNCTIME                       (0x1UL << 17)                            /**< Long/Short Debounce Time (host only) */
+#define USB_GOTGCTL_DBNCTIME                       (0x1UL << 17)                            /**< Long/Short Debounce Time host only */
 #define _USB_GOTGCTL_DBNCTIME_SHIFT                17                                       /**< Shift value for USB_DBNCTIME */
 #define _USB_GOTGCTL_DBNCTIME_MASK                 0x20000UL                                /**< Bit mask for USB_DBNCTIME */
 #define _USB_GOTGCTL_DBNCTIME_DEFAULT              0x00000000UL                             /**< Mode DEFAULT for USB_GOTGCTL */
@@ -400,12 +385,12 @@ typedef struct
 #define USB_GOTGCTL_DBNCTIME_DEFAULT               (_USB_GOTGCTL_DBNCTIME_DEFAULT << 17)    /**< Shifted mode DEFAULT for USB_GOTGCTL */
 #define USB_GOTGCTL_DBNCTIME_LONG                  (_USB_GOTGCTL_DBNCTIME_LONG << 17)       /**< Shifted mode LONG for USB_GOTGCTL */
 #define USB_GOTGCTL_DBNCTIME_SHORT                 (_USB_GOTGCTL_DBNCTIME_SHORT << 17)      /**< Shifted mode SHORT for USB_GOTGCTL */
-#define USB_GOTGCTL_ASESVLD                        (0x1UL << 18)                            /**< A-Session Valid (host only) */
+#define USB_GOTGCTL_ASESVLD                        (0x1UL << 18)                            /**< A-Session Valid host only */
 #define _USB_GOTGCTL_ASESVLD_SHIFT                 18                                       /**< Shift value for USB_ASESVLD */
 #define _USB_GOTGCTL_ASESVLD_MASK                  0x40000UL                                /**< Bit mask for USB_ASESVLD */
 #define _USB_GOTGCTL_ASESVLD_DEFAULT               0x00000000UL                             /**< Mode DEFAULT for USB_GOTGCTL */
 #define USB_GOTGCTL_ASESVLD_DEFAULT                (_USB_GOTGCTL_ASESVLD_DEFAULT << 18)     /**< Shifted mode DEFAULT for USB_GOTGCTL */
-#define USB_GOTGCTL_BSESVLD                        (0x1UL << 19)                            /**< B-Session Valid (device only) */
+#define USB_GOTGCTL_BSESVLD                        (0x1UL << 19)                            /**< B-Session Valid device only */
 #define _USB_GOTGCTL_BSESVLD_SHIFT                 19                                       /**< Shift value for USB_BSESVLD */
 #define _USB_GOTGCTL_BSESVLD_MASK                  0x80000UL                                /**< Bit mask for USB_BSESVLD */
 #define _USB_GOTGCTL_BSESVLD_DEFAULT               0x00000000UL                             /**< Mode DEFAULT for USB_GOTGCTL */
@@ -423,32 +408,32 @@ typedef struct
 /* Bit fields for USB GOTGINT */
 #define _USB_GOTGINT_RESETVALUE                    0x00000000UL                                 /**< Default value for USB_GOTGINT */
 #define _USB_GOTGINT_MASK                          0x000E0304UL                                 /**< Mask for USB_GOTGINT */
-#define USB_GOTGINT_SESENDDET                      (0x1UL << 2)                                 /**< Session End Detected (host and device) */
+#define USB_GOTGINT_SESENDDET                      (0x1UL << 2)                                 /**< Session End Detected host and device */
 #define _USB_GOTGINT_SESENDDET_SHIFT               2                                            /**< Shift value for USB_SESENDDET */
 #define _USB_GOTGINT_SESENDDET_MASK                0x4UL                                        /**< Bit mask for USB_SESENDDET */
 #define _USB_GOTGINT_SESENDDET_DEFAULT             0x00000000UL                                 /**< Mode DEFAULT for USB_GOTGINT */
 #define USB_GOTGINT_SESENDDET_DEFAULT              (_USB_GOTGINT_SESENDDET_DEFAULT << 2)        /**< Shifted mode DEFAULT for USB_GOTGINT */
-#define USB_GOTGINT_SESREQSUCSTSCHNG               (0x1UL << 8)                                 /**< Session Request Success Status Change (host and device) */
+#define USB_GOTGINT_SESREQSUCSTSCHNG               (0x1UL << 8)                                 /**< Session Request Success Status Change host and device */
 #define _USB_GOTGINT_SESREQSUCSTSCHNG_SHIFT        8                                            /**< Shift value for USB_SESREQSUCSTSCHNG */
 #define _USB_GOTGINT_SESREQSUCSTSCHNG_MASK         0x100UL                                      /**< Bit mask for USB_SESREQSUCSTSCHNG */
 #define _USB_GOTGINT_SESREQSUCSTSCHNG_DEFAULT      0x00000000UL                                 /**< Mode DEFAULT for USB_GOTGINT */
 #define USB_GOTGINT_SESREQSUCSTSCHNG_DEFAULT       (_USB_GOTGINT_SESREQSUCSTSCHNG_DEFAULT << 8) /**< Shifted mode DEFAULT for USB_GOTGINT */
-#define USB_GOTGINT_HSTNEGSUCSTSCHNG               (0x1UL << 9)                                 /**< Host Negotiation Success Status Change (host and device) */
+#define USB_GOTGINT_HSTNEGSUCSTSCHNG               (0x1UL << 9)                                 /**< Host Negotiation Success Status Change host and device */
 #define _USB_GOTGINT_HSTNEGSUCSTSCHNG_SHIFT        9                                            /**< Shift value for USB_HSTNEGSUCSTSCHNG */
 #define _USB_GOTGINT_HSTNEGSUCSTSCHNG_MASK         0x200UL                                      /**< Bit mask for USB_HSTNEGSUCSTSCHNG */
 #define _USB_GOTGINT_HSTNEGSUCSTSCHNG_DEFAULT      0x00000000UL                                 /**< Mode DEFAULT for USB_GOTGINT */
 #define USB_GOTGINT_HSTNEGSUCSTSCHNG_DEFAULT       (_USB_GOTGINT_HSTNEGSUCSTSCHNG_DEFAULT << 9) /**< Shifted mode DEFAULT for USB_GOTGINT */
-#define USB_GOTGINT_HSTNEGDET                      (0x1UL << 17)                                /**< Host Negotiation Detected (host and device) */
+#define USB_GOTGINT_HSTNEGDET                      (0x1UL << 17)                                /**< Host Negotiation Detected host and device */
 #define _USB_GOTGINT_HSTNEGDET_SHIFT               17                                           /**< Shift value for USB_HSTNEGDET */
 #define _USB_GOTGINT_HSTNEGDET_MASK                0x20000UL                                    /**< Bit mask for USB_HSTNEGDET */
 #define _USB_GOTGINT_HSTNEGDET_DEFAULT             0x00000000UL                                 /**< Mode DEFAULT for USB_GOTGINT */
 #define USB_GOTGINT_HSTNEGDET_DEFAULT              (_USB_GOTGINT_HSTNEGDET_DEFAULT << 17)       /**< Shifted mode DEFAULT for USB_GOTGINT */
-#define USB_GOTGINT_ADEVTOUTCHG                    (0x1UL << 18)                                /**< A-Device Timeout Change (host and device) */
+#define USB_GOTGINT_ADEVTOUTCHG                    (0x1UL << 18)                                /**< A-Device Timeout Change host and device */
 #define _USB_GOTGINT_ADEVTOUTCHG_SHIFT             18                                           /**< Shift value for USB_ADEVTOUTCHG */
 #define _USB_GOTGINT_ADEVTOUTCHG_MASK              0x40000UL                                    /**< Bit mask for USB_ADEVTOUTCHG */
 #define _USB_GOTGINT_ADEVTOUTCHG_DEFAULT           0x00000000UL                                 /**< Mode DEFAULT for USB_GOTGINT */
 #define USB_GOTGINT_ADEVTOUTCHG_DEFAULT            (_USB_GOTGINT_ADEVTOUTCHG_DEFAULT << 18)     /**< Shifted mode DEFAULT for USB_GOTGINT */
-#define USB_GOTGINT_DBNCEDONE                      (0x1UL << 19)                                /**< Debounce Done (host only) */
+#define USB_GOTGINT_DBNCEDONE                      (0x1UL << 19)                                /**< Debounce Done host only */
 #define _USB_GOTGINT_DBNCEDONE_SHIFT               19                                           /**< Shift value for USB_DBNCEDONE */
 #define _USB_GOTGINT_DBNCEDONE_MASK                0x80000UL                                    /**< Bit mask for USB_DBNCEDONE */
 #define _USB_GOTGINT_DBNCEDONE_DEFAULT             0x00000000UL                                 /**< Mode DEFAULT for USB_GOTGINT */
@@ -457,7 +442,7 @@ typedef struct
 /* Bit fields for USB GAHBCFG */
 #define _USB_GAHBCFG_RESETVALUE                    0x00000000UL                                /**< Default value for USB_GAHBCFG */
 #define _USB_GAHBCFG_MASK                          0x006001BFUL                                /**< Mask for USB_GAHBCFG */
-#define USB_GAHBCFG_GLBLINTRMSK                    (0x1UL << 0)                                /**< Global Interrupt Mask (host and device) */
+#define USB_GAHBCFG_GLBLINTRMSK                    (0x1UL << 0)                                /**< Global Interrupt Mask host and device */
 #define _USB_GAHBCFG_GLBLINTRMSK_SHIFT             0                                           /**< Shift value for USB_GLBLINTRMSK */
 #define _USB_GAHBCFG_GLBLINTRMSK_MASK              0x1UL                                       /**< Bit mask for USB_GLBLINTRMSK */
 #define _USB_GAHBCFG_GLBLINTRMSK_DEFAULT           0x00000000UL                                /**< Mode DEFAULT for USB_GAHBCFG */
@@ -476,12 +461,12 @@ typedef struct
 #define USB_GAHBCFG_HBSTLEN_INCR4                  (_USB_GAHBCFG_HBSTLEN_INCR4 << 1)           /**< Shifted mode INCR4 for USB_GAHBCFG */
 #define USB_GAHBCFG_HBSTLEN_INCR8                  (_USB_GAHBCFG_HBSTLEN_INCR8 << 1)           /**< Shifted mode INCR8 for USB_GAHBCFG */
 #define USB_GAHBCFG_HBSTLEN_INCR16                 (_USB_GAHBCFG_HBSTLEN_INCR16 << 1)          /**< Shifted mode INCR16 for USB_GAHBCFG */
-#define USB_GAHBCFG_DMAEN                          (0x1UL << 5)                                /**< DMA Enable (host and device) */
+#define USB_GAHBCFG_DMAEN                          (0x1UL << 5)                                /**< DMA Enable host and device */
 #define _USB_GAHBCFG_DMAEN_SHIFT                   5                                           /**< Shift value for USB_DMAEN */
 #define _USB_GAHBCFG_DMAEN_MASK                    0x20UL                                      /**< Bit mask for USB_DMAEN */
 #define _USB_GAHBCFG_DMAEN_DEFAULT                 0x00000000UL                                /**< Mode DEFAULT for USB_GAHBCFG */
 #define USB_GAHBCFG_DMAEN_DEFAULT                  (_USB_GAHBCFG_DMAEN_DEFAULT << 5)           /**< Shifted mode DEFAULT for USB_GAHBCFG */
-#define USB_GAHBCFG_NPTXFEMPLVL                    (0x1UL << 7)                                /**< Non-Periodic TxFIFO Empty Level (host and device) */
+#define USB_GAHBCFG_NPTXFEMPLVL                    (0x1UL << 7)                                /**< Non-Periodic TxFIFO Empty Level host and device */
 #define _USB_GAHBCFG_NPTXFEMPLVL_SHIFT             7                                           /**< Shift value for USB_NPTXFEMPLVL */
 #define _USB_GAHBCFG_NPTXFEMPLVL_MASK              0x80UL                                      /**< Bit mask for USB_NPTXFEMPLVL */
 #define _USB_GAHBCFG_NPTXFEMPLVL_DEFAULT           0x00000000UL                                /**< Mode DEFAULT for USB_GAHBCFG */
@@ -490,7 +475,7 @@ typedef struct
 #define USB_GAHBCFG_NPTXFEMPLVL_DEFAULT            (_USB_GAHBCFG_NPTXFEMPLVL_DEFAULT << 7)     /**< Shifted mode DEFAULT for USB_GAHBCFG */
 #define USB_GAHBCFG_NPTXFEMPLVL_HALFEMPTY          (_USB_GAHBCFG_NPTXFEMPLVL_HALFEMPTY << 7)   /**< Shifted mode HALFEMPTY for USB_GAHBCFG */
 #define USB_GAHBCFG_NPTXFEMPLVL_EMPTY              (_USB_GAHBCFG_NPTXFEMPLVL_EMPTY << 7)       /**< Shifted mode EMPTY for USB_GAHBCFG */
-#define USB_GAHBCFG_PTXFEMPLVL                     (0x1UL << 8)                                /**< Periodic TxFIFO Empty Level (host only) */
+#define USB_GAHBCFG_PTXFEMPLVL                     (0x1UL << 8)                                /**< Periodic TxFIFO Empty Level host only */
 #define _USB_GAHBCFG_PTXFEMPLVL_SHIFT              8                                           /**< Shift value for USB_PTXFEMPLVL */
 #define _USB_GAHBCFG_PTXFEMPLVL_MASK               0x100UL                                     /**< Bit mask for USB_PTXFEMPLVL */
 #define _USB_GAHBCFG_PTXFEMPLVL_DEFAULT            0x00000000UL                                /**< Mode DEFAULT for USB_GAHBCFG */
@@ -517,17 +502,17 @@ typedef struct
 #define _USB_GUSBCFG_TOUTCAL_MASK                  0x7UL                                       /**< Bit mask for USB_TOUTCAL */
 #define _USB_GUSBCFG_TOUTCAL_DEFAULT               0x00000000UL                                /**< Mode DEFAULT for USB_GUSBCFG */
 #define USB_GUSBCFG_TOUTCAL_DEFAULT                (_USB_GUSBCFG_TOUTCAL_DEFAULT << 0)         /**< Shifted mode DEFAULT for USB_GUSBCFG */
-#define USB_GUSBCFG_FSINTF                         (0x1UL << 5)                                /**< Full-Speed Serial Interface Select (host and device) */
+#define USB_GUSBCFG_FSINTF                         (0x1UL << 5)                                /**< Full-Speed Serial Interface Select host and device */
 #define _USB_GUSBCFG_FSINTF_SHIFT                  5                                           /**< Shift value for USB_FSINTF */
 #define _USB_GUSBCFG_FSINTF_MASK                   0x20UL                                      /**< Bit mask for USB_FSINTF */
 #define _USB_GUSBCFG_FSINTF_DEFAULT                0x00000000UL                                /**< Mode DEFAULT for USB_GUSBCFG */
 #define USB_GUSBCFG_FSINTF_DEFAULT                 (_USB_GUSBCFG_FSINTF_DEFAULT << 5)          /**< Shifted mode DEFAULT for USB_GUSBCFG */
-#define USB_GUSBCFG_SRPCAP                         (0x1UL << 8)                                /**< SRP-Capable (host and device) */
+#define USB_GUSBCFG_SRPCAP                         (0x1UL << 8)                                /**< SRP-Capable host and device */
 #define _USB_GUSBCFG_SRPCAP_SHIFT                  8                                           /**< Shift value for USB_SRPCAP */
 #define _USB_GUSBCFG_SRPCAP_MASK                   0x100UL                                     /**< Bit mask for USB_SRPCAP */
 #define _USB_GUSBCFG_SRPCAP_DEFAULT                0x00000000UL                                /**< Mode DEFAULT for USB_GUSBCFG */
 #define USB_GUSBCFG_SRPCAP_DEFAULT                 (_USB_GUSBCFG_SRPCAP_DEFAULT << 8)          /**< Shifted mode DEFAULT for USB_GUSBCFG */
-#define USB_GUSBCFG_HNPCAP                         (0x1UL << 9)                                /**< HNP-Capable (host and device) */
+#define USB_GUSBCFG_HNPCAP                         (0x1UL << 9)                                /**< HNP-Capable host and device */
 #define _USB_GUSBCFG_HNPCAP_SHIFT                  9                                           /**< Shift value for USB_HNPCAP */
 #define _USB_GUSBCFG_HNPCAP_MASK                   0x200UL                                     /**< Bit mask for USB_HNPCAP */
 #define _USB_GUSBCFG_HNPCAP_DEFAULT                0x00000000UL                                /**< Mode DEFAULT for USB_GUSBCFG */
@@ -536,7 +521,7 @@ typedef struct
 #define _USB_GUSBCFG_USBTRDTIM_MASK                0x3C00UL                                    /**< Bit mask for USB_USBTRDTIM */
 #define _USB_GUSBCFG_USBTRDTIM_DEFAULT             0x00000005UL                                /**< Mode DEFAULT for USB_GUSBCFG */
 #define USB_GUSBCFG_USBTRDTIM_DEFAULT              (_USB_GUSBCFG_USBTRDTIM_DEFAULT << 10)      /**< Shifted mode DEFAULT for USB_GUSBCFG */
-#define USB_GUSBCFG_TERMSELDLPULSE                 (0x1UL << 22)                               /**< TermSel DLine Pulsing Selection (device only) */
+#define USB_GUSBCFG_TERMSELDLPULSE                 (0x1UL << 22)                               /**< TermSel DLine Pulsing Selection device only */
 #define _USB_GUSBCFG_TERMSELDLPULSE_SHIFT          22                                          /**< Shift value for USB_TERMSELDLPULSE */
 #define _USB_GUSBCFG_TERMSELDLPULSE_MASK           0x400000UL                                  /**< Bit mask for USB_TERMSELDLPULSE */
 #define _USB_GUSBCFG_TERMSELDLPULSE_DEFAULT        0x00000000UL                                /**< Mode DEFAULT for USB_GUSBCFG */
@@ -545,22 +530,22 @@ typedef struct
 #define USB_GUSBCFG_TERMSELDLPULSE_DEFAULT         (_USB_GUSBCFG_TERMSELDLPULSE_DEFAULT << 22) /**< Shifted mode DEFAULT for USB_GUSBCFG */
 #define USB_GUSBCFG_TERMSELDLPULSE_TXVALID         (_USB_GUSBCFG_TERMSELDLPULSE_TXVALID << 22) /**< Shifted mode TXVALID for USB_GUSBCFG */
 #define USB_GUSBCFG_TERMSELDLPULSE_TERMSEL         (_USB_GUSBCFG_TERMSELDLPULSE_TERMSEL << 22) /**< Shifted mode TERMSEL for USB_GUSBCFG */
-#define USB_GUSBCFG_TXENDDELAY                     (0x1UL << 28)                               /**< Tx End Delay (device only) */
+#define USB_GUSBCFG_TXENDDELAY                     (0x1UL << 28)                               /**< Tx End Delay device only */
 #define _USB_GUSBCFG_TXENDDELAY_SHIFT              28                                          /**< Shift value for USB_TXENDDELAY */
 #define _USB_GUSBCFG_TXENDDELAY_MASK               0x10000000UL                                /**< Bit mask for USB_TXENDDELAY */
 #define _USB_GUSBCFG_TXENDDELAY_DEFAULT            0x00000000UL                                /**< Mode DEFAULT for USB_GUSBCFG */
 #define USB_GUSBCFG_TXENDDELAY_DEFAULT             (_USB_GUSBCFG_TXENDDELAY_DEFAULT << 28)     /**< Shifted mode DEFAULT for USB_GUSBCFG */
-#define USB_GUSBCFG_FORCEHSTMODE                   (0x1UL << 29)                               /**< Force Host Mode (host and device) */
+#define USB_GUSBCFG_FORCEHSTMODE                   (0x1UL << 29)                               /**< Force Host Mode host and device */
 #define _USB_GUSBCFG_FORCEHSTMODE_SHIFT            29                                          /**< Shift value for USB_FORCEHSTMODE */
 #define _USB_GUSBCFG_FORCEHSTMODE_MASK             0x20000000UL                                /**< Bit mask for USB_FORCEHSTMODE */
 #define _USB_GUSBCFG_FORCEHSTMODE_DEFAULT          0x00000000UL                                /**< Mode DEFAULT for USB_GUSBCFG */
 #define USB_GUSBCFG_FORCEHSTMODE_DEFAULT           (_USB_GUSBCFG_FORCEHSTMODE_DEFAULT << 29)   /**< Shifted mode DEFAULT for USB_GUSBCFG */
-#define USB_GUSBCFG_FORCEDEVMODE                   (0x1UL << 30)                               /**< Force Device Mode (host and device) */
+#define USB_GUSBCFG_FORCEDEVMODE                   (0x1UL << 30)                               /**< Force Device Mode host and device */
 #define _USB_GUSBCFG_FORCEDEVMODE_SHIFT            30                                          /**< Shift value for USB_FORCEDEVMODE */
 #define _USB_GUSBCFG_FORCEDEVMODE_MASK             0x40000000UL                                /**< Bit mask for USB_FORCEDEVMODE */
 #define _USB_GUSBCFG_FORCEDEVMODE_DEFAULT          0x00000000UL                                /**< Mode DEFAULT for USB_GUSBCFG */
 #define USB_GUSBCFG_FORCEDEVMODE_DEFAULT           (_USB_GUSBCFG_FORCEDEVMODE_DEFAULT << 30)   /**< Shifted mode DEFAULT for USB_GUSBCFG */
-#define USB_GUSBCFG_CORRUPTTXPKT                   (0x1UL << 31)                               /**< Corrupt Tx packet (host and device) */
+#define USB_GUSBCFG_CORRUPTTXPKT                   (0x1UL << 31)                               /**< Corrupt Tx packet host and device */
 #define _USB_GUSBCFG_CORRUPTTXPKT_SHIFT            31                                          /**< Shift value for USB_CORRUPTTXPKT */
 #define _USB_GUSBCFG_CORRUPTTXPKT_MASK             0x80000000UL                                /**< Bit mask for USB_CORRUPTTXPKT */
 #define _USB_GUSBCFG_CORRUPTTXPKT_DEFAULT          0x00000000UL                                /**< Mode DEFAULT for USB_GUSBCFG */
@@ -569,22 +554,22 @@ typedef struct
 /* Bit fields for USB GRSTCTL */
 #define _USB_GRSTCTL_RESETVALUE                    0x80000000UL                           /**< Default value for USB_GRSTCTL */
 #define _USB_GRSTCTL_MASK                          0xC00007F5UL                           /**< Mask for USB_GRSTCTL */
-#define USB_GRSTCTL_CSFTRST                        (0x1UL << 0)                           /**< Core Soft Reset (host and device) */
+#define USB_GRSTCTL_CSFTRST                        (0x1UL << 0)                           /**< Core Soft Reset host and device */
 #define _USB_GRSTCTL_CSFTRST_SHIFT                 0                                      /**< Shift value for USB_CSFTRST */
 #define _USB_GRSTCTL_CSFTRST_MASK                  0x1UL                                  /**< Bit mask for USB_CSFTRST */
 #define _USB_GRSTCTL_CSFTRST_DEFAULT               0x00000000UL                           /**< Mode DEFAULT for USB_GRSTCTL */
 #define USB_GRSTCTL_CSFTRST_DEFAULT                (_USB_GRSTCTL_CSFTRST_DEFAULT << 0)    /**< Shifted mode DEFAULT for USB_GRSTCTL */
-#define USB_GRSTCTL_FRMCNTRRST                     (0x1UL << 2)                           /**< Host Frame Counter Reset (host only) */
+#define USB_GRSTCTL_FRMCNTRRST                     (0x1UL << 2)                           /**< Host Frame Counter Reset host only */
 #define _USB_GRSTCTL_FRMCNTRRST_SHIFT              2                                      /**< Shift value for USB_FRMCNTRRST */
 #define _USB_GRSTCTL_FRMCNTRRST_MASK               0x4UL                                  /**< Bit mask for USB_FRMCNTRRST */
 #define _USB_GRSTCTL_FRMCNTRRST_DEFAULT            0x00000000UL                           /**< Mode DEFAULT for USB_GRSTCTL */
 #define USB_GRSTCTL_FRMCNTRRST_DEFAULT             (_USB_GRSTCTL_FRMCNTRRST_DEFAULT << 2) /**< Shifted mode DEFAULT for USB_GRSTCTL */
-#define USB_GRSTCTL_RXFFLSH                        (0x1UL << 4)                           /**< RxFIFO Flush (host and device) */
+#define USB_GRSTCTL_RXFFLSH                        (0x1UL << 4)                           /**< RxFIFO Flush host and device */
 #define _USB_GRSTCTL_RXFFLSH_SHIFT                 4                                      /**< Shift value for USB_RXFFLSH */
 #define _USB_GRSTCTL_RXFFLSH_MASK                  0x10UL                                 /**< Bit mask for USB_RXFFLSH */
 #define _USB_GRSTCTL_RXFFLSH_DEFAULT               0x00000000UL                           /**< Mode DEFAULT for USB_GRSTCTL */
 #define USB_GRSTCTL_RXFFLSH_DEFAULT                (_USB_GRSTCTL_RXFFLSH_DEFAULT << 4)    /**< Shifted mode DEFAULT for USB_GRSTCTL */
-#define USB_GRSTCTL_TXFFLSH                        (0x1UL << 5)                           /**< TxFIFO Flush (host and device) */
+#define USB_GRSTCTL_TXFFLSH                        (0x1UL << 5)                           /**< TxFIFO Flush host and device */
 #define _USB_GRSTCTL_TXFFLSH_SHIFT                 5                                      /**< Shift value for USB_TXFFLSH */
 #define _USB_GRSTCTL_TXFFLSH_MASK                  0x20UL                                 /**< Bit mask for USB_TXFFLSH */
 #define _USB_GRSTCTL_TXFFLSH_DEFAULT               0x00000000UL                           /**< Mode DEFAULT for USB_GRSTCTL */
@@ -609,12 +594,12 @@ typedef struct
 #define USB_GRSTCTL_TXFNUM_F5                      (_USB_GRSTCTL_TXFNUM_F5 << 6)          /**< Shifted mode F5 for USB_GRSTCTL */
 #define USB_GRSTCTL_TXFNUM_F6                      (_USB_GRSTCTL_TXFNUM_F6 << 6)          /**< Shifted mode F6 for USB_GRSTCTL */
 #define USB_GRSTCTL_TXFNUM_FALL                    (_USB_GRSTCTL_TXFNUM_FALL << 6)        /**< Shifted mode FALL for USB_GRSTCTL */
-#define USB_GRSTCTL_DMAREQ                         (0x1UL << 30)                          /**< DMA Request Signal (host and device) */
+#define USB_GRSTCTL_DMAREQ                         (0x1UL << 30)                          /**< DMA Request Signal host and device */
 #define _USB_GRSTCTL_DMAREQ_SHIFT                  30                                     /**< Shift value for USB_DMAREQ */
 #define _USB_GRSTCTL_DMAREQ_MASK                   0x40000000UL                           /**< Bit mask for USB_DMAREQ */
 #define _USB_GRSTCTL_DMAREQ_DEFAULT                0x00000000UL                           /**< Mode DEFAULT for USB_GRSTCTL */
 #define USB_GRSTCTL_DMAREQ_DEFAULT                 (_USB_GRSTCTL_DMAREQ_DEFAULT << 30)    /**< Shifted mode DEFAULT for USB_GRSTCTL */
-#define USB_GRSTCTL_AHBIDLE                        (0x1UL << 31)                          /**< AHB Master Idle (host and device) */
+#define USB_GRSTCTL_AHBIDLE                        (0x1UL << 31)                          /**< AHB Master Idle host and device */
 #define _USB_GRSTCTL_AHBIDLE_SHIFT                 31                                     /**< Shift value for USB_AHBIDLE */
 #define _USB_GRSTCTL_AHBIDLE_MASK                  0x80000000UL                           /**< Bit mask for USB_AHBIDLE */
 #define _USB_GRSTCTL_AHBIDLE_DEFAULT               0x00000001UL                           /**< Mode DEFAULT for USB_GRSTCTL */
@@ -622,8 +607,8 @@ typedef struct
 
 /* Bit fields for USB GINTSTS */
 #define _USB_GINTSTS_RESETVALUE                    0x14000020UL                              /**< Default value for USB_GINTSTS */
-#define _USB_GINTSTS_MASK                          0xF7FC7CFFUL                              /**< Mask for USB_GINTSTS */
-#define USB_GINTSTS_CURMOD                         (0x1UL << 0)                              /**< Current Mode of Operation (host and device) */
+#define _USB_GINTSTS_MASK                          0xF7FCFCFFUL                              /**< Mask for USB_GINTSTS */
+#define USB_GINTSTS_CURMOD                         (0x1UL << 0)                              /**< Current Mode of Operation host and device */
 #define _USB_GINTSTS_CURMOD_SHIFT                  0                                         /**< Shift value for USB_CURMOD */
 #define _USB_GINTSTS_CURMOD_MASK                   0x1UL                                     /**< Bit mask for USB_CURMOD */
 #define _USB_GINTSTS_CURMOD_DEFAULT                0x00000000UL                              /**< Mode DEFAULT for USB_GINTSTS */
@@ -632,127 +617,132 @@ typedef struct
 #define USB_GINTSTS_CURMOD_DEFAULT                 (_USB_GINTSTS_CURMOD_DEFAULT << 0)        /**< Shifted mode DEFAULT for USB_GINTSTS */
 #define USB_GINTSTS_CURMOD_DEVICE                  (_USB_GINTSTS_CURMOD_DEVICE << 0)         /**< Shifted mode DEVICE for USB_GINTSTS */
 #define USB_GINTSTS_CURMOD_HOST                    (_USB_GINTSTS_CURMOD_HOST << 0)           /**< Shifted mode HOST for USB_GINTSTS */
-#define USB_GINTSTS_MODEMIS                        (0x1UL << 1)                              /**< Mode Mismatch Interrupt (host and device) */
+#define USB_GINTSTS_MODEMIS                        (0x1UL << 1)                              /**< Mode Mismatch Interrupt host and device */
 #define _USB_GINTSTS_MODEMIS_SHIFT                 1                                         /**< Shift value for USB_MODEMIS */
 #define _USB_GINTSTS_MODEMIS_MASK                  0x2UL                                     /**< Bit mask for USB_MODEMIS */
 #define _USB_GINTSTS_MODEMIS_DEFAULT               0x00000000UL                              /**< Mode DEFAULT for USB_GINTSTS */
 #define USB_GINTSTS_MODEMIS_DEFAULT                (_USB_GINTSTS_MODEMIS_DEFAULT << 1)       /**< Shifted mode DEFAULT for USB_GINTSTS */
-#define USB_GINTSTS_OTGINT                         (0x1UL << 2)                              /**< OTG Interrupt (host and device) */
+#define USB_GINTSTS_OTGINT                         (0x1UL << 2)                              /**< OTG Interrupt host and device */
 #define _USB_GINTSTS_OTGINT_SHIFT                  2                                         /**< Shift value for USB_OTGINT */
 #define _USB_GINTSTS_OTGINT_MASK                   0x4UL                                     /**< Bit mask for USB_OTGINT */
 #define _USB_GINTSTS_OTGINT_DEFAULT                0x00000000UL                              /**< Mode DEFAULT for USB_GINTSTS */
 #define USB_GINTSTS_OTGINT_DEFAULT                 (_USB_GINTSTS_OTGINT_DEFAULT << 2)        /**< Shifted mode DEFAULT for USB_GINTSTS */
-#define USB_GINTSTS_SOF                            (0x1UL << 3)                              /**< Start of Frame (host and device) */
+#define USB_GINTSTS_SOF                            (0x1UL << 3)                              /**< Start of Frame host and device */
 #define _USB_GINTSTS_SOF_SHIFT                     3                                         /**< Shift value for USB_SOF */
 #define _USB_GINTSTS_SOF_MASK                      0x8UL                                     /**< Bit mask for USB_SOF */
 #define _USB_GINTSTS_SOF_DEFAULT                   0x00000000UL                              /**< Mode DEFAULT for USB_GINTSTS */
 #define USB_GINTSTS_SOF_DEFAULT                    (_USB_GINTSTS_SOF_DEFAULT << 3)           /**< Shifted mode DEFAULT for USB_GINTSTS */
-#define USB_GINTSTS_RXFLVL                         (0x1UL << 4)                              /**< RxFIFO Non-Empty (host and device) */
+#define USB_GINTSTS_RXFLVL                         (0x1UL << 4)                              /**< RxFIFO Non-Empty host and device */
 #define _USB_GINTSTS_RXFLVL_SHIFT                  4                                         /**< Shift value for USB_RXFLVL */
 #define _USB_GINTSTS_RXFLVL_MASK                   0x10UL                                    /**< Bit mask for USB_RXFLVL */
 #define _USB_GINTSTS_RXFLVL_DEFAULT                0x00000000UL                              /**< Mode DEFAULT for USB_GINTSTS */
 #define USB_GINTSTS_RXFLVL_DEFAULT                 (_USB_GINTSTS_RXFLVL_DEFAULT << 4)        /**< Shifted mode DEFAULT for USB_GINTSTS */
-#define USB_GINTSTS_NPTXFEMP                       (0x1UL << 5)                              /**< Non-Periodic TxFIFO Empty (host only) */
+#define USB_GINTSTS_NPTXFEMP                       (0x1UL << 5)                              /**< Non-Periodic TxFIFO Empty host only */
 #define _USB_GINTSTS_NPTXFEMP_SHIFT                5                                         /**< Shift value for USB_NPTXFEMP */
 #define _USB_GINTSTS_NPTXFEMP_MASK                 0x20UL                                    /**< Bit mask for USB_NPTXFEMP */
 #define _USB_GINTSTS_NPTXFEMP_DEFAULT              0x00000001UL                              /**< Mode DEFAULT for USB_GINTSTS */
 #define USB_GINTSTS_NPTXFEMP_DEFAULT               (_USB_GINTSTS_NPTXFEMP_DEFAULT << 5)      /**< Shifted mode DEFAULT for USB_GINTSTS */
-#define USB_GINTSTS_GINNAKEFF                      (0x1UL << 6)                              /**< Global IN Non-periodic NAK Effective (device only) */
+#define USB_GINTSTS_GINNAKEFF                      (0x1UL << 6)                              /**< Global IN Non-periodic NAK Effective device only */
 #define _USB_GINTSTS_GINNAKEFF_SHIFT               6                                         /**< Shift value for USB_GINNAKEFF */
 #define _USB_GINTSTS_GINNAKEFF_MASK                0x40UL                                    /**< Bit mask for USB_GINNAKEFF */
 #define _USB_GINTSTS_GINNAKEFF_DEFAULT             0x00000000UL                              /**< Mode DEFAULT for USB_GINTSTS */
 #define USB_GINTSTS_GINNAKEFF_DEFAULT              (_USB_GINTSTS_GINNAKEFF_DEFAULT << 6)     /**< Shifted mode DEFAULT for USB_GINTSTS */
-#define USB_GINTSTS_GOUTNAKEFF                     (0x1UL << 7)                              /**< Global OUT NAK Effective (device only) */
+#define USB_GINTSTS_GOUTNAKEFF                     (0x1UL << 7)                              /**< Global OUT NAK Effective device only */
 #define _USB_GINTSTS_GOUTNAKEFF_SHIFT              7                                         /**< Shift value for USB_GOUTNAKEFF */
 #define _USB_GINTSTS_GOUTNAKEFF_MASK               0x80UL                                    /**< Bit mask for USB_GOUTNAKEFF */
 #define _USB_GINTSTS_GOUTNAKEFF_DEFAULT            0x00000000UL                              /**< Mode DEFAULT for USB_GINTSTS */
 #define USB_GINTSTS_GOUTNAKEFF_DEFAULT             (_USB_GINTSTS_GOUTNAKEFF_DEFAULT << 7)    /**< Shifted mode DEFAULT for USB_GINTSTS */
-#define USB_GINTSTS_ERLYSUSP                       (0x1UL << 10)                             /**< Early Suspend (device only) */
+#define USB_GINTSTS_ERLYSUSP                       (0x1UL << 10)                             /**< Early Suspend device only */
 #define _USB_GINTSTS_ERLYSUSP_SHIFT                10                                        /**< Shift value for USB_ERLYSUSP */
 #define _USB_GINTSTS_ERLYSUSP_MASK                 0x400UL                                   /**< Bit mask for USB_ERLYSUSP */
 #define _USB_GINTSTS_ERLYSUSP_DEFAULT              0x00000000UL                              /**< Mode DEFAULT for USB_GINTSTS */
 #define USB_GINTSTS_ERLYSUSP_DEFAULT               (_USB_GINTSTS_ERLYSUSP_DEFAULT << 10)     /**< Shifted mode DEFAULT for USB_GINTSTS */
-#define USB_GINTSTS_USBSUSP                        (0x1UL << 11)                             /**< USB Suspend (device only) */
+#define USB_GINTSTS_USBSUSP                        (0x1UL << 11)                             /**< USB Suspend device only */
 #define _USB_GINTSTS_USBSUSP_SHIFT                 11                                        /**< Shift value for USB_USBSUSP */
 #define _USB_GINTSTS_USBSUSP_MASK                  0x800UL                                   /**< Bit mask for USB_USBSUSP */
 #define _USB_GINTSTS_USBSUSP_DEFAULT               0x00000000UL                              /**< Mode DEFAULT for USB_GINTSTS */
 #define USB_GINTSTS_USBSUSP_DEFAULT                (_USB_GINTSTS_USBSUSP_DEFAULT << 11)      /**< Shifted mode DEFAULT for USB_GINTSTS */
-#define USB_GINTSTS_USBRST                         (0x1UL << 12)                             /**< USB Reset (device only) */
+#define USB_GINTSTS_USBRST                         (0x1UL << 12)                             /**< USB Reset device only */
 #define _USB_GINTSTS_USBRST_SHIFT                  12                                        /**< Shift value for USB_USBRST */
 #define _USB_GINTSTS_USBRST_MASK                   0x1000UL                                  /**< Bit mask for USB_USBRST */
 #define _USB_GINTSTS_USBRST_DEFAULT                0x00000000UL                              /**< Mode DEFAULT for USB_GINTSTS */
 #define USB_GINTSTS_USBRST_DEFAULT                 (_USB_GINTSTS_USBRST_DEFAULT << 12)       /**< Shifted mode DEFAULT for USB_GINTSTS */
-#define USB_GINTSTS_ENUMDONE                       (0x1UL << 13)                             /**< Enumeration Done (device only) */
+#define USB_GINTSTS_ENUMDONE                       (0x1UL << 13)                             /**< Enumeration Done device only */
 #define _USB_GINTSTS_ENUMDONE_SHIFT                13                                        /**< Shift value for USB_ENUMDONE */
 #define _USB_GINTSTS_ENUMDONE_MASK                 0x2000UL                                  /**< Bit mask for USB_ENUMDONE */
 #define _USB_GINTSTS_ENUMDONE_DEFAULT              0x00000000UL                              /**< Mode DEFAULT for USB_GINTSTS */
 #define USB_GINTSTS_ENUMDONE_DEFAULT               (_USB_GINTSTS_ENUMDONE_DEFAULT << 13)     /**< Shifted mode DEFAULT for USB_GINTSTS */
-#define USB_GINTSTS_ISOOUTDROP                     (0x1UL << 14)                             /**< Isochronous OUT Packet Dropped Interrupt (device only) */
+#define USB_GINTSTS_ISOOUTDROP                     (0x1UL << 14)                             /**< Isochronous OUT Packet Dropped Interrupt device only */
 #define _USB_GINTSTS_ISOOUTDROP_SHIFT              14                                        /**< Shift value for USB_ISOOUTDROP */
 #define _USB_GINTSTS_ISOOUTDROP_MASK               0x4000UL                                  /**< Bit mask for USB_ISOOUTDROP */
 #define _USB_GINTSTS_ISOOUTDROP_DEFAULT            0x00000000UL                              /**< Mode DEFAULT for USB_GINTSTS */
 #define USB_GINTSTS_ISOOUTDROP_DEFAULT             (_USB_GINTSTS_ISOOUTDROP_DEFAULT << 14)   /**< Shifted mode DEFAULT for USB_GINTSTS */
-#define USB_GINTSTS_IEPINT                         (0x1UL << 18)                             /**< IN Endpoints Interrupt (device only) */
+#define USB_GINTSTS_EOPF                           (0x1UL << 15)                             /**< End of Periodic Frame Interrupt */
+#define _USB_GINTSTS_EOPF_SHIFT                    15                                        /**< Shift value for USB_EOPF */
+#define _USB_GINTSTS_EOPF_MASK                     0x8000UL                                  /**< Bit mask for USB_EOPF */
+#define _USB_GINTSTS_EOPF_DEFAULT                  0x00000000UL                              /**< Mode DEFAULT for USB_GINTSTS */
+#define USB_GINTSTS_EOPF_DEFAULT                   (_USB_GINTSTS_EOPF_DEFAULT << 15)         /**< Shifted mode DEFAULT for USB_GINTSTS */
+#define USB_GINTSTS_IEPINT                         (0x1UL << 18)                             /**< IN Endpoints Interrupt device only */
 #define _USB_GINTSTS_IEPINT_SHIFT                  18                                        /**< Shift value for USB_IEPINT */
 #define _USB_GINTSTS_IEPINT_MASK                   0x40000UL                                 /**< Bit mask for USB_IEPINT */
 #define _USB_GINTSTS_IEPINT_DEFAULT                0x00000000UL                              /**< Mode DEFAULT for USB_GINTSTS */
 #define USB_GINTSTS_IEPINT_DEFAULT                 (_USB_GINTSTS_IEPINT_DEFAULT << 18)       /**< Shifted mode DEFAULT for USB_GINTSTS */
-#define USB_GINTSTS_OEPINT                         (0x1UL << 19)                             /**< OUT Endpoints Interrupt (device only) */
+#define USB_GINTSTS_OEPINT                         (0x1UL << 19)                             /**< OUT Endpoints Interrupt device only */
 #define _USB_GINTSTS_OEPINT_SHIFT                  19                                        /**< Shift value for USB_OEPINT */
 #define _USB_GINTSTS_OEPINT_MASK                   0x80000UL                                 /**< Bit mask for USB_OEPINT */
 #define _USB_GINTSTS_OEPINT_DEFAULT                0x00000000UL                              /**< Mode DEFAULT for USB_GINTSTS */
 #define USB_GINTSTS_OEPINT_DEFAULT                 (_USB_GINTSTS_OEPINT_DEFAULT << 19)       /**< Shifted mode DEFAULT for USB_GINTSTS */
-#define USB_GINTSTS_INCOMPISOIN                    (0x1UL << 20)                             /**< Incomplete Isochronous IN Transfer (device only) */
+#define USB_GINTSTS_INCOMPISOIN                    (0x1UL << 20)                             /**< Incomplete Isochronous IN Transfer device only */
 #define _USB_GINTSTS_INCOMPISOIN_SHIFT             20                                        /**< Shift value for USB_INCOMPISOIN */
 #define _USB_GINTSTS_INCOMPISOIN_MASK              0x100000UL                                /**< Bit mask for USB_INCOMPISOIN */
 #define _USB_GINTSTS_INCOMPISOIN_DEFAULT           0x00000000UL                              /**< Mode DEFAULT for USB_GINTSTS */
 #define USB_GINTSTS_INCOMPISOIN_DEFAULT            (_USB_GINTSTS_INCOMPISOIN_DEFAULT << 20)  /**< Shifted mode DEFAULT for USB_GINTSTS */
-#define USB_GINTSTS_INCOMPLP                       (0x1UL << 21)                             /**< Incomplete Periodic Transfer (device only) */
+#define USB_GINTSTS_INCOMPLP                       (0x1UL << 21)                             /**< Incomplete Periodic Transfer host and device */
 #define _USB_GINTSTS_INCOMPLP_SHIFT                21                                        /**< Shift value for USB_INCOMPLP */
 #define _USB_GINTSTS_INCOMPLP_MASK                 0x200000UL                                /**< Bit mask for USB_INCOMPLP */
 #define _USB_GINTSTS_INCOMPLP_DEFAULT              0x00000000UL                              /**< Mode DEFAULT for USB_GINTSTS */
 #define USB_GINTSTS_INCOMPLP_DEFAULT               (_USB_GINTSTS_INCOMPLP_DEFAULT << 21)     /**< Shifted mode DEFAULT for USB_GINTSTS */
-#define USB_GINTSTS_FETSUSP                        (0x1UL << 22)                             /**< Data Fetch Suspended (device only) */
+#define USB_GINTSTS_FETSUSP                        (0x1UL << 22)                             /**< Data Fetch Suspended device only */
 #define _USB_GINTSTS_FETSUSP_SHIFT                 22                                        /**< Shift value for USB_FETSUSP */
 #define _USB_GINTSTS_FETSUSP_MASK                  0x400000UL                                /**< Bit mask for USB_FETSUSP */
 #define _USB_GINTSTS_FETSUSP_DEFAULT               0x00000000UL                              /**< Mode DEFAULT for USB_GINTSTS */
 #define USB_GINTSTS_FETSUSP_DEFAULT                (_USB_GINTSTS_FETSUSP_DEFAULT << 22)      /**< Shifted mode DEFAULT for USB_GINTSTS */
-#define USB_GINTSTS_RESETDET                       (0x1UL << 23)                             /**< Reset detected Interrupt (device only) */
+#define USB_GINTSTS_RESETDET                       (0x1UL << 23)                             /**< Reset detected Interrupt device only */
 #define _USB_GINTSTS_RESETDET_SHIFT                23                                        /**< Shift value for USB_RESETDET */
 #define _USB_GINTSTS_RESETDET_MASK                 0x800000UL                                /**< Bit mask for USB_RESETDET */
 #define _USB_GINTSTS_RESETDET_DEFAULT              0x00000000UL                              /**< Mode DEFAULT for USB_GINTSTS */
 #define USB_GINTSTS_RESETDET_DEFAULT               (_USB_GINTSTS_RESETDET_DEFAULT << 23)     /**< Shifted mode DEFAULT for USB_GINTSTS */
-#define USB_GINTSTS_PRTINT                         (0x1UL << 24)                             /**< Host Port Interrupt (host only) */
+#define USB_GINTSTS_PRTINT                         (0x1UL << 24)                             /**< Host Port Interrupt host only */
 #define _USB_GINTSTS_PRTINT_SHIFT                  24                                        /**< Shift value for USB_PRTINT */
 #define _USB_GINTSTS_PRTINT_MASK                   0x1000000UL                               /**< Bit mask for USB_PRTINT */
 #define _USB_GINTSTS_PRTINT_DEFAULT                0x00000000UL                              /**< Mode DEFAULT for USB_GINTSTS */
 #define USB_GINTSTS_PRTINT_DEFAULT                 (_USB_GINTSTS_PRTINT_DEFAULT << 24)       /**< Shifted mode DEFAULT for USB_GINTSTS */
-#define USB_GINTSTS_HCHINT                         (0x1UL << 25)                             /**< Host Channels Interrupt (host only) */
+#define USB_GINTSTS_HCHINT                         (0x1UL << 25)                             /**< Host Channels Interrupt host only */
 #define _USB_GINTSTS_HCHINT_SHIFT                  25                                        /**< Shift value for USB_HCHINT */
 #define _USB_GINTSTS_HCHINT_MASK                   0x2000000UL                               /**< Bit mask for USB_HCHINT */
 #define _USB_GINTSTS_HCHINT_DEFAULT                0x00000000UL                              /**< Mode DEFAULT for USB_GINTSTS */
 #define USB_GINTSTS_HCHINT_DEFAULT                 (_USB_GINTSTS_HCHINT_DEFAULT << 25)       /**< Shifted mode DEFAULT for USB_GINTSTS */
-#define USB_GINTSTS_PTXFEMP                        (0x1UL << 26)                             /**< Periodic TxFIFO Empty (host only) */
+#define USB_GINTSTS_PTXFEMP                        (0x1UL << 26)                             /**< Periodic TxFIFO Empty host only */
 #define _USB_GINTSTS_PTXFEMP_SHIFT                 26                                        /**< Shift value for USB_PTXFEMP */
 #define _USB_GINTSTS_PTXFEMP_MASK                  0x4000000UL                               /**< Bit mask for USB_PTXFEMP */
 #define _USB_GINTSTS_PTXFEMP_DEFAULT               0x00000001UL                              /**< Mode DEFAULT for USB_GINTSTS */
 #define USB_GINTSTS_PTXFEMP_DEFAULT                (_USB_GINTSTS_PTXFEMP_DEFAULT << 26)      /**< Shifted mode DEFAULT for USB_GINTSTS */
-#define USB_GINTSTS_CONIDSTSCHNG                   (0x1UL << 28)                             /**< Connector ID Status Change (host and device) */
+#define USB_GINTSTS_CONIDSTSCHNG                   (0x1UL << 28)                             /**< Connector ID Status Change host and device */
 #define _USB_GINTSTS_CONIDSTSCHNG_SHIFT            28                                        /**< Shift value for USB_CONIDSTSCHNG */
 #define _USB_GINTSTS_CONIDSTSCHNG_MASK             0x10000000UL                              /**< Bit mask for USB_CONIDSTSCHNG */
 #define _USB_GINTSTS_CONIDSTSCHNG_DEFAULT          0x00000001UL                              /**< Mode DEFAULT for USB_GINTSTS */
 #define USB_GINTSTS_CONIDSTSCHNG_DEFAULT           (_USB_GINTSTS_CONIDSTSCHNG_DEFAULT << 28) /**< Shifted mode DEFAULT for USB_GINTSTS */
-#define USB_GINTSTS_DISCONNINT                     (0x1UL << 29)                             /**< Disconnect Detected Interrupt (host only) */
+#define USB_GINTSTS_DISCONNINT                     (0x1UL << 29)                             /**< Disconnect Detected Interrupt host only */
 #define _USB_GINTSTS_DISCONNINT_SHIFT              29                                        /**< Shift value for USB_DISCONNINT */
 #define _USB_GINTSTS_DISCONNINT_MASK               0x20000000UL                              /**< Bit mask for USB_DISCONNINT */
 #define _USB_GINTSTS_DISCONNINT_DEFAULT            0x00000000UL                              /**< Mode DEFAULT for USB_GINTSTS */
 #define USB_GINTSTS_DISCONNINT_DEFAULT             (_USB_GINTSTS_DISCONNINT_DEFAULT << 29)   /**< Shifted mode DEFAULT for USB_GINTSTS */
-#define USB_GINTSTS_SESSREQINT                     (0x1UL << 30)                             /**< Session Request/New Session Detected Interrupt (host and device) */
+#define USB_GINTSTS_SESSREQINT                     (0x1UL << 30)                             /**< Session Request/New Session Detected Interrupt host and device */
 #define _USB_GINTSTS_SESSREQINT_SHIFT              30                                        /**< Shift value for USB_SESSREQINT */
 #define _USB_GINTSTS_SESSREQINT_MASK               0x40000000UL                              /**< Bit mask for USB_SESSREQINT */
 #define _USB_GINTSTS_SESSREQINT_DEFAULT            0x00000000UL                              /**< Mode DEFAULT for USB_GINTSTS */
 #define USB_GINTSTS_SESSREQINT_DEFAULT             (_USB_GINTSTS_SESSREQINT_DEFAULT << 30)   /**< Shifted mode DEFAULT for USB_GINTSTS */
-#define USB_GINTSTS_WKUPINT                        (0x1UL << 31)                             /**< Resume/Remote Wakeup Detected Interrupt (host and device) */
+#define USB_GINTSTS_WKUPINT                        (0x1UL << 31)                             /**< Resume/Remote Wakeup Detected Interrupt host and device */
 #define _USB_GINTSTS_WKUPINT_SHIFT                 31                                        /**< Shift value for USB_WKUPINT */
 #define _USB_GINTSTS_WKUPINT_MASK                  0x80000000UL                              /**< Bit mask for USB_WKUPINT */
 #define _USB_GINTSTS_WKUPINT_DEFAULT               0x00000000UL                              /**< Mode DEFAULT for USB_GINTSTS */
@@ -760,128 +750,133 @@ typedef struct
 
 /* Bit fields for USB GINTMSK */
 #define _USB_GINTMSK_RESETVALUE                    0x00000000UL                                 /**< Default value for USB_GINTMSK */
-#define _USB_GINTMSK_MASK                          0xF7FC7CFEUL                                 /**< Mask for USB_GINTMSK */
-#define USB_GINTMSK_MODEMISMSK                     (0x1UL << 1)                                 /**< Mode Mismatch Interrupt Mask (host and device) */
+#define _USB_GINTMSK_MASK                          0xF7FCFCFEUL                                 /**< Mask for USB_GINTMSK */
+#define USB_GINTMSK_MODEMISMSK                     (0x1UL << 1)                                 /**< Mode Mismatch Interrupt Mask host and device */
 #define _USB_GINTMSK_MODEMISMSK_SHIFT              1                                            /**< Shift value for USB_MODEMISMSK */
 #define _USB_GINTMSK_MODEMISMSK_MASK               0x2UL                                        /**< Bit mask for USB_MODEMISMSK */
 #define _USB_GINTMSK_MODEMISMSK_DEFAULT            0x00000000UL                                 /**< Mode DEFAULT for USB_GINTMSK */
 #define USB_GINTMSK_MODEMISMSK_DEFAULT             (_USB_GINTMSK_MODEMISMSK_DEFAULT << 1)       /**< Shifted mode DEFAULT for USB_GINTMSK */
-#define USB_GINTMSK_OTGINTMSK                      (0x1UL << 2)                                 /**< OTG Interrupt Mask (host and device) */
+#define USB_GINTMSK_OTGINTMSK                      (0x1UL << 2)                                 /**< OTG Interrupt Mask host and device */
 #define _USB_GINTMSK_OTGINTMSK_SHIFT               2                                            /**< Shift value for USB_OTGINTMSK */
 #define _USB_GINTMSK_OTGINTMSK_MASK                0x4UL                                        /**< Bit mask for USB_OTGINTMSK */
 #define _USB_GINTMSK_OTGINTMSK_DEFAULT             0x00000000UL                                 /**< Mode DEFAULT for USB_GINTMSK */
 #define USB_GINTMSK_OTGINTMSK_DEFAULT              (_USB_GINTMSK_OTGINTMSK_DEFAULT << 2)        /**< Shifted mode DEFAULT for USB_GINTMSK */
-#define USB_GINTMSK_SOFMSK                         (0x1UL << 3)                                 /**< Start of Frame Mask (host and device) */
+#define USB_GINTMSK_SOFMSK                         (0x1UL << 3)                                 /**< Start of Frame Mask host and device */
 #define _USB_GINTMSK_SOFMSK_SHIFT                  3                                            /**< Shift value for USB_SOFMSK */
 #define _USB_GINTMSK_SOFMSK_MASK                   0x8UL                                        /**< Bit mask for USB_SOFMSK */
 #define _USB_GINTMSK_SOFMSK_DEFAULT                0x00000000UL                                 /**< Mode DEFAULT for USB_GINTMSK */
 #define USB_GINTMSK_SOFMSK_DEFAULT                 (_USB_GINTMSK_SOFMSK_DEFAULT << 3)           /**< Shifted mode DEFAULT for USB_GINTMSK */
-#define USB_GINTMSK_RXFLVLMSK                      (0x1UL << 4)                                 /**< Receive FIFO Non-Empty Mask (host and device) */
+#define USB_GINTMSK_RXFLVLMSK                      (0x1UL << 4)                                 /**< Receive FIFO Non-Empty Mask host and device */
 #define _USB_GINTMSK_RXFLVLMSK_SHIFT               4                                            /**< Shift value for USB_RXFLVLMSK */
 #define _USB_GINTMSK_RXFLVLMSK_MASK                0x10UL                                       /**< Bit mask for USB_RXFLVLMSK */
 #define _USB_GINTMSK_RXFLVLMSK_DEFAULT             0x00000000UL                                 /**< Mode DEFAULT for USB_GINTMSK */
 #define USB_GINTMSK_RXFLVLMSK_DEFAULT              (_USB_GINTMSK_RXFLVLMSK_DEFAULT << 4)        /**< Shifted mode DEFAULT for USB_GINTMSK */
-#define USB_GINTMSK_NPTXFEMPMSK                    (0x1UL << 5)                                 /**< Non-Periodic TxFIFO Empty Mask (host only) */
+#define USB_GINTMSK_NPTXFEMPMSK                    (0x1UL << 5)                                 /**< Non-Periodic TxFIFO Empty Mask host only */
 #define _USB_GINTMSK_NPTXFEMPMSK_SHIFT             5                                            /**< Shift value for USB_NPTXFEMPMSK */
 #define _USB_GINTMSK_NPTXFEMPMSK_MASK              0x20UL                                       /**< Bit mask for USB_NPTXFEMPMSK */
 #define _USB_GINTMSK_NPTXFEMPMSK_DEFAULT           0x00000000UL                                 /**< Mode DEFAULT for USB_GINTMSK */
 #define USB_GINTMSK_NPTXFEMPMSK_DEFAULT            (_USB_GINTMSK_NPTXFEMPMSK_DEFAULT << 5)      /**< Shifted mode DEFAULT for USB_GINTMSK */
-#define USB_GINTMSK_GINNAKEFFMSK                   (0x1UL << 6)                                 /**< Global Non-periodic IN NAK Effective Mask (device only) */
+#define USB_GINTMSK_GINNAKEFFMSK                   (0x1UL << 6)                                 /**< Global Non-periodic IN NAK Effective Mask device only */
 #define _USB_GINTMSK_GINNAKEFFMSK_SHIFT            6                                            /**< Shift value for USB_GINNAKEFFMSK */
 #define _USB_GINTMSK_GINNAKEFFMSK_MASK             0x40UL                                       /**< Bit mask for USB_GINNAKEFFMSK */
 #define _USB_GINTMSK_GINNAKEFFMSK_DEFAULT          0x00000000UL                                 /**< Mode DEFAULT for USB_GINTMSK */
 #define USB_GINTMSK_GINNAKEFFMSK_DEFAULT           (_USB_GINTMSK_GINNAKEFFMSK_DEFAULT << 6)     /**< Shifted mode DEFAULT for USB_GINTMSK */
-#define USB_GINTMSK_GOUTNAKEFFMSK                  (0x1UL << 7)                                 /**< Global OUT NAK Effective Mask (device only) */
+#define USB_GINTMSK_GOUTNAKEFFMSK                  (0x1UL << 7)                                 /**< Global OUT NAK Effective Mask device only */
 #define _USB_GINTMSK_GOUTNAKEFFMSK_SHIFT           7                                            /**< Shift value for USB_GOUTNAKEFFMSK */
 #define _USB_GINTMSK_GOUTNAKEFFMSK_MASK            0x80UL                                       /**< Bit mask for USB_GOUTNAKEFFMSK */
 #define _USB_GINTMSK_GOUTNAKEFFMSK_DEFAULT         0x00000000UL                                 /**< Mode DEFAULT for USB_GINTMSK */
 #define USB_GINTMSK_GOUTNAKEFFMSK_DEFAULT          (_USB_GINTMSK_GOUTNAKEFFMSK_DEFAULT << 7)    /**< Shifted mode DEFAULT for USB_GINTMSK */
-#define USB_GINTMSK_ERLYSUSPMSK                    (0x1UL << 10)                                /**< Early Suspend Mask (device only) */
+#define USB_GINTMSK_ERLYSUSPMSK                    (0x1UL << 10)                                /**< Early Suspend Mask device only */
 #define _USB_GINTMSK_ERLYSUSPMSK_SHIFT             10                                           /**< Shift value for USB_ERLYSUSPMSK */
 #define _USB_GINTMSK_ERLYSUSPMSK_MASK              0x400UL                                      /**< Bit mask for USB_ERLYSUSPMSK */
 #define _USB_GINTMSK_ERLYSUSPMSK_DEFAULT           0x00000000UL                                 /**< Mode DEFAULT for USB_GINTMSK */
 #define USB_GINTMSK_ERLYSUSPMSK_DEFAULT            (_USB_GINTMSK_ERLYSUSPMSK_DEFAULT << 10)     /**< Shifted mode DEFAULT for USB_GINTMSK */
-#define USB_GINTMSK_USBSUSPMSK                     (0x1UL << 11)                                /**< USB Suspend Mask (device only) */
+#define USB_GINTMSK_USBSUSPMSK                     (0x1UL << 11)                                /**< USB Suspend Mask device only */
 #define _USB_GINTMSK_USBSUSPMSK_SHIFT              11                                           /**< Shift value for USB_USBSUSPMSK */
 #define _USB_GINTMSK_USBSUSPMSK_MASK               0x800UL                                      /**< Bit mask for USB_USBSUSPMSK */
 #define _USB_GINTMSK_USBSUSPMSK_DEFAULT            0x00000000UL                                 /**< Mode DEFAULT for USB_GINTMSK */
 #define USB_GINTMSK_USBSUSPMSK_DEFAULT             (_USB_GINTMSK_USBSUSPMSK_DEFAULT << 11)      /**< Shifted mode DEFAULT for USB_GINTMSK */
-#define USB_GINTMSK_USBRSTMSK                      (0x1UL << 12)                                /**< USB Reset Mask (device only) */
+#define USB_GINTMSK_USBRSTMSK                      (0x1UL << 12)                                /**< USB Reset Mask device only */
 #define _USB_GINTMSK_USBRSTMSK_SHIFT               12                                           /**< Shift value for USB_USBRSTMSK */
 #define _USB_GINTMSK_USBRSTMSK_MASK                0x1000UL                                     /**< Bit mask for USB_USBRSTMSK */
 #define _USB_GINTMSK_USBRSTMSK_DEFAULT             0x00000000UL                                 /**< Mode DEFAULT for USB_GINTMSK */
 #define USB_GINTMSK_USBRSTMSK_DEFAULT              (_USB_GINTMSK_USBRSTMSK_DEFAULT << 12)       /**< Shifted mode DEFAULT for USB_GINTMSK */
-#define USB_GINTMSK_ENUMDONEMSK                    (0x1UL << 13)                                /**< Enumeration Done Mask (device only) */
+#define USB_GINTMSK_ENUMDONEMSK                    (0x1UL << 13)                                /**< Enumeration Done Mask device only */
 #define _USB_GINTMSK_ENUMDONEMSK_SHIFT             13                                           /**< Shift value for USB_ENUMDONEMSK */
 #define _USB_GINTMSK_ENUMDONEMSK_MASK              0x2000UL                                     /**< Bit mask for USB_ENUMDONEMSK */
 #define _USB_GINTMSK_ENUMDONEMSK_DEFAULT           0x00000000UL                                 /**< Mode DEFAULT for USB_GINTMSK */
 #define USB_GINTMSK_ENUMDONEMSK_DEFAULT            (_USB_GINTMSK_ENUMDONEMSK_DEFAULT << 13)     /**< Shifted mode DEFAULT for USB_GINTMSK */
-#define USB_GINTMSK_ISOOUTDROPMSK                  (0x1UL << 14)                                /**< Isochronous OUT Packet Dropped Interrupt Mask (device only) */
+#define USB_GINTMSK_ISOOUTDROPMSK                  (0x1UL << 14)                                /**< Isochronous OUT Packet Dropped Interrupt Mask device only */
 #define _USB_GINTMSK_ISOOUTDROPMSK_SHIFT           14                                           /**< Shift value for USB_ISOOUTDROPMSK */
 #define _USB_GINTMSK_ISOOUTDROPMSK_MASK            0x4000UL                                     /**< Bit mask for USB_ISOOUTDROPMSK */
 #define _USB_GINTMSK_ISOOUTDROPMSK_DEFAULT         0x00000000UL                                 /**< Mode DEFAULT for USB_GINTMSK */
 #define USB_GINTMSK_ISOOUTDROPMSK_DEFAULT          (_USB_GINTMSK_ISOOUTDROPMSK_DEFAULT << 14)   /**< Shifted mode DEFAULT for USB_GINTMSK */
-#define USB_GINTMSK_IEPINTMSK                      (0x1UL << 18)                                /**< IN Endpoints Interrupt Mask (device only) */
+#define USB_GINTMSK_EOPFMSK                        (0x1UL << 15)                                /**< End of Periodic Frame Interrupt Mask device only */
+#define _USB_GINTMSK_EOPFMSK_SHIFT                 15                                           /**< Shift value for USB_EOPFMSK */
+#define _USB_GINTMSK_EOPFMSK_MASK                  0x8000UL                                     /**< Bit mask for USB_EOPFMSK */
+#define _USB_GINTMSK_EOPFMSK_DEFAULT               0x00000000UL                                 /**< Mode DEFAULT for USB_GINTMSK */
+#define USB_GINTMSK_EOPFMSK_DEFAULT                (_USB_GINTMSK_EOPFMSK_DEFAULT << 15)         /**< Shifted mode DEFAULT for USB_GINTMSK */
+#define USB_GINTMSK_IEPINTMSK                      (0x1UL << 18)                                /**< IN Endpoints Interrupt Mask device only */
 #define _USB_GINTMSK_IEPINTMSK_SHIFT               18                                           /**< Shift value for USB_IEPINTMSK */
 #define _USB_GINTMSK_IEPINTMSK_MASK                0x40000UL                                    /**< Bit mask for USB_IEPINTMSK */
 #define _USB_GINTMSK_IEPINTMSK_DEFAULT             0x00000000UL                                 /**< Mode DEFAULT for USB_GINTMSK */
 #define USB_GINTMSK_IEPINTMSK_DEFAULT              (_USB_GINTMSK_IEPINTMSK_DEFAULT << 18)       /**< Shifted mode DEFAULT for USB_GINTMSK */
-#define USB_GINTMSK_OEPINTMSK                      (0x1UL << 19)                                /**< OUT Endpoints Interrupt Mask (device only) */
+#define USB_GINTMSK_OEPINTMSK                      (0x1UL << 19)                                /**< OUT Endpoints Interrupt Mask device only */
 #define _USB_GINTMSK_OEPINTMSK_SHIFT               19                                           /**< Shift value for USB_OEPINTMSK */
 #define _USB_GINTMSK_OEPINTMSK_MASK                0x80000UL                                    /**< Bit mask for USB_OEPINTMSK */
 #define _USB_GINTMSK_OEPINTMSK_DEFAULT             0x00000000UL                                 /**< Mode DEFAULT for USB_GINTMSK */
 #define USB_GINTMSK_OEPINTMSK_DEFAULT              (_USB_GINTMSK_OEPINTMSK_DEFAULT << 19)       /**< Shifted mode DEFAULT for USB_GINTMSK */
-#define USB_GINTMSK_INCOMPISOINMSK                 (0x1UL << 20)                                /**< Incomplete Isochronous IN Transfer Mask (device only) */
+#define USB_GINTMSK_INCOMPISOINMSK                 (0x1UL << 20)                                /**< Incomplete Isochronous IN Transfer Mask device only */
 #define _USB_GINTMSK_INCOMPISOINMSK_SHIFT          20                                           /**< Shift value for USB_INCOMPISOINMSK */
 #define _USB_GINTMSK_INCOMPISOINMSK_MASK           0x100000UL                                   /**< Bit mask for USB_INCOMPISOINMSK */
 #define _USB_GINTMSK_INCOMPISOINMSK_DEFAULT        0x00000000UL                                 /**< Mode DEFAULT for USB_GINTMSK */
 #define USB_GINTMSK_INCOMPISOINMSK_DEFAULT         (_USB_GINTMSK_INCOMPISOINMSK_DEFAULT << 20)  /**< Shifted mode DEFAULT for USB_GINTMSK */
-#define USB_GINTMSK_INCOMPLPMSK                    (0x1UL << 21)                                /**< Incomplete Periodic Transfer Mask (host only) */
+#define USB_GINTMSK_INCOMPLPMSK                    (0x1UL << 21)                                /**< Incomplete Periodic Transfer Mask host and device */
 #define _USB_GINTMSK_INCOMPLPMSK_SHIFT             21                                           /**< Shift value for USB_INCOMPLPMSK */
 #define _USB_GINTMSK_INCOMPLPMSK_MASK              0x200000UL                                   /**< Bit mask for USB_INCOMPLPMSK */
 #define _USB_GINTMSK_INCOMPLPMSK_DEFAULT           0x00000000UL                                 /**< Mode DEFAULT for USB_GINTMSK */
 #define USB_GINTMSK_INCOMPLPMSK_DEFAULT            (_USB_GINTMSK_INCOMPLPMSK_DEFAULT << 21)     /**< Shifted mode DEFAULT for USB_GINTMSK */
-#define USB_GINTMSK_FETSUSPMSK                     (0x1UL << 22)                                /**< Data Fetch Suspended Mask (device only) */
+#define USB_GINTMSK_FETSUSPMSK                     (0x1UL << 22)                                /**< Data Fetch Suspended Mask device only */
 #define _USB_GINTMSK_FETSUSPMSK_SHIFT              22                                           /**< Shift value for USB_FETSUSPMSK */
 #define _USB_GINTMSK_FETSUSPMSK_MASK               0x400000UL                                   /**< Bit mask for USB_FETSUSPMSK */
 #define _USB_GINTMSK_FETSUSPMSK_DEFAULT            0x00000000UL                                 /**< Mode DEFAULT for USB_GINTMSK */
 #define USB_GINTMSK_FETSUSPMSK_DEFAULT             (_USB_GINTMSK_FETSUSPMSK_DEFAULT << 22)      /**< Shifted mode DEFAULT for USB_GINTMSK */
-#define USB_GINTMSK_RESETDETMSK                    (0x1UL << 23)                                /**< Reset detected Interrupt Mask (device only) */
+#define USB_GINTMSK_RESETDETMSK                    (0x1UL << 23)                                /**< Reset detected Interrupt Mask device only */
 #define _USB_GINTMSK_RESETDETMSK_SHIFT             23                                           /**< Shift value for USB_RESETDETMSK */
 #define _USB_GINTMSK_RESETDETMSK_MASK              0x800000UL                                   /**< Bit mask for USB_RESETDETMSK */
 #define _USB_GINTMSK_RESETDETMSK_DEFAULT           0x00000000UL                                 /**< Mode DEFAULT for USB_GINTMSK */
 #define USB_GINTMSK_RESETDETMSK_DEFAULT            (_USB_GINTMSK_RESETDETMSK_DEFAULT << 23)     /**< Shifted mode DEFAULT for USB_GINTMSK */
-#define USB_GINTMSK_PRTINTMSK                      (0x1UL << 24)                                /**< Host Port Interrupt Mask (host only) */
+#define USB_GINTMSK_PRTINTMSK                      (0x1UL << 24)                                /**< Host Port Interrupt Mask host only */
 #define _USB_GINTMSK_PRTINTMSK_SHIFT               24                                           /**< Shift value for USB_PRTINTMSK */
 #define _USB_GINTMSK_PRTINTMSK_MASK                0x1000000UL                                  /**< Bit mask for USB_PRTINTMSK */
 #define _USB_GINTMSK_PRTINTMSK_DEFAULT             0x00000000UL                                 /**< Mode DEFAULT for USB_GINTMSK */
 #define USB_GINTMSK_PRTINTMSK_DEFAULT              (_USB_GINTMSK_PRTINTMSK_DEFAULT << 24)       /**< Shifted mode DEFAULT for USB_GINTMSK */
-#define USB_GINTMSK_HCHINTMSK                      (0x1UL << 25)                                /**< Host Channels Interrupt Mask (host only) */
+#define USB_GINTMSK_HCHINTMSK                      (0x1UL << 25)                                /**< Host Channels Interrupt Mask host only */
 #define _USB_GINTMSK_HCHINTMSK_SHIFT               25                                           /**< Shift value for USB_HCHINTMSK */
 #define _USB_GINTMSK_HCHINTMSK_MASK                0x2000000UL                                  /**< Bit mask for USB_HCHINTMSK */
 #define _USB_GINTMSK_HCHINTMSK_DEFAULT             0x00000000UL                                 /**< Mode DEFAULT for USB_GINTMSK */
 #define USB_GINTMSK_HCHINTMSK_DEFAULT              (_USB_GINTMSK_HCHINTMSK_DEFAULT << 25)       /**< Shifted mode DEFAULT for USB_GINTMSK */
-#define USB_GINTMSK_PTXFEMPMSK                     (0x1UL << 26)                                /**< Periodic TxFIFO Empty Mask (host only) */
+#define USB_GINTMSK_PTXFEMPMSK                     (0x1UL << 26)                                /**< Periodic TxFIFO Empty Mask host only */
 #define _USB_GINTMSK_PTXFEMPMSK_SHIFT              26                                           /**< Shift value for USB_PTXFEMPMSK */
 #define _USB_GINTMSK_PTXFEMPMSK_MASK               0x4000000UL                                  /**< Bit mask for USB_PTXFEMPMSK */
 #define _USB_GINTMSK_PTXFEMPMSK_DEFAULT            0x00000000UL                                 /**< Mode DEFAULT for USB_GINTMSK */
 #define USB_GINTMSK_PTXFEMPMSK_DEFAULT             (_USB_GINTMSK_PTXFEMPMSK_DEFAULT << 26)      /**< Shifted mode DEFAULT for USB_GINTMSK */
-#define USB_GINTMSK_CONIDSTSCHNGMSK                (0x1UL << 28)                                /**< Connector ID Status Change Mask (host and device) */
+#define USB_GINTMSK_CONIDSTSCHNGMSK                (0x1UL << 28)                                /**< Connector ID Status Change Mask host and device */
 #define _USB_GINTMSK_CONIDSTSCHNGMSK_SHIFT         28                                           /**< Shift value for USB_CONIDSTSCHNGMSK */
 #define _USB_GINTMSK_CONIDSTSCHNGMSK_MASK          0x10000000UL                                 /**< Bit mask for USB_CONIDSTSCHNGMSK */
 #define _USB_GINTMSK_CONIDSTSCHNGMSK_DEFAULT       0x00000000UL                                 /**< Mode DEFAULT for USB_GINTMSK */
 #define USB_GINTMSK_CONIDSTSCHNGMSK_DEFAULT        (_USB_GINTMSK_CONIDSTSCHNGMSK_DEFAULT << 28) /**< Shifted mode DEFAULT for USB_GINTMSK */
-#define USB_GINTMSK_DISCONNINTMSK                  (0x1UL << 29)                                /**< Disconnect Detected Interrupt Mask (host and device) */
+#define USB_GINTMSK_DISCONNINTMSK                  (0x1UL << 29)                                /**< Disconnect Detected Interrupt Mask host and device */
 #define _USB_GINTMSK_DISCONNINTMSK_SHIFT           29                                           /**< Shift value for USB_DISCONNINTMSK */
 #define _USB_GINTMSK_DISCONNINTMSK_MASK            0x20000000UL                                 /**< Bit mask for USB_DISCONNINTMSK */
 #define _USB_GINTMSK_DISCONNINTMSK_DEFAULT         0x00000000UL                                 /**< Mode DEFAULT for USB_GINTMSK */
 #define USB_GINTMSK_DISCONNINTMSK_DEFAULT          (_USB_GINTMSK_DISCONNINTMSK_DEFAULT << 29)   /**< Shifted mode DEFAULT for USB_GINTMSK */
-#define USB_GINTMSK_SESSREQINTMSK                  (0x1UL << 30)                                /**< Session Request/New Session Detected Interrupt Mask (host and device) */
+#define USB_GINTMSK_SESSREQINTMSK                  (0x1UL << 30)                                /**< Session Request/New Session Detected Interrupt Mask host and device */
 #define _USB_GINTMSK_SESSREQINTMSK_SHIFT           30                                           /**< Shift value for USB_SESSREQINTMSK */
 #define _USB_GINTMSK_SESSREQINTMSK_MASK            0x40000000UL                                 /**< Bit mask for USB_SESSREQINTMSK */
 #define _USB_GINTMSK_SESSREQINTMSK_DEFAULT         0x00000000UL                                 /**< Mode DEFAULT for USB_GINTMSK */
 #define USB_GINTMSK_SESSREQINTMSK_DEFAULT          (_USB_GINTMSK_SESSREQINTMSK_DEFAULT << 30)   /**< Shifted mode DEFAULT for USB_GINTMSK */
-#define USB_GINTMSK_WKUPINTMSK                     (0x1UL << 31)                                /**< Resume/Remote Wakeup Detected Interrupt Mask (host and device) */
+#define USB_GINTMSK_WKUPINTMSK                     (0x1UL << 31)                                /**< Resume/Remote Wakeup Detected Interrupt Mask host and device */
 #define _USB_GINTMSK_WKUPINTMSK_SHIFT              31                                           /**< Shift value for USB_WKUPINTMSK */
 #define _USB_GINTMSK_WKUPINTMSK_MASK               0x80000000UL                                 /**< Bit mask for USB_WKUPINTMSK */
 #define _USB_GINTMSK_WKUPINTMSK_DEFAULT            0x00000000UL                                 /**< Mode DEFAULT for USB_GINTMSK */
@@ -889,7 +884,7 @@ typedef struct
 
 /* Bit fields for USB GRXSTSR */
 #define _USB_GRXSTSR_RESETVALUE                    0x00000000UL                           /**< Default value for USB_GRXSTSR */
-#define _USB_GRXSTSR_MASK                          0x0F1FFFFFUL                           /**< Mask for USB_GRXSTSR */
+#define _USB_GRXSTSR_MASK                          0x01FFFFFFUL                           /**< Mask for USB_GRXSTSR */
 #define _USB_GRXSTSR_CHEPNUM_SHIFT                 0                                      /**< Shift value for USB_CHEPNUM */
 #define _USB_GRXSTSR_CHEPNUM_MASK                  0xFUL                                  /**< Bit mask for USB_CHEPNUM */
 #define _USB_GRXSTSR_CHEPNUM_DEFAULT               0x00000000UL                           /**< Mode DEFAULT for USB_GRXSTSR */
@@ -928,10 +923,10 @@ typedef struct
 #define USB_GRXSTSR_PKTSTS_TGLERR                  (_USB_GRXSTSR_PKTSTS_TGLERR << 17)     /**< Shifted mode TGLERR for USB_GRXSTSR */
 #define USB_GRXSTSR_PKTSTS_SETUPRCV                (_USB_GRXSTSR_PKTSTS_SETUPRCV << 17)   /**< Shifted mode SETUPRCV for USB_GRXSTSR */
 #define USB_GRXSTSR_PKTSTS_CHLT                    (_USB_GRXSTSR_PKTSTS_CHLT << 17)       /**< Shifted mode CHLT for USB_GRXSTSR */
-#define _USB_GRXSTSR_FN_SHIFT                      24                                     /**< Shift value for USB_FN */
-#define _USB_GRXSTSR_FN_MASK                       0xF000000UL                            /**< Bit mask for USB_FN */
+#define _USB_GRXSTSR_FN_SHIFT                      21                                     /**< Shift value for USB_FN */
+#define _USB_GRXSTSR_FN_MASK                       0x1E00000UL                            /**< Bit mask for USB_FN */
 #define _USB_GRXSTSR_FN_DEFAULT                    0x00000000UL                           /**< Mode DEFAULT for USB_GRXSTSR */
-#define USB_GRXSTSR_FN_DEFAULT                     (_USB_GRXSTSR_FN_DEFAULT << 24)        /**< Shifted mode DEFAULT for USB_GRXSTSR */
+#define USB_GRXSTSR_FN_DEFAULT                     (_USB_GRXSTSR_FN_DEFAULT << 21)        /**< Shifted mode DEFAULT for USB_GRXSTSR */
 
 /* Bit fields for USB GRXSTSP */
 #define _USB_GRXSTSP_RESETVALUE                    0x00000000UL                           /**< Default value for USB_GRXSTSP */
@@ -2537,126 +2532,126 @@ typedef struct
 #define _USB_PCGCCTL_RESETAFTERSUSP_DEFAULT        0x00000000UL                               /**< Mode DEFAULT for USB_PCGCCTL */
 #define USB_PCGCCTL_RESETAFTERSUSP_DEFAULT         (_USB_PCGCCTL_RESETAFTERSUSP_DEFAULT << 8) /**< Shifted mode DEFAULT for USB_PCGCCTL */
 
-/* Bit fields for USB FIFO0D_FIFO0D */
-#define _USB_FIFO0D_FIFO0D_RESETVALUE              0x00000000UL                             /**< Default value for USB_FIFO0D_FIFO0D */
-#define _USB_FIFO0D_FIFO0D_MASK                    0xFFFFFFFFUL                             /**< Mask for USB_FIFO0D_FIFO0D */
-#define _USB_FIFO0D_FIFO0D_FIFO0D_SHIFT            0                                        /**< Shift value for USB_FIFO0D */
-#define _USB_FIFO0D_FIFO0D_FIFO0D_MASK             0xFFFFFFFFUL                             /**< Bit mask for USB_FIFO0D */
-#define _USB_FIFO0D_FIFO0D_FIFO0D_DEFAULT          0x00000000UL                             /**< Mode DEFAULT for USB_FIFO0D_FIFO0D */
-#define USB_FIFO0D_FIFO0D_FIFO0D_DEFAULT           (_USB_FIFO0D_FIFO0D_FIFO0D_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFO0D_FIFO0D */
+/* Bit fields for USB FIFO0D */
+#define _USB_FIFO0D_RESETVALUE                     0x00000000UL                      /**< Default value for USB_FIFO0D */
+#define _USB_FIFO0D_MASK                           0xFFFFFFFFUL                      /**< Mask for USB_FIFO0D */
+#define _USB_FIFO0D_FIFO0D_SHIFT                   0                                 /**< Shift value for USB_FIFO0D */
+#define _USB_FIFO0D_FIFO0D_MASK                    0xFFFFFFFFUL                      /**< Bit mask for USB_FIFO0D */
+#define _USB_FIFO0D_FIFO0D_DEFAULT                 0x00000000UL                      /**< Mode DEFAULT for USB_FIFO0D */
+#define USB_FIFO0D_FIFO0D_DEFAULT                  (_USB_FIFO0D_FIFO0D_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFO0D */
 
-/* Bit fields for USB FIFO1D_FIFO1D */
-#define _USB_FIFO1D_FIFO1D_RESETVALUE              0x00000000UL                             /**< Default value for USB_FIFO1D_FIFO1D */
-#define _USB_FIFO1D_FIFO1D_MASK                    0xFFFFFFFFUL                             /**< Mask for USB_FIFO1D_FIFO1D */
-#define _USB_FIFO1D_FIFO1D_FIFO1D_SHIFT            0                                        /**< Shift value for USB_FIFO1D */
-#define _USB_FIFO1D_FIFO1D_FIFO1D_MASK             0xFFFFFFFFUL                             /**< Bit mask for USB_FIFO1D */
-#define _USB_FIFO1D_FIFO1D_FIFO1D_DEFAULT          0x00000000UL                             /**< Mode DEFAULT for USB_FIFO1D_FIFO1D */
-#define USB_FIFO1D_FIFO1D_FIFO1D_DEFAULT           (_USB_FIFO1D_FIFO1D_FIFO1D_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFO1D_FIFO1D */
+/* Bit fields for USB FIFO1D */
+#define _USB_FIFO1D_RESETVALUE                     0x00000000UL                      /**< Default value for USB_FIFO1D */
+#define _USB_FIFO1D_MASK                           0xFFFFFFFFUL                      /**< Mask for USB_FIFO1D */
+#define _USB_FIFO1D_FIFO1D_SHIFT                   0                                 /**< Shift value for USB_FIFO1D */
+#define _USB_FIFO1D_FIFO1D_MASK                    0xFFFFFFFFUL                      /**< Bit mask for USB_FIFO1D */
+#define _USB_FIFO1D_FIFO1D_DEFAULT                 0x00000000UL                      /**< Mode DEFAULT for USB_FIFO1D */
+#define USB_FIFO1D_FIFO1D_DEFAULT                  (_USB_FIFO1D_FIFO1D_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFO1D */
 
-/* Bit fields for USB FIFO2D_FIFO2D */
-#define _USB_FIFO2D_FIFO2D_RESETVALUE              0x00000000UL                             /**< Default value for USB_FIFO2D_FIFO2D */
-#define _USB_FIFO2D_FIFO2D_MASK                    0xFFFFFFFFUL                             /**< Mask for USB_FIFO2D_FIFO2D */
-#define _USB_FIFO2D_FIFO2D_FIFO2D_SHIFT            0                                        /**< Shift value for USB_FIFO2D */
-#define _USB_FIFO2D_FIFO2D_FIFO2D_MASK             0xFFFFFFFFUL                             /**< Bit mask for USB_FIFO2D */
-#define _USB_FIFO2D_FIFO2D_FIFO2D_DEFAULT          0x00000000UL                             /**< Mode DEFAULT for USB_FIFO2D_FIFO2D */
-#define USB_FIFO2D_FIFO2D_FIFO2D_DEFAULT           (_USB_FIFO2D_FIFO2D_FIFO2D_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFO2D_FIFO2D */
+/* Bit fields for USB FIFO2D */
+#define _USB_FIFO2D_RESETVALUE                     0x00000000UL                      /**< Default value for USB_FIFO2D */
+#define _USB_FIFO2D_MASK                           0xFFFFFFFFUL                      /**< Mask for USB_FIFO2D */
+#define _USB_FIFO2D_FIFO2D_SHIFT                   0                                 /**< Shift value for USB_FIFO2D */
+#define _USB_FIFO2D_FIFO2D_MASK                    0xFFFFFFFFUL                      /**< Bit mask for USB_FIFO2D */
+#define _USB_FIFO2D_FIFO2D_DEFAULT                 0x00000000UL                      /**< Mode DEFAULT for USB_FIFO2D */
+#define USB_FIFO2D_FIFO2D_DEFAULT                  (_USB_FIFO2D_FIFO2D_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFO2D */
 
-/* Bit fields for USB FIFO3D_FIFO3D */
-#define _USB_FIFO3D_FIFO3D_RESETVALUE              0x00000000UL                             /**< Default value for USB_FIFO3D_FIFO3D */
-#define _USB_FIFO3D_FIFO3D_MASK                    0xFFFFFFFFUL                             /**< Mask for USB_FIFO3D_FIFO3D */
-#define _USB_FIFO3D_FIFO3D_FIFO3D_SHIFT            0                                        /**< Shift value for USB_FIFO3D */
-#define _USB_FIFO3D_FIFO3D_FIFO3D_MASK             0xFFFFFFFFUL                             /**< Bit mask for USB_FIFO3D */
-#define _USB_FIFO3D_FIFO3D_FIFO3D_DEFAULT          0x00000000UL                             /**< Mode DEFAULT for USB_FIFO3D_FIFO3D */
-#define USB_FIFO3D_FIFO3D_FIFO3D_DEFAULT           (_USB_FIFO3D_FIFO3D_FIFO3D_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFO3D_FIFO3D */
+/* Bit fields for USB FIFO3D */
+#define _USB_FIFO3D_RESETVALUE                     0x00000000UL                      /**< Default value for USB_FIFO3D */
+#define _USB_FIFO3D_MASK                           0xFFFFFFFFUL                      /**< Mask for USB_FIFO3D */
+#define _USB_FIFO3D_FIFO3D_SHIFT                   0                                 /**< Shift value for USB_FIFO3D */
+#define _USB_FIFO3D_FIFO3D_MASK                    0xFFFFFFFFUL                      /**< Bit mask for USB_FIFO3D */
+#define _USB_FIFO3D_FIFO3D_DEFAULT                 0x00000000UL                      /**< Mode DEFAULT for USB_FIFO3D */
+#define USB_FIFO3D_FIFO3D_DEFAULT                  (_USB_FIFO3D_FIFO3D_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFO3D */
 
-/* Bit fields for USB FIFO4D_FIFO4D */
-#define _USB_FIFO4D_FIFO4D_RESETVALUE              0x00000000UL                             /**< Default value for USB_FIFO4D_FIFO4D */
-#define _USB_FIFO4D_FIFO4D_MASK                    0xFFFFFFFFUL                             /**< Mask for USB_FIFO4D_FIFO4D */
-#define _USB_FIFO4D_FIFO4D_FIFO4D_SHIFT            0                                        /**< Shift value for USB_FIFO4D */
-#define _USB_FIFO4D_FIFO4D_FIFO4D_MASK             0xFFFFFFFFUL                             /**< Bit mask for USB_FIFO4D */
-#define _USB_FIFO4D_FIFO4D_FIFO4D_DEFAULT          0x00000000UL                             /**< Mode DEFAULT for USB_FIFO4D_FIFO4D */
-#define USB_FIFO4D_FIFO4D_FIFO4D_DEFAULT           (_USB_FIFO4D_FIFO4D_FIFO4D_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFO4D_FIFO4D */
+/* Bit fields for USB FIFO4D */
+#define _USB_FIFO4D_RESETVALUE                     0x00000000UL                      /**< Default value for USB_FIFO4D */
+#define _USB_FIFO4D_MASK                           0xFFFFFFFFUL                      /**< Mask for USB_FIFO4D */
+#define _USB_FIFO4D_FIFO4D_SHIFT                   0                                 /**< Shift value for USB_FIFO4D */
+#define _USB_FIFO4D_FIFO4D_MASK                    0xFFFFFFFFUL                      /**< Bit mask for USB_FIFO4D */
+#define _USB_FIFO4D_FIFO4D_DEFAULT                 0x00000000UL                      /**< Mode DEFAULT for USB_FIFO4D */
+#define USB_FIFO4D_FIFO4D_DEFAULT                  (_USB_FIFO4D_FIFO4D_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFO4D */
 
-/* Bit fields for USB FIFO5D_FIFO5D */
-#define _USB_FIFO5D_FIFO5D_RESETVALUE              0x00000000UL                             /**< Default value for USB_FIFO5D_FIFO5D */
-#define _USB_FIFO5D_FIFO5D_MASK                    0xFFFFFFFFUL                             /**< Mask for USB_FIFO5D_FIFO5D */
-#define _USB_FIFO5D_FIFO5D_FIFO5D_SHIFT            0                                        /**< Shift value for USB_FIFO5D */
-#define _USB_FIFO5D_FIFO5D_FIFO5D_MASK             0xFFFFFFFFUL                             /**< Bit mask for USB_FIFO5D */
-#define _USB_FIFO5D_FIFO5D_FIFO5D_DEFAULT          0x00000000UL                             /**< Mode DEFAULT for USB_FIFO5D_FIFO5D */
-#define USB_FIFO5D_FIFO5D_FIFO5D_DEFAULT           (_USB_FIFO5D_FIFO5D_FIFO5D_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFO5D_FIFO5D */
+/* Bit fields for USB FIFO5D */
+#define _USB_FIFO5D_RESETVALUE                     0x00000000UL                      /**< Default value for USB_FIFO5D */
+#define _USB_FIFO5D_MASK                           0xFFFFFFFFUL                      /**< Mask for USB_FIFO5D */
+#define _USB_FIFO5D_FIFO5D_SHIFT                   0                                 /**< Shift value for USB_FIFO5D */
+#define _USB_FIFO5D_FIFO5D_MASK                    0xFFFFFFFFUL                      /**< Bit mask for USB_FIFO5D */
+#define _USB_FIFO5D_FIFO5D_DEFAULT                 0x00000000UL                      /**< Mode DEFAULT for USB_FIFO5D */
+#define USB_FIFO5D_FIFO5D_DEFAULT                  (_USB_FIFO5D_FIFO5D_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFO5D */
 
-/* Bit fields for USB FIFO6D_FIFO6D */
-#define _USB_FIFO6D_FIFO6D_RESETVALUE              0x00000000UL                             /**< Default value for USB_FIFO6D_FIFO6D */
-#define _USB_FIFO6D_FIFO6D_MASK                    0xFFFFFFFFUL                             /**< Mask for USB_FIFO6D_FIFO6D */
-#define _USB_FIFO6D_FIFO6D_FIFO6D_SHIFT            0                                        /**< Shift value for USB_FIFO6D */
-#define _USB_FIFO6D_FIFO6D_FIFO6D_MASK             0xFFFFFFFFUL                             /**< Bit mask for USB_FIFO6D */
-#define _USB_FIFO6D_FIFO6D_FIFO6D_DEFAULT          0x00000000UL                             /**< Mode DEFAULT for USB_FIFO6D_FIFO6D */
-#define USB_FIFO6D_FIFO6D_FIFO6D_DEFAULT           (_USB_FIFO6D_FIFO6D_FIFO6D_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFO6D_FIFO6D */
+/* Bit fields for USB FIFO6D */
+#define _USB_FIFO6D_RESETVALUE                     0x00000000UL                      /**< Default value for USB_FIFO6D */
+#define _USB_FIFO6D_MASK                           0xFFFFFFFFUL                      /**< Mask for USB_FIFO6D */
+#define _USB_FIFO6D_FIFO6D_SHIFT                   0                                 /**< Shift value for USB_FIFO6D */
+#define _USB_FIFO6D_FIFO6D_MASK                    0xFFFFFFFFUL                      /**< Bit mask for USB_FIFO6D */
+#define _USB_FIFO6D_FIFO6D_DEFAULT                 0x00000000UL                      /**< Mode DEFAULT for USB_FIFO6D */
+#define USB_FIFO6D_FIFO6D_DEFAULT                  (_USB_FIFO6D_FIFO6D_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFO6D */
 
-/* Bit fields for USB FIFO7D_FIFO7D */
-#define _USB_FIFO7D_FIFO7D_RESETVALUE              0x00000000UL                             /**< Default value for USB_FIFO7D_FIFO7D */
-#define _USB_FIFO7D_FIFO7D_MASK                    0xFFFFFFFFUL                             /**< Mask for USB_FIFO7D_FIFO7D */
-#define _USB_FIFO7D_FIFO7D_FIFO7D_SHIFT            0                                        /**< Shift value for USB_FIFO7D */
-#define _USB_FIFO7D_FIFO7D_FIFO7D_MASK             0xFFFFFFFFUL                             /**< Bit mask for USB_FIFO7D */
-#define _USB_FIFO7D_FIFO7D_FIFO7D_DEFAULT          0x00000000UL                             /**< Mode DEFAULT for USB_FIFO7D_FIFO7D */
-#define USB_FIFO7D_FIFO7D_FIFO7D_DEFAULT           (_USB_FIFO7D_FIFO7D_FIFO7D_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFO7D_FIFO7D */
+/* Bit fields for USB FIFO7D */
+#define _USB_FIFO7D_RESETVALUE                     0x00000000UL                      /**< Default value for USB_FIFO7D */
+#define _USB_FIFO7D_MASK                           0xFFFFFFFFUL                      /**< Mask for USB_FIFO7D */
+#define _USB_FIFO7D_FIFO7D_SHIFT                   0                                 /**< Shift value for USB_FIFO7D */
+#define _USB_FIFO7D_FIFO7D_MASK                    0xFFFFFFFFUL                      /**< Bit mask for USB_FIFO7D */
+#define _USB_FIFO7D_FIFO7D_DEFAULT                 0x00000000UL                      /**< Mode DEFAULT for USB_FIFO7D */
+#define USB_FIFO7D_FIFO7D_DEFAULT                  (_USB_FIFO7D_FIFO7D_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFO7D */
 
-/* Bit fields for USB FIFO8D_FIFO8D */
-#define _USB_FIFO8D_FIFO8D_RESETVALUE              0x00000000UL                             /**< Default value for USB_FIFO8D_FIFO8D */
-#define _USB_FIFO8D_FIFO8D_MASK                    0xFFFFFFFFUL                             /**< Mask for USB_FIFO8D_FIFO8D */
-#define _USB_FIFO8D_FIFO8D_FIFO8D_SHIFT            0                                        /**< Shift value for USB_FIFO8D */
-#define _USB_FIFO8D_FIFO8D_FIFO8D_MASK             0xFFFFFFFFUL                             /**< Bit mask for USB_FIFO8D */
-#define _USB_FIFO8D_FIFO8D_FIFO8D_DEFAULT          0x00000000UL                             /**< Mode DEFAULT for USB_FIFO8D_FIFO8D */
-#define USB_FIFO8D_FIFO8D_FIFO8D_DEFAULT           (_USB_FIFO8D_FIFO8D_FIFO8D_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFO8D_FIFO8D */
+/* Bit fields for USB FIFO8D */
+#define _USB_FIFO8D_RESETVALUE                     0x00000000UL                      /**< Default value for USB_FIFO8D */
+#define _USB_FIFO8D_MASK                           0xFFFFFFFFUL                      /**< Mask for USB_FIFO8D */
+#define _USB_FIFO8D_FIFO8D_SHIFT                   0                                 /**< Shift value for USB_FIFO8D */
+#define _USB_FIFO8D_FIFO8D_MASK                    0xFFFFFFFFUL                      /**< Bit mask for USB_FIFO8D */
+#define _USB_FIFO8D_FIFO8D_DEFAULT                 0x00000000UL                      /**< Mode DEFAULT for USB_FIFO8D */
+#define USB_FIFO8D_FIFO8D_DEFAULT                  (_USB_FIFO8D_FIFO8D_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFO8D */
 
-/* Bit fields for USB FIFO9D_FIFO9D */
-#define _USB_FIFO9D_FIFO9D_RESETVALUE              0x00000000UL                             /**< Default value for USB_FIFO9D_FIFO9D */
-#define _USB_FIFO9D_FIFO9D_MASK                    0xFFFFFFFFUL                             /**< Mask for USB_FIFO9D_FIFO9D */
-#define _USB_FIFO9D_FIFO9D_FIFO9D_SHIFT            0                                        /**< Shift value for USB_FIFO9D */
-#define _USB_FIFO9D_FIFO9D_FIFO9D_MASK             0xFFFFFFFFUL                             /**< Bit mask for USB_FIFO9D */
-#define _USB_FIFO9D_FIFO9D_FIFO9D_DEFAULT          0x00000000UL                             /**< Mode DEFAULT for USB_FIFO9D_FIFO9D */
-#define USB_FIFO9D_FIFO9D_FIFO9D_DEFAULT           (_USB_FIFO9D_FIFO9D_FIFO9D_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFO9D_FIFO9D */
+/* Bit fields for USB FIFO9D */
+#define _USB_FIFO9D_RESETVALUE                     0x00000000UL                      /**< Default value for USB_FIFO9D */
+#define _USB_FIFO9D_MASK                           0xFFFFFFFFUL                      /**< Mask for USB_FIFO9D */
+#define _USB_FIFO9D_FIFO9D_SHIFT                   0                                 /**< Shift value for USB_FIFO9D */
+#define _USB_FIFO9D_FIFO9D_MASK                    0xFFFFFFFFUL                      /**< Bit mask for USB_FIFO9D */
+#define _USB_FIFO9D_FIFO9D_DEFAULT                 0x00000000UL                      /**< Mode DEFAULT for USB_FIFO9D */
+#define USB_FIFO9D_FIFO9D_DEFAULT                  (_USB_FIFO9D_FIFO9D_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFO9D */
 
-/* Bit fields for USB FIFO10D_FIFO10D */
-#define _USB_FIFO10D_FIFO10D_RESETVALUE            0x00000000UL                                /**< Default value for USB_FIFO10D_FIFO10D */
-#define _USB_FIFO10D_FIFO10D_MASK                  0xFFFFFFFFUL                                /**< Mask for USB_FIFO10D_FIFO10D */
-#define _USB_FIFO10D_FIFO10D_FIFO10D_SHIFT         0                                           /**< Shift value for USB_FIFO10D */
-#define _USB_FIFO10D_FIFO10D_FIFO10D_MASK          0xFFFFFFFFUL                                /**< Bit mask for USB_FIFO10D */
-#define _USB_FIFO10D_FIFO10D_FIFO10D_DEFAULT       0x00000000UL                                /**< Mode DEFAULT for USB_FIFO10D_FIFO10D */
-#define USB_FIFO10D_FIFO10D_FIFO10D_DEFAULT        (_USB_FIFO10D_FIFO10D_FIFO10D_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFO10D_FIFO10D */
+/* Bit fields for USB FIFO10D */
+#define _USB_FIFO10D_RESETVALUE                    0x00000000UL                        /**< Default value for USB_FIFO10D */
+#define _USB_FIFO10D_MASK                          0xFFFFFFFFUL                        /**< Mask for USB_FIFO10D */
+#define _USB_FIFO10D_FIFO10D_SHIFT                 0                                   /**< Shift value for USB_FIFO10D */
+#define _USB_FIFO10D_FIFO10D_MASK                  0xFFFFFFFFUL                        /**< Bit mask for USB_FIFO10D */
+#define _USB_FIFO10D_FIFO10D_DEFAULT               0x00000000UL                        /**< Mode DEFAULT for USB_FIFO10D */
+#define USB_FIFO10D_FIFO10D_DEFAULT                (_USB_FIFO10D_FIFO10D_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFO10D */
 
-/* Bit fields for USB FIFO11D_FIFO11D */
-#define _USB_FIFO11D_FIFO11D_RESETVALUE            0x00000000UL                                /**< Default value for USB_FIFO11D_FIFO11D */
-#define _USB_FIFO11D_FIFO11D_MASK                  0xFFFFFFFFUL                                /**< Mask for USB_FIFO11D_FIFO11D */
-#define _USB_FIFO11D_FIFO11D_FIFO11D_SHIFT         0                                           /**< Shift value for USB_FIFO11D */
-#define _USB_FIFO11D_FIFO11D_FIFO11D_MASK          0xFFFFFFFFUL                                /**< Bit mask for USB_FIFO11D */
-#define _USB_FIFO11D_FIFO11D_FIFO11D_DEFAULT       0x00000000UL                                /**< Mode DEFAULT for USB_FIFO11D_FIFO11D */
-#define USB_FIFO11D_FIFO11D_FIFO11D_DEFAULT        (_USB_FIFO11D_FIFO11D_FIFO11D_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFO11D_FIFO11D */
+/* Bit fields for USB FIFO11D */
+#define _USB_FIFO11D_RESETVALUE                    0x00000000UL                        /**< Default value for USB_FIFO11D */
+#define _USB_FIFO11D_MASK                          0xFFFFFFFFUL                        /**< Mask for USB_FIFO11D */
+#define _USB_FIFO11D_FIFO11D_SHIFT                 0                                   /**< Shift value for USB_FIFO11D */
+#define _USB_FIFO11D_FIFO11D_MASK                  0xFFFFFFFFUL                        /**< Bit mask for USB_FIFO11D */
+#define _USB_FIFO11D_FIFO11D_DEFAULT               0x00000000UL                        /**< Mode DEFAULT for USB_FIFO11D */
+#define USB_FIFO11D_FIFO11D_DEFAULT                (_USB_FIFO11D_FIFO11D_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFO11D */
 
-/* Bit fields for USB FIFO12D_FIFO12D */
-#define _USB_FIFO12D_FIFO12D_RESETVALUE            0x00000000UL                                /**< Default value for USB_FIFO12D_FIFO12D */
-#define _USB_FIFO12D_FIFO12D_MASK                  0xFFFFFFFFUL                                /**< Mask for USB_FIFO12D_FIFO12D */
-#define _USB_FIFO12D_FIFO12D_FIFO12D_SHIFT         0                                           /**< Shift value for USB_FIFO12D */
-#define _USB_FIFO12D_FIFO12D_FIFO12D_MASK          0xFFFFFFFFUL                                /**< Bit mask for USB_FIFO12D */
-#define _USB_FIFO12D_FIFO12D_FIFO12D_DEFAULT       0x00000000UL                                /**< Mode DEFAULT for USB_FIFO12D_FIFO12D */
-#define USB_FIFO12D_FIFO12D_FIFO12D_DEFAULT        (_USB_FIFO12D_FIFO12D_FIFO12D_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFO12D_FIFO12D */
+/* Bit fields for USB FIFO12D */
+#define _USB_FIFO12D_RESETVALUE                    0x00000000UL                        /**< Default value for USB_FIFO12D */
+#define _USB_FIFO12D_MASK                          0xFFFFFFFFUL                        /**< Mask for USB_FIFO12D */
+#define _USB_FIFO12D_FIFO12D_SHIFT                 0                                   /**< Shift value for USB_FIFO12D */
+#define _USB_FIFO12D_FIFO12D_MASK                  0xFFFFFFFFUL                        /**< Bit mask for USB_FIFO12D */
+#define _USB_FIFO12D_FIFO12D_DEFAULT               0x00000000UL                        /**< Mode DEFAULT for USB_FIFO12D */
+#define USB_FIFO12D_FIFO12D_DEFAULT                (_USB_FIFO12D_FIFO12D_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFO12D */
 
-/* Bit fields for USB FIFO13D_FIFO13D */
-#define _USB_FIFO13D_FIFO13D_RESETVALUE            0x00000000UL                                /**< Default value for USB_FIFO13D_FIFO13D */
-#define _USB_FIFO13D_FIFO13D_MASK                  0xFFFFFFFFUL                                /**< Mask for USB_FIFO13D_FIFO13D */
-#define _USB_FIFO13D_FIFO13D_FIFO13D_SHIFT         0                                           /**< Shift value for USB_FIFO13D */
-#define _USB_FIFO13D_FIFO13D_FIFO13D_MASK          0xFFFFFFFFUL                                /**< Bit mask for USB_FIFO13D */
-#define _USB_FIFO13D_FIFO13D_FIFO13D_DEFAULT       0x00000000UL                                /**< Mode DEFAULT for USB_FIFO13D_FIFO13D */
-#define USB_FIFO13D_FIFO13D_FIFO13D_DEFAULT        (_USB_FIFO13D_FIFO13D_FIFO13D_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFO13D_FIFO13D */
+/* Bit fields for USB FIFO13D */
+#define _USB_FIFO13D_RESETVALUE                    0x00000000UL                        /**< Default value for USB_FIFO13D */
+#define _USB_FIFO13D_MASK                          0xFFFFFFFFUL                        /**< Mask for USB_FIFO13D */
+#define _USB_FIFO13D_FIFO13D_SHIFT                 0                                   /**< Shift value for USB_FIFO13D */
+#define _USB_FIFO13D_FIFO13D_MASK                  0xFFFFFFFFUL                        /**< Bit mask for USB_FIFO13D */
+#define _USB_FIFO13D_FIFO13D_DEFAULT               0x00000000UL                        /**< Mode DEFAULT for USB_FIFO13D */
+#define USB_FIFO13D_FIFO13D_DEFAULT                (_USB_FIFO13D_FIFO13D_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFO13D */
 
-/* Bit fields for USB FIFORAM_FIFORAM */
-#define _USB_FIFORAM_FIFORAM_RESETVALUE            0x00000000UL                                /**< Default value for USB_FIFORAM_FIFORAM */
-#define _USB_FIFORAM_FIFORAM_MASK                  0xFFFFFFFFUL                                /**< Mask for USB_FIFORAM_FIFORAM */
-#define _USB_FIFORAM_FIFORAM_FIFORAM_SHIFT         0                                           /**< Shift value for USB_FIFORAM */
-#define _USB_FIFORAM_FIFORAM_FIFORAM_MASK          0xFFFFFFFFUL                                /**< Bit mask for USB_FIFORAM */
-#define _USB_FIFORAM_FIFORAM_FIFORAM_DEFAULT       0x00000000UL                                /**< Mode DEFAULT for USB_FIFORAM_FIFORAM */
-#define USB_FIFORAM_FIFORAM_FIFORAM_DEFAULT        (_USB_FIFORAM_FIFORAM_FIFORAM_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFORAM_FIFORAM */
+/* Bit fields for USB FIFORAM */
+#define _USB_FIFORAM_RESETVALUE                    0x00000000UL                        /**< Default value for USB_FIFORAM */
+#define _USB_FIFORAM_MASK                          0xFFFFFFFFUL                        /**< Mask for USB_FIFORAM */
+#define _USB_FIFORAM_FIFORAM_SHIFT                 0                                   /**< Shift value for USB_FIFORAM */
+#define _USB_FIFORAM_FIFORAM_MASK                  0xFFFFFFFFUL                        /**< Bit mask for USB_FIFORAM */
+#define _USB_FIFORAM_FIFORAM_DEFAULT               0x00000000UL                        /**< Mode DEFAULT for USB_FIFORAM */
+#define USB_FIFORAM_FIFORAM_DEFAULT                (_USB_FIFORAM_FIFORAM_DEFAULT << 0) /**< Shifted mode DEFAULT for USB_FIFORAM */
 
 /** @} End of group EFM32LG_USB */
-
+/** @} End of group Parts */
 

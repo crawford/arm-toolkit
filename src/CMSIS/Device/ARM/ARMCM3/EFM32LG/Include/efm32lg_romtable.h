@@ -1,11 +1,10 @@
 /**************************************************************************//**
- * @file
- * @brief efm32lg_romtable Register and Bit Field definitions
- * @author Energy Micro AS
- * @version 3.20.0
+ * @file efm32lg_romtable.h
+ * @brief EFM32LG_ROMTABLE register and bit field definitions
+ * @version 5.1.2
  ******************************************************************************
  * @section License
- * <b>(C) Copyright 2012 Energy Micro AS, http://www.energymicro.com</b>
+ * <b>Copyright 2017 Silicon Laboratories, Inc. http://www.silabs.com</b>
  ******************************************************************************
  *
  * Permission is granted to anyone to use this software for any purpose,
@@ -13,23 +12,27 @@
  * freely, subject to the following restrictions:
  *
  * 1. The origin of this software must not be misrepresented; you must not
- *    claim that you wrote the original software.
+ *    claim that you wrote the original software.@n
  * 2. Altered source versions must be plainly marked as such, and must not be
- *    misrepresented as being the original software.
+ *    misrepresented as being the original software.@n
  * 3. This notice may not be removed or altered from any source distribution.
  *
- * DISCLAIMER OF WARRANTY/LIMITATION OF REMEDIES: Energy Micro AS has no
- * obligation to support this Software. Energy Micro AS is providing the
- * Software "AS IS", with no express or implied warranties of any kind,
- * including, but not limited to, any implied warranties of merchantability
- * or fitness for any particular purpose or warranties against infringement
- * of any proprietary rights of a third party.
+ * DISCLAIMER OF WARRANTY/LIMITATION OF REMEDIES: Silicon Laboratories, Inc.
+ * has no obligation to support this Software. Silicon Laboratories, Inc. is
+ * providing the Software "AS IS", with no express or implied warranties of any
+ * kind, including, but not limited to, any implied warranties of
+ * merchantability or fitness for any particular purpose or warranties against
+ * infringement of any proprietary rights of a third party.
  *
- * Energy Micro AS will not be liable for any consequential, incidental, or
- * special damages, or any other relief, or for any claim by any third party,
- * arising from your use of this Software.
+ * Silicon Laboratories, Inc. will not be liable for any consequential,
+ * incidental, or special damages, or any other relief, or for any claim by
+ * any third party, arising from your use of this Software.
  *
  *****************************************************************************/
+/**************************************************************************//**
+* @addtogroup Parts
+* @{
+******************************************************************************/
 /**************************************************************************//**
  * @defgroup EFM32LG_ROMTABLE
  * @{
@@ -37,16 +40,16 @@
  *****************************************************************************/
 typedef struct
 {
-  __I uint32_t PID4; /**< JEP_106_BANK */
-  __I uint32_t PID5; /**< Unused */
-  __I uint32_t PID6; /**< Unused */
-  __I uint32_t PID7; /**< Unused */
-  __I uint32_t PID0; /**< Chip family LSB, chip major revision */
-  __I uint32_t PID1; /**< JEP_106_NO, Chip family MSB */
-  __I uint32_t PID2; /**< Chip minor rev MSB, JEP_106_PRESENT, JEP_106_NO */
-  __I uint32_t PID3; /**< Chip minor rev LSB */
-  __I uint32_t CID0; /**< Unused */
-} ROMTABLE_TypeDef;  /** @} */
+  __IM uint32_t PID4; /**< JEP_106_BANK */
+  __IM uint32_t PID5; /**< Unused */
+  __IM uint32_t PID6; /**< Unused */
+  __IM uint32_t PID7; /**< Unused */
+  __IM uint32_t PID0; /**< Chip family LSB, chip major revision */
+  __IM uint32_t PID1; /**< JEP_106_NO, Chip family MSB */
+  __IM uint32_t PID2; /**< Chip minor rev MSB, JEP_106_PRESENT, JEP_106_NO */
+  __IM uint32_t PID3; /**< Chip minor rev LSB */
+  __IM uint32_t CID0; /**< Unused */
+} ROMTABLE_TypeDef;   /** @} */
 
 /**************************************************************************//**
  * @defgroup EFM32LG_ROMTABLE_BitFields
@@ -65,5 +68,5 @@ typedef struct
 #define _ROMTABLE_PID3_REVMINORLSB_SHIFT    4            /**< Least Significant Bits [3:0] of CHIP MINOR revision, shift */
 
 /** @} End of group EFM32LG_ROMTABLE */
-
+/** @} End of group Parts */
 
